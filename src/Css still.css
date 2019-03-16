@@ -1,0 +1,63 @@
+
+
+
+#FenIndiv {
+    position: relative;
+    top: 30px;
+    left: 820px;
+}
+
+#set {
+    width: 650px;
+    left: 60px;
+}
+
+
+
+
+.rank1{top:540px}
+.rank2{top:480px}
+.rank3{top:420px}
+.rank4{top:360px}
+.rank5{top:300px}
+.rank6{top:240px}
+.rank7{top:180px}
+.rank8{top:120px}
+.rank9{top:60px}
+.rank10{top:0}
+
+.file0{left:0}
+.file1{left:60px}
+.file2{left:120px}
+.file3{left:180px}
+.file4{left:240px}
+.file5{left:300px}
+.file6{left:360px}
+.file7{left:420px}
+.file8{left:480px}
+.file9{left:540px}
+.file10{left:600px}
+.file11{left:660px}
+.file12{left:720px}
+
+#board{width:780px ;height: 600px;
+    top: 20px;left:30px;position:absolute}
+
+.Square{width: 60px;height: 60px;position: absolute}
+
+.dark{background-color: rgba(64, 118, 120, 0.99)
+}
+
+.light{background-color: #81c7ff
+}
+
+.SqSelected{background-color: #041878
+}
+
+.SqAttacked{
+    width: 60px;height: 60px;background-color: #16ff36;border-radius: 2px; color: #067703;
+}
+
+.Piece{
+    position: absolute;
+}

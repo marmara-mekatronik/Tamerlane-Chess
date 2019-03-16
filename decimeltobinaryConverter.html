@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+    var sayi=parseInt(prompt("ikili sisteme döüştürmek istediğiniz sayıyı giriniz."));
+    var Binary=[],kalan,bolum,index=0;
+
+   while(sayi){
+       kalan=sayi%2;
+       bolum=parseInt(sayi/2);
+       Binary[index]=kalan;
+       if(bolum==1){
+
+           Binary[index+1]=bolum;
+           document.write(Binary.reverse(),"   uzunluğu:  "+Binary.length);
+           break;
+       }
+       sayi=bolum;
+       index++;
+
+   }
+
+
+</script>
+
+</body>
+</html>
