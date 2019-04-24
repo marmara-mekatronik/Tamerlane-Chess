@@ -6,8 +6,6 @@ $(function () {
     NewGame(ColorOfPlayer[IndexColorOfPlayer]);
     console.log("RandomNumber   "+RandomNumber);
     console.log("IndexColorOfPlayer "+IndexColorOfPlayer);
-
-
 });
 
 
@@ -117,7 +115,6 @@ function tahta() {
         for (file_num = Files.Files_1; file_num <= Files.Files_11; file_num++) {
             file_name = "file" + (file_num);
             (light == 0) ? colorOfSq = "light" : colorOfSq = "dark";
-
 
             createDiv = "<div class=\"Square " + rank_name + " " + file_name + " " + colorOfSq + "\" >";
             (file_num !=Files.Files_11) ? light ^= 1 : 0;

@@ -12,8 +12,8 @@ GameBoard.pList= new Array(44*15);
 GameBoard.moveList=new Array(MAXDEPTH*MAXPOSITIONMOVES);//112*1000
 GameBoard.moveScores=new Array(MAXDEPTH*MAXPOSITIONMOVES);
 GameBoard.PosKey=0;
-GameBoard.WhiteKingsInGame=[PIECES.Wsah,0,0];
-GameBoard.BlackKingsInGame=[PIECES.Bsah,0,0];
+GameBoard.WhiteKingsInGame=[PIECES.Wsah];
+GameBoard.BlackKingsInGame=[PIECES.Bsah];
 GameBoard.WhiteNumberOfKingsInGame=1;
 GameBoard.BlackNumberOfKingsInGame=1;
 GameBoard.WhiteHighestRanKING=PIECES.Wsah;
@@ -166,7 +166,7 @@ function UpdateListsMaterial() {
     for (index = 0; index < 2; index++) {
         GameBoard.material[index] = 0;
     }
-    for (index = 0; index < 43; index++) {
+    for (index = 0; index < 47; index++) {
         GameBoard.piecesNUMBER[index] = 0;
     }
 
@@ -201,8 +201,8 @@ function ResetBoard() {
     GameBoard.hisPly = 0;
     GameBoard.ply = 0;
     GameBoard.moveListStart[GameBoard.ply] = 0;
-    GameBoard.WhiteKingsInGame=[PIECES.Wsah,0,0];
-    GameBoard.BlackKingsInGame=[PIECES.Bsah,0,0];
+    GameBoard.WhiteKingsInGame=[PIECES.Wsah];
+    GameBoard.BlackKingsInGame=[PIECES.Bsah];
     GameBoard.WhiteNumberOfKingsInGame=1;
     GameBoard.BlackNumberOfKingsInGame=1;
     GameBoard.WhiteHighestRanKING=PIECES.Wsah;
@@ -367,15 +367,16 @@ function  SqAttacked(sq,side){
 
     var pce,t_sq,index,direction;
 
-    if(DontMoveExtraSquares(sq)==Bool.True ){
 
-        if( (side==COLOURS.WHITE && GameBoard.BlackNumberOfKingsInGame==1) ||
-            (side==COLOURS.BLACK && GameBoard.WhiteNumberOfKingsInGame==1)){
+    if(IsSquareCitadel(sq)==Bool.True ) {
+
+        if ((side == COLOURS.WHITE && GameBoard.BlackNumberOfKingsInGame == 1) ||
+            (side == COLOURS.BLACK && GameBoard.WhiteNumberOfKingsInGame == 1)) {
 
             if (Colors[IndexColorOfPlayer] == COLOURS.WHITE) {
 
                 if (side == COLOURS.WHITE) {
-                    for (index = 0; index < 10; index++) {
+                    for (index = 0; index < 11; index++) {
 
                         if (piyonlar[index] == GameBoard.pieces[sq - 14] || piyonlar[index] == GameBoard.pieces[sq - 16]) {
 
@@ -384,7 +385,7 @@ function  SqAttacked(sq,side){
                     }
                 }
                 else if (side == COLOURS.BLACK) {
-                    for (index = 0; index < 10; index++) {
+                    for (index = 0; index < 11; index++) {
 
                         if (piyonlar[index + 12] == GameBoard.pieces[sq + 14] || piyonlar[index + 12] == GameBoard.pieces[sq + 16]) {
 
@@ -418,7 +419,7 @@ function  SqAttacked(sq,side){
 
 
             for (index = 0; index < AT_direction.length; index++) { //at
-                pce = GameBoard.pieces[sq+AT_direction[index]];
+                pce = GameBoard.pieces[sq + AT_direction[index]];
 
                 if (pce != SQUARES.OFF_BOARD && PieceColor[pce] == side && PieceAT[pce] == Bool.True) {
                     return Bool.True;
@@ -526,6 +527,7 @@ function  SqAttacked(sq,side){
                     while (pce != SQUARES.OFF_BOARD) {
 
                         if (pce != PIECES.EMPTY) {
+
                             if (PieceMANCINIK[pce] == Bool.True && PieceColor[pce] == side) {
 
                                 return Bool.True;
@@ -541,26 +543,19 @@ function  SqAttacked(sq,side){
 
         }
 
-        for (index = 0; index < SAH_direction.length; index++) { //SAH
-            pce = GameBoard.pieces[sq + SAH_direction[index]];
+    }
+
+    for (index = 0; index < SAH_direction.length; index++) { //SAHlar
+        pce = GameBoard.pieces[sq + SAH_direction[index]];
 
 
+        if (pce != SQUARES.OFF_BOARD && PieceColor[pce] == side && PieceSAH[pce] == Bool.True) {
 
-            if( ( (sq==181 || sq==88) && (GameBoard.pieces[sq] !=PIECES.EMPTY)          ) ||
-                (Colors[IndexColorOfPlayer]==COLOURS.WHITE && pce==PIECES.Wsah && sq==88) ||
-                (Colors[IndexColorOfPlayer]==COLOURS.WHITE && pce==PIECES.Bsah && sq==181) ||
-                (Colors[IndexColorOfPlayer]==COLOURS.BLACK && pce==PIECES.Bsah && sq==88) ||
-                (Colors[IndexColorOfPlayer]==COLOURS.BLACK && pce==PIECES.Wsah && sq==181) ){
-
-                continue;
-            }
-
-            if (pce != SQUARES.OFF_BOARD && PieceColor[pce] == side && PieceSAH[pce] == Bool.True) {
-
-                return Bool.True;
-            }
+            return Bool.True;
         }
     }
+
+
     return Bool.False;
 }
 

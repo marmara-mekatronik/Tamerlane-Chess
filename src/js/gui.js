@@ -2,7 +2,9 @@
 $("#setFen").click(function () {
 
     var FenString=$("#set").val();
+    console.log("FenString "+FenString);
     NewGame(FenString);
+
 
 
 });
@@ -105,7 +107,7 @@ $(document).on("click",".Piece", function (e) {
     MakeUserMove();
 
     ShowAllSqPceCanMove(UserMove.from,GameBoard.pieces[UserMove.from]);
-    console.log("MoveToInitPosPawnofKing() "+MoveToInitPosPawnofKing());
+
 
 });
 
@@ -118,23 +120,17 @@ $(document).on("click",".Square", function (e) {
         MakeUserMove();
     }
 
-
-
 });
 
 
 function MakeUserMove() {
 
     if(UserMove.from !=SQUARES.NO_SQ && UserMove.to !=SQUARES.NO_SQ ){
-
         var parsed=ParseMove(UserMove.from,UserMove.to);
         var piece=GameBoard.pieces[UserMove.from];
         console.log("piece "+piece);
 
-
         console.log("user move "+ PrSq(UserMove.from)+ PrSq(UserMove.to));
-
-
 
         if(parsed !=NOMOVE){
 
@@ -144,7 +140,10 @@ function MakeUserMove() {
             CheckandSet();
 
         }
-        //console.log("MoveToInitPosPawnofKing() "+MoveToInitPosPawnofKing());
+
+        console.log("beyaz şahların sayısı : "+GameBoard.WhiteNumberOfKingsInGame);
+        console.log("siyah şahların sayısı: "+GameBoard.BlackNumberOfKingsInGame);
+        console.log(GameBoard.moveListStart);
 
         DeSelected(UserMove.from);
         DeSelected(UserMove.to);
@@ -188,10 +187,7 @@ function MoveGuiPiece(move,piece) {
 
     if(CAPTURED(move)){
         RemoveGuiPiece(to);
-        WhiteCapturedKings(CAPTURED(move));
-        BlackCapturedKings(CAPTURED(move));
     }
-
 
 
     var file=FilesBrd[to];
@@ -228,44 +224,76 @@ function MoveGuiPiece(move,piece) {
         AddGuiPiece(to,PromPce);
 
 
-    }
-
-
-    if((move & MFLAGFORK)!=0 || (move & MFLAGTOBEADKING)!=0){
+    } else if((move & MFLAGFORK)!=0 || (move & MFLAGTOBEADKING)!=0){
 
         console.log("piece "+piece+" to "+to);
         RemoveGuiPiece(from);
         AddGuiPiece(to,piece);
         console.log("to "+to);
+
+    } else if( (move & MFLAGSWITCHKING)!=0){
+
+
+        console.log("(move & MFLAGSWITCHKING)!=0");
+        var highestKing=GameBoard.pieces[to];
+        var secondKing=GameBoard.pieces[from];
+        RemoveGuiPiece(from);
+        RemoveGuiPiece(to);
+        AddGuiPiece(from,secondKing);
+        AddGuiPiece(to,highestKing);
+
+    }
+    else if( (move & MFLAGMOVEADKINGFROMCITADEL)!=0){
+
+        RemoveGuiPiece(to);
+        AddGuiPiece(to,piece);
+
     }
 }
 
 
 
 function DeclareDraw() {
+
+
+
     if( (GameBoard.WhiteCounter==1 && GameBoard.WhiteNumberOfKingsInGame==1) ||
         (GameBoard.BlackCounter==1 && GameBoard.BlackNumberOfKingsInGame==1) ){
+
         return Bool.True;
     }
 
-    else if((GameBoard.WhiteCounter==1 && (GameBoard.WhiteNumberOfKingsInGame==2 || GameBoard.WhiteNumberOfKingsInGame==3)) ||
-           (GameBoard.BlackCounter==1 && (GameBoard.BlackNumberOfKingsInGame==2 || GameBoard.BlackNumberOfKingsInGame==3)) ){
+    else if(GameBoard.WhiteCounter==1 && (GameBoard.WhiteNumberOfKingsInGame==2 || GameBoard.WhiteNumberOfKingsInGame==3)&& WdecDraw==0 ){
 
-        document.write("oyunu berabere bitir ya da sahınızı prens veya sonradan gelen sah ile yer değiştirerek oyuna devam edin");
-        var girdi=parseInt(prompt("oyunu berabere bitirmek için 0 oyuna devam etmek için 1 giriniz"));
+        WdecDraw=parseInt(prompt("oyunu berabere bitirmek için 1 oyuna devam etmek için 2 giriniz"));
 
-
-        if(girdi==1){
+        if(WdecDraw==2){
 
             //şah, prens ya da sonradan gelen şah ile yer değiştirecek
 
             return Bool.False;
         }
-        else if(girdi==0){
+        else if(WdecDraw==1){
 
             return Bool.True;
         }
     }
+    else if(GameBoard.BlackCounter==1 && (GameBoard.BlackNumberOfKingsInGame==2 || GameBoard.BlackNumberOfKingsInGame==3) && BdecDraw==0){
+
+        BdecDraw=parseInt(prompt("oyunu berabere bitirmek için 1 oyuna devam etmek için 2 giriniz"));
+
+        if(BdecDraw==2){
+
+            //şah, prens ya da sonradan gelen şah ile yer değiştirecek
+
+            return Bool.False;
+        }
+        else if(BdecDraw==1){
+
+            return Bool.True;
+        }
+    }
+
 
     if( (GameBoard.WhiteCounter==2) || (GameBoard.BlackCounter==2)){
         return Bool.True;
@@ -274,46 +302,6 @@ function DeclareDraw() {
     return Bool.False;
 
 }
-
-
-function KingSwitchPlaceToEscape(){
-
-    var index,piece;
-
-
-    if(GameBoard.side==COLOURS.WHITE && GameBoard.pList[PCEINDEX(PIECES.Wsah,0)]==WopponetCitadel){
-
-        for(index=0;index<GameBoard.WpceList.length;index++){
-
-            piece=GameBoard.WpceList[index];
-
-            if(piece==PIECES.WmaceraciSah || piece==PIECES.Wprens){
-
-                GameBoard.WswitchToEscapeSq+=GameBoard.pList[PCEINDEX(piece,0)];
-
-            }
-        }
-
-    }
-
-
-    if(GameBoard.side==COLOURS.BLACK && GameBoard.pList[PCEINDEX(PIECES. Bsah,0)]==BopponetCitadel){
-
-        for(index=0;index<GameBoard.BpceList.length;index++){
-
-
-            piece=GameBoard.BpceList[index];
-
-            if(piece==PIECES.BmaceraciSah || piece==PIECES.Bprens){
-
-                GameBoard.BswitchToEscapeSq+=GameBoard.pList[PCEINDEX(piece,0)];
-
-            }
-        }
-    }
-
-}
-
 
 
 function CheckResult(){
@@ -329,26 +317,35 @@ function CheckResult(){
     var MoveNum;
     var found=0;
 
+
     for(MoveNum=GameBoard.moveListStart[GameBoard.ply];MoveNum<GameBoard.moveListStart[GameBoard.ply+1];MoveNum++){
+
 
         if(MakeMove(GameBoard.moveList[MoveNum])==Bool.False){
 
             continue;
         }
+
         found++;
         TakeMove();
         break;
     }
 
-    if(found !=0) return Bool.False;
-
     var InCheck=SqAttacked(GameBoard.pList[PCEINDEX(Kings[GameBoard.side],0)],GameBoard.side^1);
 
+    console.log("InCheck: "+InCheck);
+
+    if(found !=0) return Bool.False;
+
     if(InCheck==Bool.True){
+
+
+        console.log("oyun bitti! "+GameBoard.WhiteNumberOfKingsInGame);
 
         if(GameBoard.side==COLOURS.WHITE && GameBoard.WhiteNumberOfKingsInGame==1){
 
             $("#GameStatus").text("Black has won!");
+
 
             return Bool.True;
 
@@ -358,14 +355,14 @@ function CheckResult(){
 
             return Bool.True;
         }
-    }/*else {
-        if( (GameBoard.side==COLOURS.WHITE && GameBoard.WhiteNumberOfKingsInGame==1) ||
-            (GameBoard.side==COLOURS.BLACK && GameBoard.BlackNumberOfKingsInGame==1)){
+    }else {
+        if( (GameBoard.side==COLOURS.BLACK && GameBoard.WhiteNumberOfKingsInGame==1) ||
+            (GameBoard.side==COLOURS.WHITE && GameBoard.BlackNumberOfKingsInGame==1)){
 
             $("#GameStatus").text("Stalemate!");
             return Bool.True;
         }
-    }*/
+    }
 
     return Bool.False;
 

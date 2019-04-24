@@ -49,24 +49,94 @@ function ProtectedKing(from,to) {
             }
             TakeMovePieces(from, to);
         }
-    }
-    else if( (GameBoard.side==COLOURS.WHITE && (GameBoard.WhiteNumberOfKingsInGame==2 || GameBoard.WhiteNumberOfKingsInGame==3)   )  ||
-             (GameBoard.side==COLOURS.BLACK && (GameBoard.BlackNumberOfKingsInGame==2 || GameBoard.BlackNumberOfKingsInGame==2)   )  ){
+
+    }else if( (GameBoard.side==COLOURS.WHITE && GameBoard.WhiteKingsInGame.length>1) ||
+              (GameBoard.side==COLOURS.BLACK && GameBoard.BlackKingsInGame.length>1) ){
 
         return Bool.True;
+
     }
 
     return Bool.False;
 }
 
 function ShowAllSqPceCanMove(sq,clickedPiece) {
-    console.log("MovetoFork()  "+MovetoFork());
 
-    if(MovetoFork()==Bool.False){
+    var index,pce,new_sq;
+
+
+    if(MovetoFork()==Bool.False && MoveToInitPosPawnofKing()==Bool.False &&
+       SwitchPlaceOfKing()==Bool.False && AdKingMoveFromCitadel()==Bool.False){
 
         ShowUsualSquaresPieceCanMove(sq,clickedPiece);
     }
-    else ShowForkingSquares(clickedPiece);
+    else if(MoveToInitPosPawnofKing()==Bool.True){
+
+        if(clickedPiece==PIECES.WpiyonP && GameBoard.side==COLOURS.WHITE) sq=WinitSqPofK;
+        else if(clickedPiece==PIECES.BpiyonP && GameBoard.side==COLOURS.BLACK) sq=BinitSqPofK;
+
+        $(".Square").each(function () {
+
+            if(PieceIsOnSq(sq,$(this).position().top,$(this).position().left)==Bool.True){
+                $(this).addClass("SqAttacked");
+            }
+        });
+
+    }else if( SwitchPlaceOfKing()==Bool.True){
+
+        if(clickedPiece==GameBoard.WhiteHighestRanKING && GameBoard.side==COLOURS.WHITE){
+
+            for(index=0;index<GameBoard.WhiteKingsInGame.length;index++){
+
+                pce=GameBoard.WhiteKingsInGame[index];
+                if(pce==GameBoard.WhiteHighestRanKING) continue;
+                new_sq=GameBoard.pList[PCEINDEX(pce,0)];
+
+                $(".Square").each(function () {
+
+                    if(PieceIsOnSq(new_sq,$(this).position().top,$(this).position().left)==Bool.True){
+                        $(this).addClass("SqAttacked");
+                    }
+                });
+
+            }
+
+        }else if(clickedPiece==GameBoard.BlackHighestRanKING && GameBoard.side==COLOURS.BLACK){
+
+
+            for(index=0;index<GameBoard.BlackKingsInGame.length;index++){
+
+                pce=GameBoard.BlackKingsInGame[index];
+                if(pce==GameBoard.BlackHighestRanKING) continue;
+
+                new_sq=GameBoard.pList[PCEINDEX(pce,0)];
+
+                $(".Square").each(function () {
+
+                    if(PieceIsOnSq(new_sq,$(this).position().top,$(this).position().left)==Bool.True){
+                        $(this).addClass("SqAttacked");
+                    }
+                });
+            }
+        }
+    }
+    else if(AdKingMoveFromCitadel()!=Bool.False){
+
+
+        if( (clickedPiece==PIECES.WmaceraciSah && GameBoard.side==COLOURS.WHITE) ||
+            (clickedPiece==PIECES.BmaceraciSah && GameBoard.side==COLOURS.BLACK)){
+
+            $(".Square").each(function () {
+
+                if(PieceIsOnSq(AdKingMoveFromCitadel(),$(this).position().top,$(this).position().left)==Bool.True){
+                    $(this).addClass("SqAttacked");
+                }
+            });
+
+        }
+    }
+    else if(MovetoFork()==Bool.True) ShowForkingSquares(clickedPiece);
+
 
 }
 
@@ -104,64 +174,30 @@ function ShowUsualSquaresPieceCanMove(sq,clickedPiece) {
 
         var index,j,Cal_sq;
 
-        if(Colors[IndexColorOfPlayer]==COLOURS.WHITE){
+        for(index=0;index<WhitePawns.length;index++){
 
-            for(index=0;index<(piyonlar.length)/2 ;index++){
+            if(clickedPiece==WhitePawns[index]){
 
-                if(clickedPiece==piyonlar[index]){
+                if (PawnAttackedSqStraightWhite(sq+PawnsFowards)==Bool.True ) {
 
-                    if (PawnAttackedSqStraightWhite(sq+15)==Bool.True ) {
+                    if(ProtectedKing(sq,sq+PawnsFowards)==Bool.True){
 
-                        if(ProtectedKing(sq,sq+15)==Bool.True){
+                        if(PieceIsOnSq(sq+PawnsFowards,$(this).position().top,$(this).position().left)==Bool.True){
 
-                            if(PieceIsOnSq(sq+15,$(this).position().top,$(this).position().left)==Bool.True){
-
-                                $(this).addClass("SqAttacked");
-                            }
-                        }
-                    }
-
-                    for(j=0;j<PlayerColor.length;j++){
-
-                        if (PawnAttackedSqDiagonalWhite(sq+PlayerColor[j])==Bool.True ) {
-
-                            if(ProtectedKing(sq,sq+PlayerColor[j])==Bool.True){
-
-                                if(PieceIsOnSq(sq+PlayerColor[j],$(this).position().top,$(this).position().left)==Bool.True){
-
-                                    $(this).addClass("SqAttacked");
-                                }
-                            }
+                            $(this).addClass("SqAttacked");
                         }
                     }
                 }
-            }
 
-            for(index=(piyonlar.length)/2;index<piyonlar.length;index++){
+                for(j=0;j<PawnDiagonal.length;j++){
 
-                if(clickedPiece==piyonlar[index]){
+                    if (PawnAttackedSqDiagonalWhite(sq+PawnDiagonal[j])==Bool.True ) {
 
-                    if (PawnAttackedSqStraightBlack(sq-15)==Bool.True ) {
+                        if(ProtectedKing(sq,sq+PawnDiagonal[j])==Bool.True){
 
-                        if(ProtectedKing(sq,sq-15)==Bool.True){
-
-                            if(PieceIsOnSq(sq-15,$(this).position().top,$(this).position().left)==Bool.True){
+                            if(PieceIsOnSq(sq+PawnDiagonal[j],$(this).position().top,$(this).position().left)==Bool.True){
 
                                 $(this).addClass("SqAttacked");
-                            }
-                        }
-                    }
-
-                    for(j=0;j<EngineColor.length;j++){
-
-                        if (PawnAttackedSqDiagonalBlack(sq+EngineColor[j])==Bool.True ) {
-
-                            if(ProtectedKing(sq,sq+EngineColor[j])==Bool.True){
-
-                                if(PieceIsOnSq(sq+EngineColor[j],$(this).position().top,$(this).position().left)==Bool.True){
-
-                                    $(this).addClass("SqAttacked");
-                                }
                             }
                         }
                     }
@@ -169,67 +205,31 @@ function ShowUsualSquaresPieceCanMove(sq,clickedPiece) {
             }
         }
 
-        else if(Colors[IndexColorOfPlayer]==COLOURS.BLACK){
+        for(index=0;index<BlackPawns.length;index++){
 
-            for(index=(piyonlar.length)/2;index<piyonlar.length ;index++){
+            if(clickedPiece==BlackPawns[index]){
 
-                if(clickedPiece==piyonlar[index]){
+                if (PawnAttackedSqStraightBlack(sq-PawnsFowards)==Bool.True ) {
 
-                    if (PawnAttackedSqStraightBlack(sq+15)==Bool.True ) {
+                    if(ProtectedKing(sq,sq-PawnsFowards)==Bool.True){
 
-                        if(ProtectedKing(sq,sq+15)==Bool.True){
+                        if(PieceIsOnSq(sq-PawnsFowards,$(this).position().top,$(this).position().left)==Bool.True){
 
-                            if(PieceIsOnSq(sq+15,$(this).position().top,$(this).position().left)==Bool.True){
-
-                                $(this).addClass("SqAttacked");
-                            }
-                        }
-
-                    }
-                    for(j=0;j<PlayerColor.length;j++){
-
-                        if (PawnAttackedSqDiagonalBlack(sq+PlayerColor[j])==Bool.True ) {
-
-                            if(ProtectedKing(sq,sq+PlayerColor[j])==Bool.True){
-
-                                if(PieceIsOnSq(sq+PlayerColor[j],$(this).position().top,$(this).position().left)==Bool.True){
-
-                                    $(this).addClass("SqAttacked");
-                                }
-                            }
-
+                            $(this).addClass("SqAttacked");
                         }
                     }
                 }
-            }
 
-            for(index=0;index<(piyonlar.length)/2;index++){
+                for(j=0;j<PawnDiagonal.length;j++){
 
-                if(clickedPiece==piyonlar[index]){
+                    if (PawnAttackedSqDiagonalBlack(sq-PawnDiagonal[j])==Bool.True ) {
 
-                    if (PawnAttackedSqStraightWhite(sq-15)==Bool.True ) {
+                        if(ProtectedKing(sq,sq-PawnDiagonal[j])==Bool.True){
 
-                        if(ProtectedKing(sq,sq-15)==Bool.True){
-
-                            if(PieceIsOnSq(sq-15,$(this).position().top,$(this).position().left)==Bool.True){
+                            if(PieceIsOnSq(sq-PawnDiagonal[j],$(this).position().top,$(this).position().left)==Bool.True){
 
                                 $(this).addClass("SqAttacked");
                             }
-                        }
-                    }
-
-                    for(j=0;j<EngineColor.length;j++){
-
-                        if (PawnAttackedSqDiagonalWhite(sq+EngineColor[j])==Bool.True ) {
-
-                            if(ProtectedKing(sq,sq+EngineColor[j])==Bool.True){
-
-                                if(PieceIsOnSq(sq+EngineColor[j],$(this).position().top,$(this).position().left)==Bool.True){
-
-                                    $(this).addClass("SqAttacked");
-                                }
-                            }
-
                         }
                     }
                 }
@@ -474,47 +474,52 @@ function ShowUsualSquaresPieceCanMove(sq,clickedPiece) {
                             continue;
                         }
 
-                        else if( (sq==181 || sq==88) && (GameBoard.pieces[sq] !=PIECES.EMPTY) && PieceColor[GameBoard.pieces[sq]] ==GameBoard.side){
-
-                            continue;
-                        }
-
                         if (GameBoard.pieces[new_sq] != PIECES.EMPTY) {
 
-                            if(new_sq==88 || new_sq==181) continue;
+                            if(new_sq==WsideCitadel || new_sq==BsideCitadel) continue;
 
                             if ( PieceColor[GameBoard.pieces[new_sq]] != GameBoard.side) {
 
-                                if(SqAttacked(new_sq,GameBoard.side^1)==Bool.False){
+                                if(GameBoard.side==COLOURS.WHITE){
 
-                                    if(PieceIsOnSq(new_sq,$(this).position().top,$(this).position().left)==Bool.True &&
-                                        PieceColor[GameBoard.pieces[sq]] == GameBoard.side){
-                                        $(this).addClass("SqAttacked");
+                                    if( (GameBoard.WhiteKingsInGame.length==1 && SqAttacked(new_sq,GameBoard.side^1)==Bool.False) ||
+                                         (GameBoard.WhiteKingsInGame.length>1) ){
+
+                                        if(PieceIsOnSq(new_sq,$(this).position().top,$(this).position().left)==Bool.True &&
+                                            PieceColor[GameBoard.pieces[sq]] == GameBoard.side){
+                                            $(this).addClass("SqAttacked");
+                                        }
+                                    }
+                                }
+
+                                if(GameBoard.side==COLOURS.BLACK){
+
+                                    if( (GameBoard.BlackKingsInGame.length==1 && SqAttacked(new_sq,GameBoard.side^1)==Bool.False) ||
+                                        (GameBoard.BlackKingsInGame.length>1) ) {
+
+                                        if(PieceIsOnSq(new_sq,$(this).position().top,$(this).position().left)==Bool.True &&
+                                            PieceColor[GameBoard.pieces[sq]] == GameBoard.side){
+                                            $(this).addClass("SqAttacked");
+                                        }
                                     }
                                 }
                             }
                         }
 
                         else {
-                            if(Colors[IndexColorOfPlayer]==COLOURS.WHITE){
-                                if (PieceColor[GameBoard.pieces[sq]] == COLOURS.WHITE) {
 
-                                    if(new_sq==88) continue;
+                            if (PieceColor[GameBoard.pieces[sq]] == COLOURS.WHITE) {
 
-                                    if(SqAttacked(new_sq,GameBoard.side^1)==Bool.False){
+                                if( (new_sq==WsideCitadel  && GameBoard.pieces[sq]!=PIECES.WmaceraciSah) ||
+                                    (new_sq==BsideCitadel && GameBoard.pieces[sq]!=GameBoard.WhiteHighestRanKING)){
 
-                                        if(PieceIsOnSq(new_sq,$(this).position().top,$(this).position().left)==Bool.True &&
-                                            PieceColor[GameBoard.pieces[sq]] == GameBoard.side){
-                                            $(this).addClass("SqAttacked");
-                                        }
-                                    }
+                                    continue;
+                                }
 
+                                if(GameBoard.side==COLOURS.WHITE){
 
-                                } else if (PieceColor[GameBoard.pieces[sq]] == COLOURS.BLACK) {
-
-                                    if(new_sq==181) continue;
-
-                                    if(SqAttacked(new_sq,GameBoard.side^1)==Bool.False){
+                                    if( (GameBoard.WhiteKingsInGame.length==1 && SqAttacked(new_sq,GameBoard.side^1)==Bool.False) ||
+                                        (GameBoard.WhiteKingsInGame.length>1) ) {
 
                                         if(PieceIsOnSq(new_sq,$(this).position().top,$(this).position().left)==Bool.True &&
                                             PieceColor[GameBoard.pieces[sq]] == GameBoard.side){
@@ -523,31 +528,25 @@ function ShowUsualSquaresPieceCanMove(sq,clickedPiece) {
                                     }
                                 }
 
-                            }else if(Colors[IndexColorOfPlayer]==COLOURS.BLACK){
+                            } else if (PieceColor[GameBoard.pieces[sq]] == COLOURS.BLACK) {
 
-                                if (PieceColor[GameBoard.pieces[sq]] == COLOURS.WHITE) {
 
-                                    if(new_sq==181) continue;
+                                if( (new_sq==BsideCitadel && GameBoard.pieces[sq]!=PIECES.BmaceraciSah) ||
+                                    (new_sq==WsideCitadel && GameBoard.pieces[sq]!=GameBoard.BlackHighestRanKING) ){
 
-                                    if(SqAttacked(new_sq,GameBoard.side^1)==Bool.False){
+                                    continue;
+                                }
 
-                                        if(PieceIsOnSq(new_sq,$(this).position().top,$(this).position().left)==Bool.True &&
-                                            PieceColor[GameBoard.pieces[sq]] == GameBoard.side){
-                                            $(this).addClass("SqAttacked");
-                                        }
-                                    }
+                                if(GameBoard.side==COLOURS.BLACK){
 
-                                } else if (PieceColor[GameBoard.pieces[sq]] == COLOURS.BLACK) {
-
-                                    if(new_sq==88) continue;
-                                    if(SqAttacked(new_sq,GameBoard.side^1)==Bool.False){
+                                    if( (GameBoard.BlackKingsInGame.length==1 && SqAttacked(new_sq,GameBoard.side^1)==Bool.False) ||
+                                        (GameBoard.BlackKingsInGame.length>1) ) {
 
                                         if(PieceIsOnSq(new_sq,$(this).position().top,$(this).position().left)==Bool.True &&
                                             PieceColor[GameBoard.pieces[sq]] == GameBoard.side){
                                             $(this).addClass("SqAttacked");
                                         }
                                     }
-
                                 }
                             }
                         }

@@ -9,6 +9,10 @@ var piyonlar=[PIECES.WpiyonP,PIECES.WmancinikP,PIECES.WdeveP,PIECES.WfilP,PIECES
     ,PIECES.WdebbabeP,PIECES.WatP,PIECES.WkaleP
     ,PIECES.BpiyonP,PIECES.BmancinikP,PIECES.BdeveP,PIECES.BfilP,PIECES.BgeneralP,PIECES.BsahP,PIECES.BvezirP,PIECES.BzurafaP
     ,PIECES.BdebbabeP,PIECES.BatP,PIECES.BkaleP];
+var WhitePawns=[PIECES.WpiyonP,PIECES.WmancinikP,PIECES.WdeveP,PIECES.WfilP,PIECES.WgeneralP,PIECES.WsahP,PIECES.WvezirP,PIECES.WzurafaP
+    ,PIECES.WdebbabeP,PIECES.WatP,PIECES.WkaleP];
+var BlackPawns=[PIECES.BpiyonP,PIECES.BmancinikP,PIECES.BdeveP,PIECES.BfilP,PIECES.BgeneralP,PIECES.BsahP,PIECES.BvezirP,PIECES.BzurafaP
+    ,PIECES.BdebbabeP,PIECES.BatP,PIECES.BkaleP];
 
 var BRD_SQ_NUM=270;
 
@@ -47,8 +51,17 @@ var WopponetCitadel;
 var BopponetCitadel;
 var WsideCitadel;
 var BsideCitadel;
+var WpOfpInitSq;
+var BpOfpInitSq;
+
+var PawnsFowards;
+var PawnDiagonal=new Array(2);
 
 if(Colors[IndexColorOfPlayer]==COLOURS.WHITE){
+
+    PawnsFowards=15;
+    PawnDiagonal=[14,16];
+
     WpromotionRank=10;
     WfromRank=9;
     BpromotionRank=1;
@@ -58,8 +71,15 @@ if(Colors[IndexColorOfPlayer]==COLOURS.WHITE){
     WopponetCitadel=181;
     BopponetCitadel=88;
     WsideCitadel=88;
-    BsideCitadel=181
+    BsideCitadel=181;
+    WpOfpInitSq=92;
+    BpOfpInitSq=177;
+
 }else{
+
+    PawnsFowards=-15;
+    PawnDiagonal=[-14,-16];
+
     WpromotionRank=1;
     WfromRank=2;
     BpromotionRank=10;
@@ -69,16 +89,15 @@ if(Colors[IndexColorOfPlayer]==COLOURS.WHITE){
     WopponetCitadel=88;
     BopponetCitadel=181;
     WsideCitadel=181;
-    BsideCitadel=88
+    BsideCitadel=88;
+    WpOfpInitSq=177;
+    BpOfpInitSq=92;
 }
 
 
 var PceChar = "-PXCBYQEHTNRKAMZGSVFDIpxcbyqehtnrkamzgsvfdiJLjl w";
 
-var PlayerColor=[14,16];
 var TakePiece,MovedPiece;
-var EngineColor=[-14,-16];
-
 
 var SideChar = "wb-";
 var RankChar = "0123456789";
@@ -115,7 +134,7 @@ var PieceSAH=[Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.True,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False, Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.True,Bool.False,Bool.False,Bool.False,Bool.False,
-    Bool.False,Bool.False,Bool.False,Bool.False,];
+    Bool.True,Bool.True,Bool.True,Bool.True,];
 
 var PieceGENERAL=[Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.True,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
@@ -188,12 +207,14 @@ var DirectionNumber=[0/*empty*/,0/* pawn */,0/* pawn */,0/* pawn */,0/* pawn */,
     ,4/*KALE*/,8/*AT*/,4/*MANCINIK*/, 8/*ZÜRAFA*/,4/*GENERAL*/,8/*ŞAH*/,4/*VEZİR*/,4/*FİL*/,8/*DEVE*/,4/*DEBBABE*/,
     0/* pawn */,0/* pawn */,0/* pawn */,0/* pawn */,0/* pawn */,0/* pawn */,0/* pawn */,0/* pawn */,
     0/* pawn */,0/* pawn */,0/* pawn */
-    ,4/*KALE*/,8/*AT*/,4/*MANCINIK*/, 8/*ZÜRAFA*/,4/*GENERAL*/,8/*ŞAH*/,4/*VEZİR*/,4/*FİL*/,8/*DEVE*/,4/*DEBBABE*/];
+    ,4/*KALE*/,8/*AT*/,4/*MANCINIK*/, 8/*ZÜRAFA*/,4/*GENERAL*/,8/*ŞAH*/,4/*VEZİR*/,4/*FİL*/,8/*DEVE*/,4/*DEBBABE*/,
+    8/*Beyaz prens*/,8/*beyaz ikinci sah*/,8/*siyah prens*/,8/*siyah ikinci sah*/];
 
 var PieceDirection=[0,0,0,0,0,0,0,0,0,0,0,0,VEZIR_direction,AT_direction,MANCINIK_direction,ZURAFA_direction,GENERAL_direction,
     SAH_direction,VEZIR_direction,MANCINIK_direction,DEVE_direction,DEBBABE_direction,
     0,0,0,0,0,0,0,0,0,0,0,VEZIR_direction,AT_direction,MANCINIK_direction,ZURAFA_direction,GENERAL_direction,SAH_direction,
-    VEZIR_direction,MANCINIK_direction,DEVE_direction,DEBBABE_direction];
+    VEZIR_direction,MANCINIK_direction,DEVE_direction,DEBBABE_direction,SAH_direction/*Beyaz prens*/,SAH_direction/*beyaz ikinci sah*/,
+    SAH_direction/*siyah prens*/,SAH_direction/*siyah ikinci sah*/];
 
 var FilesBrd = new Array(BRD_SQ_NUM);
 var RanksBrd = new Array(BRD_SQ_NUM);
@@ -202,9 +223,8 @@ var LoopNonSlidePieces=[PIECES.Wvezir, PIECES.Wgeneral,PIECES.Wat,PIECES.Wfil,PI
     PIECES.Bvezir, PIECES.Bgeneral,PIECES.Bat,PIECES.Bfil,PIECES.Bdeve,PIECES.Bdebbabe,0];
 var LoopNonSlideIndex=[0,7];
 
-
-var LoopKings=[PIECES.Wsah,PIECES.Wprens,PIECES.WmaceraciSah,0,PIECES.Bsah,PIECES.Bprens,PIECES.BmaceraciSah,0];
-var LoopKingsIndex=[0,4];
+var LoopKings=[PIECES.Wsah,0,PIECES.Bsah,0];
+var LoopKingsIndex=[0,2];
 
 var LoopSlideKale=[PIECES.Wkale,0,PIECES.Bkale,0];
 var LoopSlideKaleIndex=[0,2];
@@ -212,7 +232,6 @@ var LoopSlideZurafa=[PIECES.Wzurafa,0,PIECES.Bzurafa,0];
 var LoopSlideZurafaIndex=[0,2];
 var LoopSlideMancinik=[PIECES.Wmancinik,0,PIECES.Bmancinik,0];
 var LoopSlideMancinikIndex=[0,2];
-
 
 
 var MAXGAMEMOVES = 2048;
@@ -260,11 +279,11 @@ var Kings=[PIECES.Wsah, PIECES.Bsah];
 
 0000 0001 0000 0000 0000 0000 0000 0000 immobile
 
-0000 0010 0000 0000 0000 0000 0000 0000 PAWN OF PAWN HAS TO MOVE İNİTİAL POSİTİON OF PAWN OF KING
+0000 0010 0000 0000 0000 0000 0000 0000 MFLAGTOBEADKING
 
-0000 0100 0000 0000 0000 0000 0000 0000 king switch places with prince or ad king
+0000 0100 0000 0000 0000 0000 0000 0000 MFLAGSWITCHKING
 
-0000 1000 0000 0000 0000 0000 0000 0000 move AdKing From own  ciradel
+0000 1000 0000 0000 0000 0000 0000 0000 MFLAGMOVEADKINGFROMCİTADEL
 
  */
 
@@ -281,12 +300,14 @@ function PROM(m) { return (m >>22 ) ;}
 var MFLAGFORK=0x800000;
 var MFLAGIMMOBİLE=0x1000000;
 var MFLAGTOBEADKING=0x2000000;
-var MFLAGSWİTCHKİNG=0x4000000;
-var MFLAGMOVEADKINGFROMCİTADEL=0x8000000;
+var MFLAGSWITCHKING=0x4000000;
+var MFLAGMOVEADKINGFROMCITADEL=0x8000000;
 
 
-function DontMoveExtraSquares(sq) {
+function IsSquareCitadel(sq) {
+
     if(sq ==88 || sq ==181){
+
         return Bool.False;
     }
     return Bool.True;
@@ -318,3 +339,5 @@ UserMove.from=SQUARES.NO_SQ;
 UserMove.to=SQUARES.NO_SQ;
 
 
+var WdecDraw=0;
+var BdecDraw=0;

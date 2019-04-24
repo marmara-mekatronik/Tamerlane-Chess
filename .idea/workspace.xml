@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="47e0f92d-c775-4f22-9270-1b342b106f82" name="Default Changelist" comment="" />
+    <list default="true" id="47e0f92d-c775-4f22-9270-1b342b106f82" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images ikon/Adsız.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Css still.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Css still.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/deneme1.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/deneme1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/bJ.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/bJ.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/bL.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/bL.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/wJ.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/wJ.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/DEF.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/DEF.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/HighestRanking.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/HighestRanking.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/ShowSqPceCanMove.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/ShowSqPceCanMove.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/boardC.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/boardC.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/gui.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/gui.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/io.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/io.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/makeMove.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/makeMove.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/moveGeneration.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/moveGeneration.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/örnek pozisyonlar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/örnek pozisyonlar.js" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,96 +30,105 @@
     <session id="471900091">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="138" />
+          <entry key="project.closed" value="179" />
           <entry key="project.open.time.1" value="4" />
           <entry key="project.open.time.10" value="1" />
+          <entry key="project.open.time.100" value="1" />
           <entry key="project.open.time.102" value="1" />
           <entry key="project.open.time.105" value="1" />
           <entry key="project.open.time.107" value="1" />
           <entry key="project.open.time.108" value="1" />
           <entry key="project.open.time.109" value="1" />
+          <entry key="project.open.time.111" value="2" />
           <entry key="project.open.time.114" value="1" />
+          <entry key="project.open.time.118" value="1" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.120" value="1" />
           <entry key="project.open.time.121" value="1" />
           <entry key="project.open.time.123" value="1" />
           <entry key="project.open.time.127" value="1" />
           <entry key="project.open.time.130" value="1" />
+          <entry key="project.open.time.140" value="2" />
           <entry key="project.open.time.15" value="1" />
-          <entry key="project.open.time.2" value="6" />
+          <entry key="project.open.time.163" value="1" />
+          <entry key="project.open.time.165" value="1" />
+          <entry key="project.open.time.2" value="7" />
           <entry key="project.open.time.26" value="1" />
           <entry key="project.open.time.2856" value="1" />
           <entry key="project.open.time.3" value="9" />
-          <entry key="project.open.time.4" value="14" />
+          <entry key="project.open.time.4" value="16" />
           <entry key="project.open.time.44" value="1" />
-          <entry key="project.open.time.5" value="13" />
+          <entry key="project.open.time.5" value="14" />
           <entry key="project.open.time.54" value="1" />
           <entry key="project.open.time.55" value="1" />
           <entry key="project.open.time.56" value="3" />
           <entry key="project.open.time.57" value="1" />
-          <entry key="project.open.time.58" value="2" />
+          <entry key="project.open.time.58" value="3" />
           <entry key="project.open.time.59" value="4" />
-          <entry key="project.open.time.6" value="9" />
+          <entry key="project.open.time.6" value="10" />
           <entry key="project.open.time.60" value="3" />
-          <entry key="project.open.time.61" value="3" />
-          <entry key="project.open.time.62" value="1" />
-          <entry key="project.open.time.63" value="3" />
-          <entry key="project.open.time.64" value="3" />
-          <entry key="project.open.time.65" value="2" />
-          <entry key="project.open.time.66" value="1" />
-          <entry key="project.open.time.67" value="3" />
-          <entry key="project.open.time.68" value="1" />
+          <entry key="project.open.time.61" value="5" />
+          <entry key="project.open.time.62" value="2" />
+          <entry key="project.open.time.63" value="4" />
+          <entry key="project.open.time.64" value="4" />
+          <entry key="project.open.time.65" value="3" />
+          <entry key="project.open.time.66" value="3" />
+          <entry key="project.open.time.67" value="6" />
+          <entry key="project.open.time.68" value="3" />
           <entry key="project.open.time.69" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.open.time.70" value="1" />
-          <entry key="project.open.time.71" value="2" />
-          <entry key="project.open.time.72" value="5" />
-          <entry key="project.open.time.73" value="4" />
+          <entry key="project.open.time.70" value="2" />
+          <entry key="project.open.time.71" value="3" />
+          <entry key="project.open.time.72" value="6" />
+          <entry key="project.open.time.73" value="5" />
           <entry key="project.open.time.74" value="2" />
           <entry key="project.open.time.76" value="1" />
           <entry key="project.open.time.77" value="1" />
           <entry key="project.open.time.78" value="1" />
           <entry key="project.open.time.79" value="3" />
-          <entry key="project.open.time.8" value="3" />
+          <entry key="project.open.time.8" value="4" />
           <entry key="project.open.time.81" value="1" />
-          <entry key="project.open.time.82" value="1" />
-          <entry key="project.open.time.84" value="2" />
+          <entry key="project.open.time.82" value="2" />
+          <entry key="project.open.time.84" value="3" />
           <entry key="project.open.time.85" value="4" />
           <entry key="project.open.time.86" value="2" />
-          <entry key="project.open.time.89" value="1" />
+          <entry key="project.open.time.87" value="1" />
+          <entry key="project.open.time.89" value="2" />
           <entry key="project.open.time.9" value="3" />
           <entry key="project.open.time.90" value="1" />
           <entry key="project.open.time.92" value="1" />
           <entry key="project.open.time.95" value="1" />
-          <entry key="project.opened" value="146" />
+          <entry key="project.open.time.98" value="1" />
+          <entry key="project.open.time.99" value="1" />
+          <entry key="project.opened" value="187" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="9" />
-          <entry key="html" value="63" />
-          <entry key="js" value="176" />
+          <entry key="css" value="12" />
+          <entry key="html" value="72" />
+          <entry key="js" value="216" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="9" />
-          <entry key="HTML" value="63" />
-          <entry key="JavaScript" value="176" />
+          <entry key="CSS" value="12" />
+          <entry key="HTML" value="72" />
+          <entry key="JavaScript" value="216" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="85" />
-          <entry key="html" value="3152" />
-          <entry key="js" value="39946" />
+          <entry key="css" value="116" />
+          <entry key="html" value="3687" />
+          <entry key="js" value="50424" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="85" />
-          <entry key="HTML" value="3152" />
-          <entry key="JavaScript" value="39946" />
+          <entry key="CSS" value="116" />
+          <entry key="HTML" value="3687" />
+          <entry key="JavaScript" value="50424" />
         </counts>
       </usages-collector>
     </session>
@@ -117,10 +144,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/js/makeMove.js">
+        <entry file="file://$PROJECT_DIR$/src/js/gui.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="901">
-              <caret line="53" selection-start-line="53" selection-end-line="53" />
+            <state relative-caret-position="205">
+              <caret line="146" lean-forward="true" selection-start-line="146" selection-end-line="146" />
             </state>
           </provider>
         </entry>
@@ -128,17 +155,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/js/io.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="238">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/js/moveGeneration.js">
+        <entry file="file://$PROJECT_DIR$/src/js/makeMove.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10523">
-              <caret line="619" column="22" selection-start-line="619" selection-start-column="22" selection-end-line="619" selection-end-column="22" />
+            <state relative-caret-position="2210">
+              <caret line="130" selection-start-line="130" selection-end-line="130" />
             </state>
           </provider>
         </entry>
@@ -146,35 +173,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/js/boardC.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3689">
-              <caret line="217" selection-start-line="217" selection-end-line="217" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/js/gui.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3825">
-              <caret line="225" column="9" selection-start-line="225" selection-start-column="9" selection-end-line="225" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/js/DEF.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="-3315">
+              <caret line="9" column="49" selection-start-line="9" selection-start-column="49" selection-end-line="9" selection-end-column="49" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/index.html">
+        <entry file="file://$PROJECT_DIR$/src/js/moveGeneration.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="-119">
+              <caret line="347" lean-forward="true" selection-start-line="347" selection-end-line="347" />
             </state>
           </provider>
         </entry>
@@ -184,10 +193,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -195,17 +207,18 @@
         <option value="$PROJECT_DIR$/src/js/ShowSquaresInAttacking.js" />
         <option value="$PROJECT_DIR$/decimeltobinaryConverter.html" />
         <option value="$PROJECT_DIR$/src/index.html" />
-        <option value="$PROJECT_DIR$/src/js/main.js" />
-        <option value="$PROJECT_DIR$/src/Css still.css" />
-        <option value="$PROJECT_DIR$/src/js/örnek pozisyonlar.js" />
+        <option value="$PROJECT_DIR$/src/js/Soru 1.html" />
         <option value="$PROJECT_DIR$/src/js/HighestRanking.js" />
+        <option value="$PROJECT_DIR$/src/js/main.js" />
         <option value="$PROJECT_DIR$/src/deneme1.html" />
-        <option value="$PROJECT_DIR$/src/js/io.js" />
-        <option value="$PROJECT_DIR$/src/js/ShowSqPceCanMove.js" />
+        <option value="$PROJECT_DIR$/src/js/örnek pozisyonlar.js" />
+        <option value="$PROJECT_DIR$/src/Css still.css" />
         <option value="$PROJECT_DIR$/src/js/boardC.js" />
-        <option value="$PROJECT_DIR$/src/js/gui.js" />
-        <option value="$PROJECT_DIR$/src/js/DEF.js" />
+        <option value="$PROJECT_DIR$/src/js/ShowSqPceCanMove.js" />
         <option value="$PROJECT_DIR$/src/js/makeMove.js" />
+        <option value="$PROJECT_DIR$/src/js/DEF.js" />
+        <option value="$PROJECT_DIR$/src/js/gui.js" />
+        <option value="$PROJECT_DIR$/src/js/io.js" />
         <option value="$PROJECT_DIR$/src/js/moveGeneration.js" />
       </list>
     </option>
@@ -222,9 +235,9 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="741" />
-    <option name="width" value="631" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="650" />
+    <option name="width" value="722" />
     <option name="height" value="735" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -247,13 +260,13 @@
       </profile-state>
     </entry>
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -276,15 +289,16 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="SearchEverywhereHistoryKey" value="Previous&#9;null&#9;null&#10;MoveIn&#9;null&#9;null&#10;wProm&#9;null&#9;null&#10;Printboard&#9;null&#9;null&#10;Clear&#9;null&#9;null&#10;KingsInGame&#9;null&#9;null&#10;Parse&#9;null&#9;null&#10;addpiece&#9;null&#9;null&#10;MoveOpponetsCitadel&#9;null&#9;null&#10;MakeMove&#9;null&#9;null&#10;Kings&#9;null&#9;null&#10;PrSq&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="PlayerColor&#9;null&#9;null&#10;Moveo&#9;null&#9;null&#10;PROM&#9;null&#9;null&#10;PieceIsOnSq&#9;null&#9;null&#10;KingIn&#9;null&#9;null&#10;Previous&#9;null&#9;null&#10;MoveIn&#9;null&#9;null&#10;wProm&#9;null&#9;null&#10;Printboard&#9;null&#9;null&#10;Clear&#9;null&#9;null&#10;KingsInGame&#9;null&#9;null&#10;Parse&#9;null&#9;null&#10;addpiece&#9;null&#9;null&#10;MoveOpponetsCitadel&#9;null&#9;null&#10;MakeMove&#9;null&#9;null&#10;Kings&#9;null&#9;null&#10;PrSq&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552744891901" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556128052590" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -302,35 +316,35 @@
     </option>
   </component>
   <component name="RunManager" selected="JavaScript Debug.index.html">
-    <configuration name="decimeltobinaryConverter.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Tamerlane Chess/decimeltobinaryConverter.html">
-      <method v="2" />
-    </configuration>
     <configuration name="deneme1.html (1)" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Tamerlane Chess/src/deneme1.html">
       <method v="2" />
     </configuration>
-    <configuration name="deneme1.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Tamerlane Chess/15x18/src/deneme1.html">
+    <configuration name="deneme1.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:54304/Tamerlane Chess/src/deneme1.html">
       <method v="2" />
     </configuration>
-    <configuration name="index.html (1)" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Tamerlane Chess/15x18/src/index.html">
+    <configuration name="index.html (1)" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:54304/Tamerlane Chess/src/index.html">
+      <method v="2" />
+    </configuration>
+    <configuration name="index.html (2)" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:57374/Tamerlane Chess/src/index.html">
       <method v="2" />
     </configuration>
     <configuration name="index.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Tamerlane Chess/src/index.html">
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="JavaScript Debug.index.html" />
+      <item itemvalue="JavaScript Debug.index.html (2)" />
       <item itemvalue="JavaScript Debug.index.html (1)" />
       <item itemvalue="JavaScript Debug.deneme1.html" />
-      <item itemvalue="JavaScript Debug.index.html" />
       <item itemvalue="JavaScript Debug.deneme1.html (1)" />
-      <item itemvalue="JavaScript Debug.decimeltobinaryConverter.html" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JavaScript Debug.index.html" />
+        <item itemvalue="JavaScript Debug.index.html (2)" />
+        <item itemvalue="JavaScript Debug.index.html (1)" />
         <item itemvalue="JavaScript Debug.deneme1.html (1)" />
         <item itemvalue="JavaScript Debug.deneme1.html" />
-        <item itemvalue="JavaScript Debug.decimeltobinaryConverter.html" />
-        <item itemvalue="JavaScript Debug.index.html (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -491,17 +505,56 @@
       <workItem from="1552150515949" duration="264000" />
       <workItem from="1552728145452" duration="5618000" />
       <workItem from="1552739491035" duration="3244000" />
+      <workItem from="1552859386932" duration="10000" />
+      <workItem from="1553112175193" duration="11000" />
+      <workItem from="1553172393323" duration="3000" />
+      <workItem from="1553325421193" duration="231000" />
+      <workItem from="1553351443952" duration="214000" />
+      <workItem from="1553614669836" duration="5694000" />
+      <workItem from="1553674199900" duration="1249000" />
+      <workItem from="1553884033754" duration="9000" />
+      <workItem from="1554312314087" duration="10000" />
+      <workItem from="1554631931722" duration="298000" />
+      <workItem from="1554729462450" duration="728000" />
+      <workItem from="1555148722608" duration="1180000" />
+      <workItem from="1555152650155" duration="2112000" />
+      <workItem from="1555155850463" duration="11722000" />
+      <workItem from="1555179585554" duration="8970000" />
+      <workItem from="1555227094717" duration="11361000" />
+      <workItem from="1555245211897" duration="10369000" />
+      <workItem from="1555326673481" duration="6971000" />
+      <workItem from="1555353875046" duration="5925000" />
+      <workItem from="1555400608450" duration="2248000" />
+      <workItem from="1555418809264" duration="2234000" />
+      <workItem from="1555437463412" duration="7099000" />
+      <workItem from="1555491341748" duration="9666000" />
+      <workItem from="1555505645352" duration="1800000" />
+      <workItem from="1555509898684" duration="6367000" />
+      <workItem from="1555579060756" duration="10241000" />
+      <workItem from="1555608896553" duration="2038000" />
+      <workItem from="1555616927367" duration="2736000" />
+      <workItem from="1555668122549" duration="9133000" />
+      <workItem from="1555702537977" duration="6266000" />
+      <workItem from="1555747717309" duration="5677000" />
+      <workItem from="1555864591909" duration="706000" />
+      <workItem from="1555866637063" duration="3628000" />
+      <workItem from="1555873971533" duration="3275000" />
+      <workItem from="1555945220126" duration="6115000" />
+      <workItem from="1556014334297" duration="9773000" />
+      <workItem from="1556037789526" duration="2818000" />
+      <workItem from="1556095352982" duration="3031000" />
+      <workItem from="1556104072855" duration="10326000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="822939000" />
+    <option name="totallyTimeSpent" value="1001241000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16263238" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15658094" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -510,15 +563,16 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4977307" weight="0.008196721" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4977307" weight="0.006557377" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50226927" side_tool="true" visible="true" weight="0.006557377" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50226927" side_tool="true" weight="0.0032786885" />
       <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Messages" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" weight="0.25" />
       <window_info anchor="right" id="Palette" order="2" />
@@ -530,7 +584,7 @@
       <window_info anchor="right" id="Maven Projects" order="8" weight="0.0" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15658094" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19288956" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -546,8 +600,9 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50226927" side_tool="true" weight="0.009836066" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50226927" side_tool="true" visible="true" weight="0.0032786885" />
       <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Messages" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" weight="0.25" />
       <window_info anchor="right" id="Palette" order="2" />
@@ -593,13 +648,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Css still.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/decimeltobinaryConverter.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -607,87 +655,101 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/Soru 1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/deneme1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/js/örnek pozisyonlar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2108">
-          <caret line="124" selection-start-line="124" selection-end-line="124" />
+        <state relative-caret-position="364">
+          <caret line="122" lean-forward="true" selection-start-line="122" selection-end-line="122" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/js/HighestRanking.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Css still.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="23" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/main.js">
+    <entry file="file://$PROJECT_DIR$/src/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/deneme1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/ShowSqPceCanMove.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="72" selection-start-line="72" selection-end-line="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/makeMove.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="53" selection-start-line="53" selection-end-line="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/io.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/moveGeneration.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10523">
-          <caret line="619" column="22" selection-start-line="619" selection-start-column="22" selection-end-line="619" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/boardC.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3689">
-          <caret line="217" selection-start-line="217" selection-end-line="217" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/gui.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3825">
-          <caret line="225" column="9" selection-start-line="225" selection-start-column="9" selection-end-line="225" selection-end-column="9" />
+        <state relative-caret-position="160">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/js/DEF.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="477">
+          <caret line="342" column="12" selection-start-line="342" selection-start-column="12" selection-end-line="342" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.html">
+    <entry file="file://$PROJECT_DIR$/src/js/ShowSqPceCanMove.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+        <state relative-caret-position="358">
+          <caret line="61" selection-start-line="61" selection-end-line="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/boardC.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3315">
+          <caret line="9" column="49" selection-start-line="9" selection-start-column="49" selection-end-line="9" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/gui.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="146" lean-forward="true" selection-start-line="146" selection-end-line="146" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/makeMove.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2210">
+          <caret line="130" selection-start-line="130" selection-end-line="130" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/io.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/moveGeneration.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-119">
+          <caret line="347" lean-forward="true" selection-start-line="347" selection-end-line="347" />
         </state>
       </provider>
     </entry>

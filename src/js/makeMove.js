@@ -23,8 +23,7 @@ function  ClearPiece(sq) {
     }
     GameBoard.piecesNUMBER[pce]--;
     GameBoard.pList[PCEINDEX(pce,t_pceNum)]=GameBoard.pList[PCEINDEX(pce, GameBoard.piecesNUMBER[pce])];
-    console.log("GameBoard.pList[PCEINDEX(pce,t_pceNum)] "+GameBoard.pList[PCEINDEX(pce,t_pceNum)]);
-    console.log("pce "+pce+"  t_pceNum  "+t_pceNum);
+
 }
 
 
@@ -35,17 +34,12 @@ function AddPiece(sq,pce) {
 
     GameBoard.pieces[sq]=pce;
     GameBoard.pList[PCEINDEX(pce,GameBoard.piecesNUMBER[pce])]=sq;
-    if(pce==PIECES.Wprens){
-
-        console.log("GameBoard.pList[PCEINDEX(pce,GameBoard.piecesNUMBER[pce])] "+GameBoard.pList[PCEINDEX(pce,GameBoard.piecesNUMBER[pce])]);
-
-    }
     GameBoard.piecesNUMBER[pce]++;
 
 }
 
 
-function  MovePiece(from,to) {
+function  MovePiece(from,to,move) {
 
     var index;
     var pce=GameBoard.pieces[from];
@@ -53,9 +47,15 @@ function  MovePiece(from,to) {
     HASH_PCE(pce,from);
 
     GameBoard.pieces[from]=PIECES.EMPTY;
+
+    if( (move & MFLAGSWITCHKING)!=0){
+
+        GameBoard.pieces[from]=GameBoard.pieces[to];
+        GameBoard.pList[PCEINDEX(GameBoard.pieces[from],0)]=from;
+    }
+
     HASH_PCE(pce,to);
     GameBoard.pieces[to]=pce;
-
 
     for(index=0;index<GameBoard.piecesNUMBER[pce];index++){
 
@@ -67,12 +67,74 @@ function  MovePiece(from,to) {
     }
 }
 
+function ClearKing(piece) {
+
+    var index;
+
+    if(PieceColor[piece]==COLOURS.WHITE){
+
+        for(index=0;index<GameBoard.WhiteKingsInGame.length;index++){
+            if(GameBoard.WhiteKingsInGame[index]==piece){
+                GameBoard.WhiteKingsInGame.splice(index,1);
+                GameBoard.WhiteNumberOfKingsInGame--;
+                LoopKingsIndex[1]--;
+                LoopKings.splice(0,1);
+            }
+        }
+        if(piece==GameBoard.WhiteHighestRanKING){
+            if(GameBoard.WhiteKingsInGame.length==2) GameBoard.WhiteHighestRanKING=PIECES.Wprens;
+            else if(GameBoard.WhiteKingsInGame.length==1){
+
+                GameBoard.WhiteHighestRanKING=GameBoard.WhiteKingsInGame[0];
+                GameBoard.WhiteOnlyKingInGame=GameBoard.WhiteKingsInGame[0];
+            }
+        }
+
+    }else{
+        for(index=0;index<GameBoard.BlackKingsInGame.length;index++){
+            if(GameBoard.BlackKingsInGame[index]==piece){
+                GameBoard.BlackKingsInGame.splice(index,1);
+                GameBoard.BlackNumberOfKingsInGame--;
+                LoopKings.splice(LoopKings.length-2,1);
+            }
+        }
+        if(piece==GameBoard.BlackHighestRanKING){
+            if(GameBoard.BlackKingsInGame.length==2) GameBoard.BlackHighestRanKING=PIECES.Bprens;
+            else if(GameBoard.BlackKingsInGame.length==1){
+
+                GameBoard.BlackHighestRanKING=GameBoard.BlackKingsInGame[0];
+                GameBoard.BlackOnlyKingInGame=GameBoard.BlackKingsInGame[0];
+            }
+        }
+    }
+}
+
+
+function AddKing(promPiece) {
+
+    if(promPiece==PIECES.Wprens || promPiece==PIECES.WmaceraciSah){
+
+        GameBoard.WhiteOnlyKingInGame=PIECES.EMPTY;
+        GameBoard.WhiteNumberOfKingsInGame++;
+        GameBoard.WhiteKingsInGame.push(promPiece);
+        LoopKingsIndex[1]++;
+        LoopKings.unshift(promPiece);
+
+    }else if(promPiece==PIECES.Bprens || promPiece==PIECES.BmaceraciSah){
+
+        GameBoard.BlackOnlyKingInGame=PIECES.EMPTY;
+        GameBoard.BlackNumberOfKingsInGame++;
+        GameBoard.BlackKingsInGame.push(promPiece);
+        LoopKings.splice(LoopKings.length-1,2,promPiece,0);
+    }
+}
+
 function MakeMove(move) {
 
     var from=FROMSQ(move);
     var to=TOSQ(move);
     var piece=GameBoard.pieces[from];
-    var pawnofpawn;
+
 
     var side=GameBoard.side;
     GameBoard.history[GameBoard.hisPly].PosKey=GameBoard.PosKey;
@@ -83,63 +145,67 @@ function MakeMove(move) {
     if(captured !=PIECES.EMPTY) {
 
         ClearPiece(to);
+        ClearKing(captured);
     }
 
     GameBoard.hisPly++;
     GameBoard.ply++;
 
-
-    MovePiece(from,to);
+    MovePiece(from,to,move);
     var promotion=PROM(move);
 
 
    if(promotion ==Bool.True){
 
        var PromPce=Promoted(piece);
+
        ClearPiece(to);
        AddPiece(to,PromPce);
-       KingsInGame(PromPce);
+       AddKing(PromPce);
 
-   }else if((move & MFLAGFORK)!=0 ){
-
-        (GameBoard.side==COLOURS.WHITE) ? pawnofpawn=PIECES.WpiyonP : pawnofpawn=PIECES.BpiyonP;
-
-        ClearPiece(to);
-        AddPiece(to,pawnofpawn);
-
-   }else if((move & MFLAGTOBEADKING)!=0){
-
-       if(GameBoard.side==COLOURS.WHITE){
-           ClearPiece(WinitSqPofK);
-           AddPiece(WinitSqPofK, PIECES.WpiyonP);
-
-       }else {
-
-           ClearPiece(BinitSqPofK);
-           AddPiece(BinitSqPofK, PIECES.BpiyonP);
-       }
    }
 
    GameBoard.side ^=1;
    HASH_SIDE();
 
-    if(SqAttacked(GameBoard.pList[PCEINDEX(Kings[side],0)], GameBoard.side) ){
+    var singleKing;
+    if(side==COLOURS.WHITE && GameBoard.WhiteKingsInGame.length==1){
+
+        singleKing=GameBoard.WhiteOnlyKingInGame;
+
+    }
+    else if(side==COLOURS.BLACK && GameBoard.BlackKingsInGame.length==1) {
+
+        singleKing=GameBoard.BlackOnlyKingInGame;
+    }
+    else singleKing=0;
+
+    console.log("(move & MFLAGMOVEADKINGFROMCITADEL) "+(move & MFLAGMOVEADKINGFROMCITADEL));
+    console.log("(move & MFLAGSWITCHKING) "+(move & MFLAGSWITCHKING)+" SwitchPlaceOfKing() "+SwitchPlaceOfKing());
+    PrintSqAttacked();
+
+
+
+    if(SqAttacked(GameBoard.pList[PCEINDEX(singleKing,0)], GameBoard.side) ){
 
         TakeMove();
         return Bool.False;
     }else {
-        var Wsq=GameBoard.pList[PCEINDEX(PIECES.WpiyonP,0)];
-        var Bsq=GameBoard.pList[PCEINDEX(PIECES.BpiyonP,0)];
+
+        var WsqOfPofP=GameBoard.pList[PCEINDEX(PIECES.WpiyonP,0)];
+        var BsqOfPofP=GameBoard.pList[PCEINDEX(PIECES.BpiyonP,0)];
+        var WsqOfKing=GameBoard.pList[PCEINDEX(GameBoard.WhiteHighestRanKING,0)];
+        var BsqOfKing=GameBoard.pList[PCEINDEX(GameBoard.BlackHighestRanKING,0)];
 
         if((move & MFLAGFORK)!=0 ){
 
-            if(RanksBrd[Wsq]==WpromotionRank) {
+            if(RanksBrd[WsqOfPofP]==WpromotionRank) {
                 console.log("white have to move one of the forking square ");
                 TakeMove();
                 return Bool.False;
             }
 
-            if(RanksBrd[Bsq]==BpromotionRank){
+            if(RanksBrd[BsqOfPofP]==BpromotionRank){
                 console.log("black have to move one of the forking square ");
                 TakeMove();
                 return Bool.False;
@@ -147,15 +213,37 @@ function MakeMove(move) {
         }
         else if((move & MFLAGTOBEADKING)!=0 ){
 
-            if( (side==COLOURS.WHITE && Wsq!=WinitSqPofK) ||
-                (side==COLOURS.BLACK && Bsq!=BinitSqPofK)){
+            if( (side==COLOURS.WHITE && WsqOfPofP!=WinitSqPofK) ||
+                (side==COLOURS.BLACK && BsqOfPofP!=BinitSqPofK)){
 
                 console.log("have to move initial position of pawn of king ");
                 TakeMove();
                 return Bool.False;
 
             }
+        }else if( (move & MFLAGSWITCHKING)!=0 ){
+
+
+            console.log("ŞAH KALEDEN AYRILMAK ZORUNDADIR ");
+
+            if( (WsqOfKing==BsideCitadel && side==COLOURS.WHITE) || (BsqOfKing==WsideCitadel && side==COLOURS.BLACK)){
+                console.log("have to switch place of kings ");
+                TakeMove();
+                return Bool.False;
+            }
+        }else if( (move & MFLAGMOVEADKINGFROMCITADEL)!=0 ){
+
+            console.log("ad king kaleden yarılmak zorunda!");
+
+            if ( (side==COLOURS.WHITE && GameBoard.pList[PCEINDEX(PIECES.WmaceraciSah,0)]==WsideCitadel) ||
+                (side==COLOURS.BLACK && GameBoard.pList[PCEINDEX(PIECES.BmaceraciSah,0)]==BsideCitadel) ){
+
+                console.log("ad king have to move from citadel ");
+                TakeMove();
+                return Bool.False;
+            }
         }
+
     }
 
     return Bool.True;
@@ -177,30 +265,22 @@ function TakeMove() {
     GameBoard.side ^=1;
     HASH_SIDE();
 
-    MovePiece(to,from);
-
+    MovePiece(to,from,move);
 
     var captured=CAPTURED(move);
     var promoted=PROM(move);
 
-
     if(captured != PIECES.EMPTY){
 
         AddPiece(to,captured);
+        AddKing(captured);
     }
-
 
     if(promoted == Bool.True){
 
         ClearPiece(from);
         AddPiece(from, TakePromoted(Pce));
-
-    }
-
-    if((move & MFLAGFORK)!=0 || (move & MFLAGTOBEADKING)!=0){
-
-        ClearPiece(from);
-        AddPiece(from,Pce);
+        ClearKing(Pce);
 
     }
 }
@@ -213,7 +293,9 @@ function TakePromoted(PromPce) {
     switch (PromPce) {
 
         case PIECES.WpiyonP : PawnOf=PIECES.WpiyonP; break;
-        case PIECES.WmaceraciSah: PawnOf=PIECES.WpiyonP; break;
+        case PIECES.WmaceraciSah:
+            PawnOf=PIECES.WpiyonP;
+            break;
         case PIECES.Wkale: PawnOf=PIECES.WkaleP; break;
         case PIECES.Wvezir: PawnOf=PIECES.WvezirP; break;
         case PIECES.Wgeneral: PawnOf=PIECES.WgeneralP; break;
@@ -221,12 +303,16 @@ function TakePromoted(PromPce) {
         case PIECES.Wzurafa: PawnOf=PIECES.WzurafaP; break;
         case PIECES.Wdebbabe: PawnOf=PIECES.WdebbabeP; break;
         case PIECES.Wdeve: PawnOf=PIECES.WdeveP; break;
-        case PIECES.Wprens: PawnOf=PIECES.WsahP; break;
+        case PIECES.Wprens:
+            PawnOf=PIECES.WsahP;
+            break;
         case PIECES.Wmancinik: PawnOf=PIECES.WmancinikP; break;
         case PIECES.Wfil:  PawnOf=PIECES.WfilP; break;
 
         case PIECES.BpiyonP:  PawnOf=PIECES.BpiyonP; break;
-        case PIECES.BmaceraciSah: PawnOf=PIECES.BpiyonP;  break;
+        case PIECES.BmaceraciSah:
+            PawnOf=PIECES.BpiyonP;
+            break;
         case PIECES.Bkale: PawnOf=PIECES.BkaleP; break;
         case PIECES.Bvezir: PawnOf=PIECES.BvezirP; break;
         case PIECES.Bgeneral: PawnOf=PIECES.BgeneralP; break;
@@ -234,15 +320,15 @@ function TakePromoted(PromPce) {
         case PIECES.Bzurafa: PawnOf=PIECES.BzurafaP; break;
         case PIECES.Bdebbabe: PawnOf=PIECES.BdebbabeP; break;
         case PIECES.Bdeve: PawnOf=PIECES.BdeveP; break;
-        case PIECES.Bprens: PawnOf=PIECES.BsahP; break;
+        case PIECES.Bprens:
+            PawnOf=PIECES.BsahP;
+            break;
         case PIECES.Bmancinik: PawnOf=PIECES.BmancinikP; break;
         case PIECES.Bfil: PawnOf=PIECES.BfilP; break;
 
     }
 
-
     return PawnOf;
-
 }
 
 
@@ -250,12 +336,14 @@ function Promoted(piece) {
 
     var PromPiece;
 
-    if(PIECES.WpiyonP && wPromNumPofP==2){
+    if(piece==PIECES.WpiyonP && wPromNumPofP==2){
         PromPiece=PIECES.WmaceraciSah;
+        GameBoard.pList[PCEINDEX(PIECES.WpiyonP,0)]=PIECES.EMPTY;
         return PromPiece;
     }
-    else if(PIECES.BpiyonP && bPromNumPofP==2){
+    else if(piece==PIECES.BpiyonP && bPromNumPofP==2){
         PromPiece=PIECES.BmaceraciSah;
+        GameBoard.pList[PCEINDEX(PIECES.BpiyonP,0)]=PIECES.EMPTY;
         return PromPiece;
     }
 
@@ -270,7 +358,9 @@ function Promoted(piece) {
         case PIECES.WzurafaP: PromPiece=PIECES.Wzurafa; break;
         case PIECES.WdebbabeP: PromPiece=PIECES.Wdebbabe; break;
         case PIECES.WdeveP: PromPiece=PIECES.Wdeve; break;
-        case PIECES.WsahP: PromPiece=PIECES.Wprens; break;
+        case PIECES.WsahP:
+            PromPiece=PIECES.Wprens;
+            break;
         case PIECES.WmancinikP: PromPiece=PIECES.Wmancinik; break;
         case PIECES.WfilP:  PromPiece=PIECES.Wfil; break;
 
@@ -282,13 +372,13 @@ function Promoted(piece) {
         case PIECES.BzurafaP: PromPiece=PIECES.Bzurafa; break;
         case PIECES.BdebbabeP: PromPiece=PIECES.Bdebbabe; break;
         case PIECES.BdeveP: PromPiece=PIECES.Bdeve; break;
-        case PIECES.BsahP: PromPiece=PIECES.Bprens; break;
+        case PIECES.BsahP:
+            PromPiece=PIECES.Bprens;
+            break;
         case PIECES.BmancinikP: PromPiece=PIECES.Bmancinik; break;
         case PIECES.BfilP: PromPiece=PIECES.Bfil; break;
 
     }
-
-
 
     return PromPiece;
 }
