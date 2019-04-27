@@ -71,6 +71,14 @@ function ClearKing(piece) {
 
     var index;
 
+    for(index=0;index<LoopKings.length;index++){
+
+        if(LoopKings[index]==piece){
+
+            LoopKings.splice(index,1);
+        }
+    }
+
     if(PieceColor[piece]==COLOURS.WHITE){
 
         for(index=0;index<GameBoard.WhiteKingsInGame.length;index++){
@@ -78,7 +86,7 @@ function ClearKing(piece) {
                 GameBoard.WhiteKingsInGame.splice(index,1);
                 GameBoard.WhiteNumberOfKingsInGame--;
                 LoopKingsIndex[1]--;
-                LoopKings.splice(0,1);
+
             }
         }
         if(piece==GameBoard.WhiteHighestRanKING){
@@ -95,7 +103,7 @@ function ClearKing(piece) {
             if(GameBoard.BlackKingsInGame[index]==piece){
                 GameBoard.BlackKingsInGame.splice(index,1);
                 GameBoard.BlackNumberOfKingsInGame--;
-                LoopKings.splice(LoopKings.length-2,1);
+
             }
         }
         if(piece==GameBoard.BlackHighestRanKING){
@@ -127,6 +135,46 @@ function AddKing(promPiece) {
         GameBoard.BlackKingsInGame.push(promPiece);
         LoopKings.splice(LoopKings.length-1,2,promPiece,0);
     }
+}
+
+function SoleKingMustGetOutOfOpponnetCitadel(side) {
+
+    var index;
+    var WsqOfKing=GameBoard.pList[PCEINDEX(GameBoard.WhiteOnlyKingInGame,0)];
+    var BsqOfKing=GameBoard.pList[PCEINDEX(GameBoard.BlackOnlyKingInGame,0)];
+
+
+
+    if( GameBoard.WhiteOnlyKingInGame!=PIECES.Wsah && WsqOfKing==BsideCitadel && side==COLOURS.WHITE){
+
+        for(index=0;index<BkomsuOfCitadel.length;index++){
+
+            console.log(BkomsuOfCitadel[index]);
+
+            if(SqAttacked(BkomsuOfCitadel[index],COLOURS.BLACK)==Bool.False){
+
+                console.log("beyaz şah kaleden çıkmalı");
+
+                return Bool.False;
+            }
+        }
+
+    } else if(GameBoard.BlackOnlyKingInGame!=PIECES.Bsah && BsqOfKing==WsideCitadel && side==COLOURS.BLACK){
+
+        for(index=0;index<WkomsuOfCitadel.length;index++){
+
+            if(SqAttacked(WkomsuOfCitadel[index],COLOURS.WHITE)==Bool.False){
+
+                console.log("siyah şah kaleden çıkmalı");
+
+                return Bool.False;
+            }
+        }
+    }
+
+    return Bool.True;
+
+
 }
 
 function MakeMove(move) {
@@ -180,69 +228,18 @@ function MakeMove(move) {
     }
     else singleKing=0;
 
-    console.log("(move & MFLAGMOVEADKINGFROMCITADEL) "+(move & MFLAGMOVEADKINGFROMCITADEL));
-    console.log("(move & MFLAGSWITCHKING) "+(move & MFLAGSWITCHKING)+" SwitchPlaceOfKing() "+SwitchPlaceOfKing());
-    PrintSqAttacked();
-
-
 
     if(SqAttacked(GameBoard.pList[PCEINDEX(singleKing,0)], GameBoard.side) ){
 
+        console.log("tehdit altında!!!");
+
         TakeMove();
         return Bool.False;
-    }else {
+    }
+    else if(NotCapturedPawnOfPawn(piece,to)==Bool.False || SoleKingMustGetOutOfOpponnetCitadel(side)==Bool.False){
 
-        var WsqOfPofP=GameBoard.pList[PCEINDEX(PIECES.WpiyonP,0)];
-        var BsqOfPofP=GameBoard.pList[PCEINDEX(PIECES.BpiyonP,0)];
-        var WsqOfKing=GameBoard.pList[PCEINDEX(GameBoard.WhiteHighestRanKING,0)];
-        var BsqOfKing=GameBoard.pList[PCEINDEX(GameBoard.BlackHighestRanKING,0)];
-
-        if((move & MFLAGFORK)!=0 ){
-
-            if(RanksBrd[WsqOfPofP]==WpromotionRank) {
-                console.log("white have to move one of the forking square ");
-                TakeMove();
-                return Bool.False;
-            }
-
-            if(RanksBrd[BsqOfPofP]==BpromotionRank){
-                console.log("black have to move one of the forking square ");
-                TakeMove();
-                return Bool.False;
-            }
-        }
-        else if((move & MFLAGTOBEADKING)!=0 ){
-
-            if( (side==COLOURS.WHITE && WsqOfPofP!=WinitSqPofK) ||
-                (side==COLOURS.BLACK && BsqOfPofP!=BinitSqPofK)){
-
-                console.log("have to move initial position of pawn of king ");
-                TakeMove();
-                return Bool.False;
-
-            }
-        }else if( (move & MFLAGSWITCHKING)!=0 ){
-
-
-            console.log("ŞAH KALEDEN AYRILMAK ZORUNDADIR ");
-
-            if( (WsqOfKing==BsideCitadel && side==COLOURS.WHITE) || (BsqOfKing==WsideCitadel && side==COLOURS.BLACK)){
-                console.log("have to switch place of kings ");
-                TakeMove();
-                return Bool.False;
-            }
-        }else if( (move & MFLAGMOVEADKINGFROMCITADEL)!=0 ){
-
-            console.log("ad king kaleden yarılmak zorunda!");
-
-            if ( (side==COLOURS.WHITE && GameBoard.pList[PCEINDEX(PIECES.WmaceraciSah,0)]==WsideCitadel) ||
-                (side==COLOURS.BLACK && GameBoard.pList[PCEINDEX(PIECES.BmaceraciSah,0)]==BsideCitadel) ){
-
-                console.log("ad king have to move from citadel ");
-                TakeMove();
-                return Bool.False;
-            }
-        }
+        TakeMove();
+        return Bool.False;
 
     }
 

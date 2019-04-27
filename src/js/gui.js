@@ -140,10 +140,11 @@ function MakeUserMove() {
             CheckandSet();
 
         }
+        console.log("son şah "+GameBoard.WhiteOnlyKingInGame);
+        console.log("en yüksek mertebeli şah: "+GameBoard.WhiteHighestRanKING);
+        console.log("LoopKings "+LoopKings);
+        PrintSqAttacked();
 
-        console.log("beyaz şahların sayısı : "+GameBoard.WhiteNumberOfKingsInGame);
-        console.log("siyah şahların sayısı: "+GameBoard.BlackNumberOfKingsInGame);
-        console.log(GameBoard.moveListStart);
 
         DeSelected(UserMove.from);
         DeSelected(UserMove.to);

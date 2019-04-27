@@ -53,6 +53,9 @@ var WsideCitadel;
 var BsideCitadel;
 var WpOfpInitSq;
 var BpOfpInitSq;
+var WkomsuOfCitadel;
+var BkomsuOfCitadel;
+
 
 var PawnsFowards;
 var PawnDiagonal=new Array(2);
@@ -74,6 +77,8 @@ if(Colors[IndexColorOfPlayer]==COLOURS.WHITE){
     BsideCitadel=181;
     WpOfpInitSq=92;
     BpOfpInitSq=177;
+    WkomsuOfCitadel=[72,87,102];
+    BkomsuOfCitadel=[167,182,197];
 
 }else{
 
@@ -92,6 +97,8 @@ if(Colors[IndexColorOfPlayer]==COLOURS.WHITE){
     BsideCitadel=88;
     WpOfpInitSq=177;
     BpOfpInitSq=92;
+    WkomsuOfCitadel=[167,182,197];
+    BkomsuOfCitadel=[72,87,102];
 }
 
 

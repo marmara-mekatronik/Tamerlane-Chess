@@ -205,35 +205,24 @@ function ForkingList() {
 function MovetoFork() {
 
     var sq;
-    var Previous_move;
-    var Previous_from;
+    var WsqOfOnlyKing=GameBoard.pList[PCEINDEX(GameBoard.WhiteOnlyKingInGame,0)];
+    var BsqOfOnlyKing=GameBoard.pList[PCEINDEX(GameBoard.BlackOnlyKingInGame,0)];
 
     sq=GameBoard.pList[PCEINDEX(PIECES.WpiyonP,0)];
     console.log("piyonun piyonu "+sq+" nolu karede");
 
-    if(wPromNumPofP==1 && RanksBrd[sq]==WpromotionRank && GameBoard.side==COLOURS.WHITE ){
+    if(wPromNumPofP==1 && RanksBrd[sq]==WpromotionRank && GameBoard.side==COLOURS.WHITE && SqAttacked(WsqOfOnlyKing,GameBoard.side^1)==Bool.False){
 
-        Previous_move=GameBoard.history[GameBoard.hisPly-2].move;
-        Previous_from=FROMSQ(Previous_move);
 
-        if(RanksBrd[Previous_from]==WfromRank){
+        return Bool.True;
 
-            return Bool.True;
-        }
     }
-
 
     sq=GameBoard.pList[PCEINDEX(PIECES.BpiyonP,0)];
 
-    if(bPromNumPofP==1 && RanksBrd[sq]==BpromotionRank && GameBoard.side==COLOURS.BLACK){
+    if(bPromNumPofP==1 && RanksBrd[sq]==BpromotionRank && GameBoard.side==COLOURS.BLACK && SqAttacked(BsqOfOnlyKing,GameBoard.side^1)==Bool.False){
 
-        Previous_move=GameBoard.history[GameBoard.hisPly-2].move;
-        Previous_from=FROMSQ(Previous_move);
-
-        if(RanksBrd[Previous_from]==BfromRank){
-
-           return Bool.True;
-        }
+        return Bool.True;
     }
 
     return Bool.False;
@@ -251,11 +240,12 @@ function  GenerationMoves() {
     var move2Fork=MovetoFork();
 
 
-    if(move2Fork==Bool.False && Move2InitPosPofK==Bool.False && escapeKing==Bool.False && escapeAdKing==Bool.False){
+    if(Move2InitPosPofK==Bool.False && escapeKing==Bool.False && escapeAdKing==Bool.False && move2Fork==Bool.False){
 
         highRankingPiecesMove();
+
     }
-    if(move2Fork==Bool.True){
+    else if(move2Fork==Bool.True){
 
         ForkingList();
         GameBoard.moveListStart[GameBoard.ply + 1] = GameBoard.moveListStart[GameBoard.ply];
@@ -351,6 +341,8 @@ function SwitchPlaceOfKing() {
 
     var WsqOfKing=GameBoard.pList[PCEINDEX(GameBoard.WhiteHighestRanKING,0)];
     var BsqOfKing=GameBoard.pList[PCEINDEX(GameBoard.BlackHighestRanKING,0)];
+    var WsqOfOnlyKing=GameBoard.pList[PCEINDEX(GameBoard.WhiteOnlyKingInGame,0)];
+    var BsqOfOnlyKing=GameBoard.pList[PCEINDEX(GameBoard.BlackOnlyKingInGame,0)];
     var index,new_sq,pce;
 
     if(GameBoard.side==COLOURS.WHITE && WsqOfKing==BsideCitadel && GameBoard.WhiteKingsInGame.length>1){
@@ -388,13 +380,14 @@ function MoveToInitPosPawnofKing() {
 
     var Wsq=GameBoard.pList[PCEINDEX(PIECES.WpiyonP,0)];
     var Bsq=GameBoard.pList[PCEINDEX(PIECES.BpiyonP,0)];
+    var WsqOfOnlyKing=GameBoard.pList[PCEINDEX(GameBoard.WhiteOnlyKingInGame,0)];
+    var BsqOfOnlyKing=GameBoard.pList[PCEINDEX(GameBoard.BlackOnlyKingInGame,0)];
     var Previous_move;
     var Previous_from;
     var sq;
 
-    console.log("wPromNumPofP "+wPromNumPofP+" Wsq: "+Wsq+" side "+GameBoard.side);
-
-    if(wPromNumPofP==2 && RanksBrd[Wsq]==WpromotionRank && GameBoard.side==COLOURS.WHITE){
+    if(wPromNumPofP==2 && RanksBrd[Wsq]==WpromotionRank &&
+        GameBoard.side==COLOURS.WHITE && SqAttacked(WsqOfOnlyKing,GameBoard.side^1)==Bool.False){
         GameBoard.moveListStart[GameBoard.ply + 1] = GameBoard.moveListStart[GameBoard.ply];
         Previous_move=GameBoard.history[GameBoard.hisPly-2].move;
         Previous_from=FROMSQ(Previous_move);
@@ -411,7 +404,8 @@ function MoveToInitPosPawnofKing() {
             return Bool.True;
 
         }
-    } else if(bPromNumPofP==2 && RanksBrd[Bsq]==BpromotionRank && GameBoard.side==COLOURS.BLACK){
+    } else if(bPromNumPofP==2 && RanksBrd[Bsq]==BpromotionRank &&
+        GameBoard.side==COLOURS.BLACK && SqAttacked(BsqOfOnlyKing,GameBoard.side^1)==Bool.False){
         GameBoard.moveListStart[GameBoard.ply + 1] = GameBoard.moveListStart[GameBoard.ply];
         Previous_move=GameBoard.history[GameBoard.hisPly-2].move;
         Previous_from=FROMSQ(Previous_move);
@@ -442,10 +436,7 @@ function highRankingPiecesMove() {
     var PieceNumber;
     var index;
     var j;
-    console.log("GameBoard.moveListStart[GameBoard.ply + 1] "+GameBoard.moveListStart[GameBoard.ply + 1]);
-    console.log("GameBoard.moveListStart[GameBoard.ply] "+GameBoard.moveListStart[GameBoard.ply]);
     GameBoard.moveListStart[GameBoard.ply + 1] = GameBoard.moveListStart[GameBoard.ply];
-
 
     for(index=0;index<WhitePawns.length;index++){
         sq = GameBoard.pList[PCEINDEX(WhitePawns[index], 0)];

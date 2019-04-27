@@ -17,6 +17,33 @@ function T_MovePiece(from,to) {
 
 }
 
+function NotCapturedPawnOfPawn(piece,sq) {
+
+    var sqOfPofP;
+
+    if(PieceColor[piece]==COLOURS.BLACK){
+        sqOfPofP=GameBoard.pList[PCEINDEX(PIECES.WpiyonP,0)];
+        if(sq==sqOfPofP && wPromNumPofP==1 && RanksBrd[sqOfPofP]==WpromotionRank){
+
+            return  Bool.False;
+        }
+
+    }else {
+
+        sqOfPofP=GameBoard.pList[PCEINDEX(PIECES.BpiyonP,0)];
+        if(sq==sqOfPofP && bPromNumPofP==1 && RanksBrd[sqOfPofP]==BpromotionRank){
+
+            return  Bool.False;
+        }
+
+
+    }
+
+    return Bool.True;
+
+
+}
+
 
 function TakeMovePieces(from,to) {
 
@@ -180,7 +207,7 @@ function ShowUsualSquaresPieceCanMove(sq,clickedPiece) {
 
                 if (PawnAttackedSqStraightWhite(sq+PawnsFowards)==Bool.True ) {
 
-                    if(ProtectedKing(sq,sq+PawnsFowards)==Bool.True){
+                    if(ProtectedKing(sq,sq+PawnsFowards)==Bool.True && NotCapturedPawnOfPawn(clickedPiece,sq+PawnsFowards)==Bool.True){
 
                         if(PieceIsOnSq(sq+PawnsFowards,$(this).position().top,$(this).position().left)==Bool.True){
 
@@ -193,7 +220,7 @@ function ShowUsualSquaresPieceCanMove(sq,clickedPiece) {
 
                     if (PawnAttackedSqDiagonalWhite(sq+PawnDiagonal[j])==Bool.True ) {
 
-                        if(ProtectedKing(sq,sq+PawnDiagonal[j])==Bool.True){
+                        if(ProtectedKing(sq,sq+PawnDiagonal[j])==Bool.True && NotCapturedPawnOfPawn(clickedPiece,sq+PawnDiagonal[j])==Bool.True){
 
                             if(PieceIsOnSq(sq+PawnDiagonal[j],$(this).position().top,$(this).position().left)==Bool.True){
 
@@ -211,7 +238,7 @@ function ShowUsualSquaresPieceCanMove(sq,clickedPiece) {
 
                 if (PawnAttackedSqStraightBlack(sq-PawnsFowards)==Bool.True ) {
 
-                    if(ProtectedKing(sq,sq-PawnsFowards)==Bool.True){
+                    if(ProtectedKing(sq,sq-PawnsFowards)==Bool.True && NotCapturedPawnOfPawn(clickedPiece,sq-PawnsFowards)==Bool.True){
 
                         if(PieceIsOnSq(sq-PawnsFowards,$(this).position().top,$(this).position().left)==Bool.True){
 
@@ -224,7 +251,7 @@ function ShowUsualSquaresPieceCanMove(sq,clickedPiece) {
 
                     if (PawnAttackedSqDiagonalBlack(sq-PawnDiagonal[j])==Bool.True ) {
 
-                        if(ProtectedKing(sq,sq-PawnDiagonal[j])==Bool.True){
+                        if(ProtectedKing(sq,sq-PawnDiagonal[j])==Bool.True && NotCapturedPawnOfPawn(clickedPiece,sq-PawnDiagonal[j])==Bool.True){
 
                             if(PieceIsOnSq(sq-PawnDiagonal[j],$(this).position().top,$(this).position().left)==Bool.True){
 
@@ -262,7 +289,7 @@ function ShowUsualSquaresPieceCanMove(sq,clickedPiece) {
                                     continue;
                                 }
 
-                                if(ProtectedKing(sq,new_sq)==Bool.True){
+                                if(ProtectedKing(sq,new_sq)==Bool.True && NotCapturedPawnOfPawn(clickedPiece,new_sq)==Bool.True){
 
                                     if(PieceIsOnSq(new_sq,$(this).position().top,$(this).position().left)==Bool.True &&
                                         PieceColor[GameBoard.pieces[sq]] == GameBoard.side){
@@ -277,7 +304,7 @@ function ShowUsualSquaresPieceCanMove(sq,clickedPiece) {
                                 continue;
                             }
 
-                            if(ProtectedKing(sq,new_sq)==Bool.True){
+                            if(ProtectedKing(sq,new_sq)==Bool.True && NotCapturedPawnOfPawn(clickedPiece,new_sq)==Bool.True){
 
                                 if(PieceIsOnSq(new_sq,$(this).position().top,$(this).position().left)==Bool.True &&
                                     PieceColor[GameBoard.pieces[sq]] == GameBoard.side){
@@ -311,7 +338,7 @@ function ShowUsualSquaresPieceCanMove(sq,clickedPiece) {
                                         continue;
                                     }
 
-                                    if(ProtectedKing(sq,new_sq)==Bool.True){
+                                    if(ProtectedKing(sq,new_sq)==Bool.True && NotCapturedPawnOfPawn(clickedPiece,new_sq)==Bool.True){
 
                                         if(PieceIsOnSq(new_sq,$(this).position().top,$(this).position().left)==Bool.True &&
                                             PieceColor[GameBoard.pieces[sq]] == GameBoard.side){
@@ -327,7 +354,7 @@ function ShowUsualSquaresPieceCanMove(sq,clickedPiece) {
                                 continue;
                             }
 
-                            if(ProtectedKing(sq,new_sq)==Bool.True){
+                            if(ProtectedKing(sq,new_sq)==Bool.True && NotCapturedPawnOfPawn(clickedPiece,new_sq)==Bool.True){
 
                                 if(PieceIsOnSq(new_sq,$(this).position().top,$(this).position().left)==Bool.True &&
                                     PieceColor[GameBoard.pieces[sq]] == GameBoard.side){
@@ -366,7 +393,7 @@ function ShowUsualSquaresPieceCanMove(sq,clickedPiece) {
                                             continue;
                                         }
 
-                                        if(ProtectedKing(sq,new_sq)==Bool.True){
+                                        if(ProtectedKing(sq,new_sq)==Bool.True && NotCapturedPawnOfPawn(clickedPiece,new_sq)==Bool.True){
 
                                             if(PieceIsOnSq(new_sq,$(this).position().top,$(this).position().left)==Bool.True &&
                                                 PieceColor[GameBoard.pieces[sq]] == GameBoard.side){
@@ -383,7 +410,7 @@ function ShowUsualSquaresPieceCanMove(sq,clickedPiece) {
                                     continue;
                                 }
 
-                                if(ProtectedKing(sq,new_sq)==Bool.True){
+                                if(ProtectedKing(sq,new_sq)==Bool.True && NotCapturedPawnOfPawn(clickedPiece,new_sq)==Bool.True){
 
                                     if(PieceIsOnSq(new_sq,$(this).position().top,$(this).position().left)==Bool.True &&
                                         PieceColor[GameBoard.pieces[sq]] == GameBoard.side){
@@ -425,7 +452,7 @@ function ShowUsualSquaresPieceCanMove(sq,clickedPiece) {
                                         }
 
 
-                                        if(ProtectedKing(sq,new_sq)==Bool.True){
+                                        if(ProtectedKing(sq,new_sq)==Bool.True && NotCapturedPawnOfPawn(clickedPiece,new_sq)==Bool.True){
 
                                             if(PieceIsOnSq(new_sq,$(this).position().top,$(this).position().left)==Bool.True &&
                                                 PieceColor[GameBoard.pieces[sq]] == GameBoard.side){
@@ -441,7 +468,7 @@ function ShowUsualSquaresPieceCanMove(sq,clickedPiece) {
                                     continue;
                                 }
 
-                                if(ProtectedKing(sq,new_sq)==Bool.True){
+                                if(ProtectedKing(sq,new_sq)==Bool.True && NotCapturedPawnOfPawn(clickedPiece,new_sq)==Bool.True){
 
                                     if(PieceIsOnSq(new_sq,$(this).position().top,$(this).position().left)==Bool.True &&
                                         PieceColor[GameBoard.pieces[sq]] == GameBoard.side){
@@ -482,8 +509,8 @@ function ShowUsualSquaresPieceCanMove(sq,clickedPiece) {
 
                                 if(GameBoard.side==COLOURS.WHITE){
 
-                                    if( (GameBoard.WhiteKingsInGame.length==1 && SqAttacked(new_sq,GameBoard.side^1)==Bool.False) ||
-                                         (GameBoard.WhiteKingsInGame.length>1) ){
+                                    if( ( (GameBoard.WhiteKingsInGame.length==1 && SqAttacked(new_sq,GameBoard.side^1)==Bool.False) ||
+                                         (GameBoard.WhiteKingsInGame.length>1) )  && NotCapturedPawnOfPawn(clickedPiece,new_sq)==Bool.True){
 
                                         if(PieceIsOnSq(new_sq,$(this).position().top,$(this).position().left)==Bool.True &&
                                             PieceColor[GameBoard.pieces[sq]] == GameBoard.side){
@@ -494,8 +521,8 @@ function ShowUsualSquaresPieceCanMove(sq,clickedPiece) {
 
                                 if(GameBoard.side==COLOURS.BLACK){
 
-                                    if( (GameBoard.BlackKingsInGame.length==1 && SqAttacked(new_sq,GameBoard.side^1)==Bool.False) ||
-                                        (GameBoard.BlackKingsInGame.length>1) ) {
+                                    if( ( (GameBoard.BlackKingsInGame.length==1 && SqAttacked(new_sq,GameBoard.side^1)==Bool.False) ||
+                                        (GameBoard.BlackKingsInGame.length>1)) && NotCapturedPawnOfPawn(clickedPiece,new_sq)==Bool.True) {
 
                                         if(PieceIsOnSq(new_sq,$(this).position().top,$(this).position().left)==Bool.True &&
                                             PieceColor[GameBoard.pieces[sq]] == GameBoard.side){
@@ -518,8 +545,8 @@ function ShowUsualSquaresPieceCanMove(sq,clickedPiece) {
 
                                 if(GameBoard.side==COLOURS.WHITE){
 
-                                    if( (GameBoard.WhiteKingsInGame.length==1 && SqAttacked(new_sq,GameBoard.side^1)==Bool.False) ||
-                                        (GameBoard.WhiteKingsInGame.length>1) ) {
+                                    if( ((GameBoard.WhiteKingsInGame.length==1 && SqAttacked(new_sq,GameBoard.side^1)==Bool.False) ||
+                                        (GameBoard.WhiteKingsInGame.length>1) ) && NotCapturedPawnOfPawn(clickedPiece,new_sq)==Bool.True ) {
 
                                         if(PieceIsOnSq(new_sq,$(this).position().top,$(this).position().left)==Bool.True &&
                                             PieceColor[GameBoard.pieces[sq]] == GameBoard.side){
@@ -539,8 +566,8 @@ function ShowUsualSquaresPieceCanMove(sq,clickedPiece) {
 
                                 if(GameBoard.side==COLOURS.BLACK){
 
-                                    if( (GameBoard.BlackKingsInGame.length==1 && SqAttacked(new_sq,GameBoard.side^1)==Bool.False) ||
-                                        (GameBoard.BlackKingsInGame.length>1) ) {
+                                    if( ( (GameBoard.BlackKingsInGame.length==1 && SqAttacked(new_sq,GameBoard.side^1)==Bool.False) ||
+                                        (GameBoard.BlackKingsInGame.length>1) ) && NotCapturedPawnOfPawn(clickedPiece,new_sq)==Bool.True ) {
 
                                         if(PieceIsOnSq(new_sq,$(this).position().top,$(this).position().left)==Bool.True &&
                                             PieceColor[GameBoard.pieces[sq]] == GameBoard.side){
