@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="47e0f92d-c775-4f22-9270-1b342b106f82" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/DEF.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/DEF.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/ShowSqPceCanMove.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/ShowSqPceCanMove.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/gui.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/gui.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/makeMove.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/makeMove.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/moveGeneration.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/moveGeneration.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -97,14 +92,14 @@
         <counts>
           <entry key="css" value="12" />
           <entry key="html" value="73" />
-          <entry key="js" value="218" />
+          <entry key="js" value="219" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="12" />
           <entry key="HTML" value="73" />
-          <entry key="JavaScript" value="218" />
+          <entry key="JavaScript" value="219" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -112,6 +107,7 @@
           <entry key="css" value="116" />
           <entry key="html" value="3687" />
           <entry key="js" value="51862" />
+          <entry key="txt" value="90" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -119,12 +115,13 @@
           <entry key="CSS" value="116" />
           <entry key="HTML" value="3687" />
           <entry key="JavaScript" value="51862" />
+          <entry key="PLAIN_TEXT" value="90" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
         <counts>
           <entry key="git.branch.compare" value="1" />
-          <entry key="git.branch.merge" value="1" />
+          <entry key="git.branch.merge" value="2" />
         </counts>
       </usages-collector>
     </session>
@@ -160,8 +157,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/js/makeMove.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="234" selection-start-line="234" selection-end-line="234" />
+            <state relative-caret-position="339">
+              <caret line="238" column="9" selection-start-line="238" selection-start-column="9" selection-end-line="238" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -571,12 +568,21 @@
       <workItem from="1556308224687" duration="2655000" />
       <workItem from="1556362201630" duration="5440000" />
       <workItem from="1556384891937" duration="3804000" />
-      <workItem from="1556390458862" duration="1527000" />
+      <workItem from="1556390458862" duration="3721000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1019953000" />
+    <option name="totallyTimeSpent" value="1022147000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -594,10 +600,10 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info active="true" anchor="bottom" id="TODO" order="6" sideWeight="0.49924356" visible="true" weight="0.3295082" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49924356" visible="true" weight="0.3295082" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49924356" weight="0.3295082" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50075644" side_tool="true" weight="0.3295082" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="9" sideWeight="0.50075644" side_tool="true" visible="true" weight="0.3295082" />
       <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Messages" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -647,6 +653,10 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Sah herhangi bir taş ile değişmesi ve mahkum taşı tehdit etme eksik" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sah herhangi bir taş ile değişmesi ve mahkum taşı tehdit etme eksik" />
+  </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
@@ -668,13 +678,6 @@
     <entry file="file://$PROJECT_DIR$/../Web tasarım/Javascript kodları/jquery kodları/js/jq12.js" />
     <entry file="file://$PROJECT_DIR$/src/js/ShowSquaresInAttacking.js" />
     <entry file="file://$PROJECT_DIR$/../Web tasarım/Javascript kodları/javascript giriş.html" />
-    <entry file="file://$PROJECT_DIR$/src/js/jquery.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-165627">
-          <caret line="594" column="29" selection-start-line="594" selection-start-column="29" selection-end-line="594" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/decimeltobinaryConverter.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -773,10 +776,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/jquery.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="4233" column="11" selection-start-line="4233" selection-start-column="11" selection-end-line="4233" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/js/makeMove.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="234" selection-start-line="234" selection-end-line="234" />
+        <state relative-caret-position="339">
+          <caret line="238" column="9" selection-start-line="238" selection-start-column="9" selection-end-line="238" selection-end-column="9" />
         </state>
       </provider>
     </entry>
