@@ -54,15 +54,19 @@ function TakeMovePieces(from,to) {
 
 function ProtectedKing(from,to) {
 
-    if( (GameBoard.side==COLOURS.WHITE && GameBoard.WhiteNumberOfKingsInGame==1) ||
-        (GameBoard.side==COLOURS.BLACK && GameBoard.BlackNumberOfKingsInGame==1) ){
+    var soleKing;
 
+    if(GameBoard.side==COLOURS.WHITE) soleKing=GameBoard.WhiteOnlyKingInGame;
 
-        if(SqAttacked(GameBoard.pList[PCEINDEX(Kings[GameBoard.side], 0)], GameBoard.side^1) == Bool.False){
+    else soleKing=GameBoard.BlackOnlyKingInGame;
+
+    if(soleKing!=0){
+
+        if(SqAttacked(GameBoard.pList[PCEINDEX(soleKing, 0)], GameBoard.side^1) == Bool.False){
 
             T_MovePiece(from,to);
 
-            if(SqAttacked(GameBoard.pList[PCEINDEX(Kings[GameBoard.side], 0)], GameBoard.side^1) == Bool.False){
+            if(SqAttacked(GameBoard.pList[PCEINDEX(soleKing, 0)], GameBoard.side^1) == Bool.False){
                 TakeMovePieces(from, to);
                 return Bool.True;
             }
@@ -70,7 +74,7 @@ function ProtectedKing(from,to) {
         }
         else{
             T_MovePiece(from, to);
-            if (SqAttacked(GameBoard.pList[PCEINDEX(Kings[GameBoard.side], 0)], GameBoard.side^1) == Bool.False) {
+            if (SqAttacked(GameBoard.pList[PCEINDEX(soleKing, 0)], GameBoard.side^1) == Bool.False) {
                 TakeMovePieces(from, to);
                 return Bool.True;
             }

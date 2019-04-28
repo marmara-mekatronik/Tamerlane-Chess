@@ -266,7 +266,7 @@ function DeclareDraw() {
 
     else if(GameBoard.WhiteCounter==1 && (GameBoard.WhiteNumberOfKingsInGame==2 || GameBoard.WhiteNumberOfKingsInGame==3)&& WdecDraw==0 ){
 
-        WdecDraw=parseInt(prompt("oyunu berabere bitirmek için 1 oyuna devam etmek için 2 giriniz"));
+        var WdecDraw=parseInt(prompt("oyunu berabere bitirmek için 1 oyuna devam etmek için 2 giriniz"));
 
         if(WdecDraw==2){
 
@@ -281,7 +281,7 @@ function DeclareDraw() {
     }
     else if(GameBoard.BlackCounter==1 && (GameBoard.BlackNumberOfKingsInGame==2 || GameBoard.BlackNumberOfKingsInGame==3) && BdecDraw==0){
 
-        BdecDraw=parseInt(prompt("oyunu berabere bitirmek için 1 oyuna devam etmek için 2 giriniz"));
+        var BdecDraw=parseInt(prompt("oyunu berabere bitirmek için 1 oyuna devam etmek için 2 giriniz"));
 
         if(BdecDraw==2){
 
