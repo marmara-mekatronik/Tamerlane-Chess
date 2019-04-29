@@ -61,6 +61,9 @@ var BdecDraw=0;
 var PawnsFowards;
 var PawnDiagonal=new Array(2);
 
+var WhitePceList=[];
+var BlackPceList=[];
+
 if(Colors[IndexColorOfPlayer]==COLOURS.WHITE){
 
     PawnsFowards=15;
