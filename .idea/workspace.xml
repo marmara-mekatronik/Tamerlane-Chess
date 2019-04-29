@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="47e0f92d-c775-4f22-9270-1b342b106f82" name="Default Changelist" comment="deneme">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/io.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/io.js" afterDir="false" />
-    </list>
+    <list default="true" id="47e0f92d-c775-4f22-9270-1b342b106f82" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +105,7 @@
           <entry key="css" value="116" />
           <entry key="html" value="3696" />
           <entry key="js" value="53096" />
-          <entry key="txt" value="255" />
+          <entry key="txt" value="264" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -116,7 +113,7 @@
           <entry key="CSS" value="116" />
           <entry key="HTML" value="3696" />
           <entry key="JavaScript" value="53096" />
-          <entry key="PLAIN_TEXT" value="255" />
+          <entry key="PLAIN_TEXT" value="264" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -324,7 +321,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556541314585" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556542399611" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -635,11 +632,18 @@
       <option name="project" value="LOCAL" />
       <updated>1556540069027</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="tez ekle">
+      <created>1556541338770</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1556541338770</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1039290000" />
+    <option name="totallyTimeSpent" value="1039959000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -753,7 +757,8 @@
     <MESSAGE value="şah herhangi bir taş ile yer değişti EKSİKLİKLER TAMAMLANDI" />
     <MESSAGE value="Tez eklendi" />
     <MESSAGE value="deneme" />
-    <option name="LAST_COMMIT_MESSAGE" value="deneme" />
+    <MESSAGE value="tez ekle" />
+    <option name="LAST_COMMIT_MESSAGE" value="tez ekle" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />

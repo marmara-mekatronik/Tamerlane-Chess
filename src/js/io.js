@@ -19,7 +19,7 @@ function ParseMove(from,to) {
         if(FROMSQ(move)==from && TOSQ(move)==to){
 
             console.log("move "+move);
-           
+
         }
     }
 
