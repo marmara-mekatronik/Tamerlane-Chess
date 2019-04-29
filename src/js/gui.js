@@ -140,10 +140,9 @@ function MakeUserMove() {
             CheckandSet();
 
         }
-        console.log("son şah "+GameBoard.WhiteOnlyKingInGame);
         console.log("en yüksek mertebeli şah: "+GameBoard.WhiteHighestRanKING);
-        console.log("LoopKings "+LoopKings);
-        PrintSqAttacked();
+        console.log("SAH  "+GameBoard.pList[PCEINDEX(GameBoard.WhiteHighestRanKING,0)]+" NOLU KAREDE");
+
 
 
         DeSelected(UserMove.from);
@@ -232,16 +231,28 @@ function MoveGuiPiece(move,piece) {
         AddGuiPiece(to,piece);
         console.log("to "+to);
 
-    } else if( (move & MFLAGSWITCHKING)!=0){
+    } else if( (move & MFLAGSWITCHKING)!=0 || (move & MFLAGSWITCHANYPIECE)!=0){
 
 
-        console.log("(move & MFLAGSWITCHKING)!=0");
-        var highestKing=GameBoard.pieces[to];
-        var secondKing=GameBoard.pieces[from];
+
+
+
+        var pieceInto=GameBoard.pieces[to];
+        var pieceInfrom=GameBoard.pieces[from];
         RemoveGuiPiece(from);
         RemoveGuiPiece(to);
-        AddGuiPiece(from,secondKing);
-        AddGuiPiece(to,highestKing);
+        AddGuiPiece(from,pieceInfrom);
+        AddGuiPiece(to,pieceInto);
+
+
+
+        if((move & MFLAGSWITCHANYPIECE)!=0){
+
+
+            console.log("şah herhangi bir taş ile yer değişti");
+            if(PieceColor[pieceInto]==COLOURS.WHITE) WsoleKingSwitchPlacePiece++;
+            else if(PieceColor[pieceInto]==COLOURS.BLACK) BsoleKingSwitchPlacePiece++;
+        }
 
     }
     else if( (move & MFLAGMOVEADKINGFROMCITADEL)!=0){
@@ -250,6 +261,7 @@ function MoveGuiPiece(move,piece) {
         AddGuiPiece(to,piece);
 
     }
+
 }
 
 
@@ -266,7 +278,7 @@ function DeclareDraw() {
 
     else if(GameBoard.WhiteCounter==1 && (GameBoard.WhiteNumberOfKingsInGame==2 || GameBoard.WhiteNumberOfKingsInGame==3)&& WdecDraw==0 ){
 
-        var WdecDraw=parseInt(prompt("oyunu berabere bitirmek için 1 oyuna devam etmek için 2 giriniz"));
+        WdecDraw=parseInt(prompt("oyunu berabere bitirmek için 1 oyuna devam etmek için 2 giriniz"));
 
         if(WdecDraw==2){
 
@@ -274,14 +286,14 @@ function DeclareDraw() {
 
             return Bool.False;
         }
-        else if(WdecDraw==1){
+        else if(WdecDraw===1){
 
             return Bool.True;
         }
     }
     else if(GameBoard.BlackCounter==1 && (GameBoard.BlackNumberOfKingsInGame==2 || GameBoard.BlackNumberOfKingsInGame==3) && BdecDraw==0){
 
-        var BdecDraw=parseInt(prompt("oyunu berabere bitirmek için 1 oyuna devam etmek için 2 giriniz"));
+        BdecDraw=parseInt(prompt("oyunu berabere bitirmek için 1 oyuna devam etmek için 2 giriniz"));
 
         if(BdecDraw==2){
 
@@ -331,8 +343,12 @@ function CheckResult(){
         TakeMove();
         break;
     }
+     var soleKing;
 
-    var InCheck=SqAttacked(GameBoard.pList[PCEINDEX(Kings[GameBoard.side],0)],GameBoard.side^1);
+    if(GameBoard.side==COLOURS.WHITE) soleKing=GameBoard.WhiteOnlyKingInGame;
+    else soleKing=GameBoard.BlackOnlyKingInGame;
+
+    var InCheck=SqAttacked(GameBoard.pList[PCEINDEX(soleKing,0)],GameBoard.side^1);
 
     console.log("InCheck: "+InCheck);
 

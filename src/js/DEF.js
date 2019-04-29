@@ -55,7 +55,8 @@ var WpOfpInitSq;
 var BpOfpInitSq;
 var WkomsuOfCitadel;
 var BkomsuOfCitadel;
-
+var WdecDraw=0;
+var BdecDraw=0;
 
 var PawnsFowards;
 var PawnDiagonal=new Array(2);
@@ -292,6 +293,8 @@ var Kings=[PIECES.Wsah, PIECES.Bsah];
 
 0000 1000 0000 0000 0000 0000 0000 0000 MFLAGMOVEADKINGFROMCİTADEL
 
+0001 0000 0000 0000 0000 0000 0000 0000 MFLAGSWITCHANYPIECE
+
  */
 
 
@@ -309,7 +312,9 @@ var MFLAGIMMOBİLE=0x1000000;
 var MFLAGTOBEADKING=0x2000000;
 var MFLAGSWITCHKING=0x4000000;
 var MFLAGMOVEADKINGFROMCITADEL=0x8000000;
-
+var MFLAGSWITCHANYPIECE=0x10000000;
+var WsoleKingSwitchPlacePiece=0;
+var BsoleKingSwitchPlacePiece=0;
 
 function IsSquareCitadel(sq) {
 
@@ -346,5 +351,3 @@ UserMove.from=SQUARES.NO_SQ;
 UserMove.to=SQUARES.NO_SQ;
 
 
-var WdecDraw=0;
-var BdecDraw=0;

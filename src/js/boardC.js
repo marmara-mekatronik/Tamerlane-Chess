@@ -29,7 +29,8 @@ GameBoard.BpceList=new Array(30);
 GameBoard.Promhistory=[];
 GameBoard.WswitchToEscapeSq=[];
 GameBoard.BswitchToEscapeSq=[];
-
+GameBoard.WhitePieceInGame=new Array(30);
+GameBoard.BlackPieceInGame=new Array(30);
 
 
 function CheckBoard(){
@@ -176,6 +177,7 @@ function UpdateListsMaterial() {
 
         piece=GameBoard.pieces[sq];
 
+
         if(piece != PIECES.EMPTY){
 
             colour=PieceColor[piece];
@@ -184,6 +186,7 @@ function UpdateListsMaterial() {
             GameBoard.piecesNUMBER[piece]++;
         }
     }
+
     PrintPieceLists();
 }
 

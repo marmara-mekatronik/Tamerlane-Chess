@@ -126,6 +126,53 @@ function PawnAttackedSqDiagonalBlack(sq){
     return Bool.False;
 }
 
+function SoleKingSwitchPlaceWithAnyPiece() {
+
+    var index,sq,piece,sqOfsoleKing;
+
+
+    if(GameBoard.side==COLOURS.WHITE && GameBoard.WhiteOnlyKingInGame!=0 &&
+        SqAttacked(GameBoard.WhiteOnlyKingInGame,GameBoard.side^1)==Bool.True && WsoleKingSwitchPlacePiece==0){
+
+
+        sqOfsoleKing=GameBoard.pList[PCEINDEX(GameBoard.WhiteOnlyKingInGame,0)];
+
+        for(index=0;index<112;index++){
+
+            sq=SQ342(index);
+
+            piece=GameBoard.pieces[sq];
+
+            if(PieceColor[piece]==COLOURS.WHITE && SqAttacked(sq,COLOURS.BLACK)==Bool.False){
+
+                AddQuietMove(MOVE(sqOfsoleKing,sq,PIECES.EMPTY,0,MFLAGSWITCHANYPIECE));
+            }
+        }
+    }
+
+    if(GameBoard.side==COLOURS.BLACK && GameBoard.BlackOnlyKingInGame!=0 &&
+        SqAttacked(GameBoard.BlackOnlyKingInGame,GameBoard.side^1)==Bool.True && BsoleKingSwitchPlacePiece==0){
+
+
+        sqOfsoleKing=GameBoard.pList[PCEINDEX(GameBoard.BlackOnlyKingInGame,0)];
+
+        for(index=0;index<112;index++){
+
+            sq=SQ342(index);
+
+            piece=GameBoard.pieces[sq];
+
+            if(PieceColor[piece]==COLOURS.BLACK && SqAttacked(sq,GameBoard.side^1)==Bool.False){
+
+                AddQuietMove(MOVE(sqOfsoleKing,sq,PIECES.EMPTY,0,MFLAGSWITCHANYPIECE));
+            }
+        }
+    }
+
+
+
+
+}
 
 function ForkingList() {
 
@@ -243,6 +290,7 @@ function  GenerationMoves() {
     if(Move2InitPosPofK==Bool.False && escapeKing==Bool.False && escapeAdKing==Bool.False && move2Fork==Bool.False){
 
         highRankingPiecesMove();
+        SoleKingSwitchPlaceWithAnyPiece();
 
     }
     else if(move2Fork==Bool.True){
@@ -341,8 +389,6 @@ function SwitchPlaceOfKing() {
 
     var WsqOfKing=GameBoard.pList[PCEINDEX(GameBoard.WhiteHighestRanKING,0)];
     var BsqOfKing=GameBoard.pList[PCEINDEX(GameBoard.BlackHighestRanKING,0)];
-    var WsqOfOnlyKing=GameBoard.pList[PCEINDEX(GameBoard.WhiteOnlyKingInGame,0)];
-    var BsqOfOnlyKing=GameBoard.pList[PCEINDEX(GameBoard.BlackOnlyKingInGame,0)];
     var index,new_sq,pce;
 
     if(GameBoard.side==COLOURS.WHITE && WsqOfKing==BsideCitadel && GameBoard.WhiteKingsInGame.length>1){

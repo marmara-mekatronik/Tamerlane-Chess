@@ -48,11 +48,12 @@ function  MovePiece(from,to,move) {
 
     GameBoard.pieces[from]=PIECES.EMPTY;
 
-    if( (move & MFLAGSWITCHKING)!=0){
+    if( (move & MFLAGSWITCHKING)!=0 || (move & MFLAGSWITCHANYPIECE)!=0){
 
         GameBoard.pieces[from]=GameBoard.pieces[to];
         GameBoard.pList[PCEINDEX(GameBoard.pieces[from],0)]=from;
     }
+
 
     HASH_PCE(pce,to);
     GameBoard.pieces[to]=pce;
@@ -216,20 +217,16 @@ function MakeMove(move) {
    GameBoard.side ^=1;
    HASH_SIDE();
 
-    var singleKing;
-    if(side==COLOURS.WHITE && GameBoard.WhiteKingsInGame.length==1){
+    var soleKing;
+    if(side==COLOURS.WHITE && GameBoard.WhiteOnlyKingInGame!=0) soleKing=GameBoard.WhiteOnlyKingInGame;
 
-        singleKing=GameBoard.WhiteOnlyKingInGame;
+    else if(side==COLOURS.BLACK && GameBoard.BlackOnlyKingInGame!=0) soleKing=GameBoard.BlackOnlyKingInGame;
 
-    }
-    else if(side==COLOURS.BLACK && GameBoard.BlackKingsInGame.length==1) {
-
-        singleKing=GameBoard.BlackOnlyKingInGame;
-    }
-    else singleKing=0;
+    else soleKing=0;
+    console.log("soleKing: "+soleKing);
 
 
-    if(SqAttacked(GameBoard.pList[PCEINDEX(singleKing,0)], GameBoard.side) ){
+    if(SqAttacked(GameBoard.pList[PCEINDEX(soleKing,0)], GameBoard.side) ){
 
         console.log("tehdit altında!!!");
 
