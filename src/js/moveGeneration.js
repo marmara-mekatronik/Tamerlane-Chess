@@ -145,6 +145,7 @@ function SoleKingSwitchPlaceWithAnyPiece() {
 
                 AddQuietMove(MOVE(WsqOfsoleKing,sq,PIECES.EMPTY,0,MFLAGSWITCHANYPIECE));
                 WhitePceList[j]=sq;
+                j++;
             }
         }
     }
@@ -162,6 +163,7 @@ function SoleKingSwitchPlaceWithAnyPiece() {
 
                 AddQuietMove(MOVE(BsqOfsoleKing,sq,PIECES.EMPTY,0,MFLAGSWITCHANYPIECE));
                 BlackPceList[j]=sq;
+                j++;
             }
         }
     }

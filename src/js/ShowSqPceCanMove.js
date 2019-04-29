@@ -586,7 +586,6 @@ function ShowUsualSquaresPieceCanMove(sq,clickedPiece) {
             }
         }
 
-        console.log(" SqAttacked(sq,GameBoard.side^1) "+ SqAttacked(sq,GameBoard.side^1));
 
         if (GameBoard.side==COLOURS.WHITE && clickedPiece==GameBoard.WhiteOnlyKingInGame &&
             SqAttacked(sq,GameBoard.side^1)==Bool.True && WsoleKingSwitchPlacePiece==0){
@@ -613,7 +612,6 @@ function ShowUsualSquaresPieceCanMove(sq,clickedPiece) {
                 }
             }
         }
-
 
     });
 }

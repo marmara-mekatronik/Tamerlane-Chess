@@ -108,7 +108,7 @@
         <counts>
           <entry key="css" value="116" />
           <entry key="html" value="3696" />
-          <entry key="js" value="53146" />
+          <entry key="js" value="53199" />
           <entry key="txt" value="264" />
         </counts>
       </usages-collector>
@@ -116,7 +116,7 @@
         <counts>
           <entry key="CSS" value="116" />
           <entry key="HTML" value="3696" />
-          <entry key="JavaScript" value="53146" />
+          <entry key="JavaScript" value="53199" />
           <entry key="PLAIN_TEXT" value="264" />
         </counts>
       </usages-collector>
@@ -187,8 +187,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/js/moveGeneration.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="755">
-              <caret line="167" lean-forward="true" selection-start-line="167" selection-end-line="167" />
+            <state relative-caret-position="415">
+              <caret line="165" column="20" selection-start-line="165" selection-start-column="20" selection-end-line="165" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -196,8 +196,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/js/ShowSqPceCanMove.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="588" column="88" selection-start-line="588" selection-start-column="88" selection-end-line="588" selection-end-column="88" />
+            <state relative-caret-position="373">
+              <caret line="619" lean-forward="true" selection-start-line="619" selection-end-line="619" />
             </state>
           </provider>
         </entry>
@@ -326,7 +326,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556562682672" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556563080393" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Bitirme Tezi/Tamerlane Chess/Tamerlane Chess86" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -672,11 +672,18 @@
       <option name="project" value="LOCAL" />
       <updated>1556562063248</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="tez ekle">
+      <created>1556562750927</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1556562750927</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1044263000" />
+    <option name="totallyTimeSpent" value="1044783000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -708,7 +715,7 @@
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49848714" weight="0.3295082" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50075644" side_tool="true" weight="0.34918034" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="10" sideWeight="0.49924356" visible="true" weight="0.031147541" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="10" sideWeight="0.49924356" visible="true" weight="0.1442623" />
       <window_info anchor="bottom" id="Messages" order="11" visible="true" weight="0.06393442" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" weight="0.25" />
@@ -896,15 +903,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/js/moveGeneration.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="755">
-          <caret line="167" lean-forward="true" selection-start-line="167" selection-end-line="167" />
+        <state relative-caret-position="415">
+          <caret line="165" column="20" selection-start-line="165" selection-start-column="20" selection-end-line="165" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/js/ShowSqPceCanMove.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="588" column="88" selection-start-line="588" selection-start-column="88" selection-end-line="588" selection-end-column="88" />
+        <state relative-caret-position="373">
+          <caret line="619" lean-forward="true" selection-start-line="619" selection-end-line="619" />
         </state>
       </provider>
     </entry>
