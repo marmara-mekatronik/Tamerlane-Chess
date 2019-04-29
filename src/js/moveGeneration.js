@@ -127,7 +127,7 @@ function PawnAttackedSqDiagonalBlack(sq){
 }
 
 function SoleKingSwitchPlaceWithAnyPiece() {
-    var piece;
+    var piece,sq,index;
     var WsqOfsoleKing=GameBoard.pList[PCEINDEX(GameBoard.WhiteOnlyKingInGame,0)];
     var BsqOfsoleKing=GameBoard.pList[PCEINDEX(GameBoard.BlackOnlyKingInGame,0)];
 
