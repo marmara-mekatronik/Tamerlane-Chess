@@ -142,6 +142,8 @@ function MakeUserMove() {
         }
         console.log("en yüksek mertebeli şah: "+GameBoard.WhiteHighestRanKING);
         console.log("SAH  "+GameBoard.pList[PCEINDEX(GameBoard.WhiteHighestRanKING,0)]+" NOLU KAREDE");
+        console.log("WsoleKingSwitchPlacePiece "+WsoleKingSwitchPlacePiece);
+        console.log("BsoleKingSwitchPlacePiece "+BsoleKingSwitchPlacePiece);
 
 
 
@@ -243,7 +245,6 @@ function MoveGuiPiece(move,piece) {
         RemoveGuiPiece(to);
         AddGuiPiece(from,pieceInfrom);
         AddGuiPiece(to,pieceInto);
-
 
 
         if((move & MFLAGSWITCHANYPIECE)!=0){

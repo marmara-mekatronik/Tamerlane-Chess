@@ -127,36 +127,32 @@ function PawnAttackedSqDiagonalBlack(sq){
 }
 
 function SoleKingSwitchPlaceWithAnyPiece() {
-
-    var index,sq,piece,sqOfsoleKing;
-
+    var piece;
+    var WsqOfsoleKing=GameBoard.pList[PCEINDEX(GameBoard.WhiteOnlyKingInGame,0)];
+    var BsqOfsoleKing=GameBoard.pList[PCEINDEX(GameBoard.BlackOnlyKingInGame,0)];
 
     if(GameBoard.side==COLOURS.WHITE && GameBoard.WhiteOnlyKingInGame!=0 &&
-        SqAttacked(GameBoard.WhiteOnlyKingInGame,GameBoard.side^1)==Bool.True && WsoleKingSwitchPlacePiece==0){
+        SqAttacked(WsqOfsoleKing,GameBoard.side^1)==Bool.True && WsoleKingSwitchPlacePiece==0){
 
-
-        sqOfsoleKing=GameBoard.pList[PCEINDEX(GameBoard.WhiteOnlyKingInGame,0)];
-
-        for(index=0;index<112;index++){
+        for(index=0;index<110;index++){
 
             sq=SQ342(index);
 
             piece=GameBoard.pieces[sq];
+            console.log("sq"+sq);
 
-            if(PieceColor[piece]==COLOURS.WHITE && SqAttacked(sq,COLOURS.BLACK)==Bool.False){
+            if(PieceColor[piece]==COLOURS.WHITE && SqAttacked(sq,GameBoard.side^1)==Bool.False){
 
-                AddQuietMove(MOVE(sqOfsoleKing,sq,PIECES.EMPTY,0,MFLAGSWITCHANYPIECE));
+                AddQuietMove(MOVE(WsqOfsoleKing,sq,PIECES.EMPTY,0,MFLAGSWITCHANYPIECE));
+                console.log("sq: "+sq);
             }
         }
     }
 
-    if(GameBoard.side==COLOURS.BLACK && GameBoard.BlackOnlyKingInGame!=0 &&
-        SqAttacked(GameBoard.BlackOnlyKingInGame,GameBoard.side^1)==Bool.True && BsoleKingSwitchPlacePiece==0){
+    else if(GameBoard.side==COLOURS.BLACK && GameBoard.BlackOnlyKingInGame!=0 &&
+        SqAttacked(BsqOfsoleKing,GameBoard.side^1)==Bool.True && BsoleKingSwitchPlacePiece==0){
 
-
-        sqOfsoleKing=GameBoard.pList[PCEINDEX(GameBoard.BlackOnlyKingInGame,0)];
-
-        for(index=0;index<112;index++){
+        for(index=0;index<110;index++){
 
             sq=SQ342(index);
 
@@ -164,13 +160,10 @@ function SoleKingSwitchPlaceWithAnyPiece() {
 
             if(PieceColor[piece]==COLOURS.BLACK && SqAttacked(sq,GameBoard.side^1)==Bool.False){
 
-                AddQuietMove(MOVE(sqOfsoleKing,sq,PIECES.EMPTY,0,MFLAGSWITCHANYPIECE));
+                AddQuietMove(MOVE(BsqOfsoleKing,sq,PIECES.EMPTY,0,MFLAGSWITCHANYPIECE));
             }
         }
     }
-
-
-
 
 }
 
@@ -748,5 +741,6 @@ function highRankingPiecesMove() {
         Pce = LoopKings[PieceIndex++];
 
     }
+
 }
 
