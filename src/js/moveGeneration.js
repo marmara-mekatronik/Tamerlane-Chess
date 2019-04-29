@@ -127,7 +127,7 @@ function PawnAttackedSqDiagonalBlack(sq){
 }
 
 function SoleKingSwitchPlaceWithAnyPiece() {
-    var piece,sq,index;
+    var piece,sq,index,j=0;
     var WsqOfsoleKing=GameBoard.pList[PCEINDEX(GameBoard.WhiteOnlyKingInGame,0)];
     var BsqOfsoleKing=GameBoard.pList[PCEINDEX(GameBoard.BlackOnlyKingInGame,0)];
 
@@ -144,7 +144,7 @@ function SoleKingSwitchPlaceWithAnyPiece() {
             if(PieceColor[piece]==COLOURS.WHITE && SqAttacked(sq,GameBoard.side^1)==Bool.False){
 
                 AddQuietMove(MOVE(WsqOfsoleKing,sq,PIECES.EMPTY,0,MFLAGSWITCHANYPIECE));
-                console.log("sq: "+sq);
+                WhitePceList[j]=sq;
             }
         }
     }
@@ -161,6 +161,7 @@ function SoleKingSwitchPlaceWithAnyPiece() {
             if(PieceColor[piece]==COLOURS.BLACK && SqAttacked(sq,GameBoard.side^1)==Bool.False){
 
                 AddQuietMove(MOVE(BsqOfsoleKing,sq,PIECES.EMPTY,0,MFLAGSWITCHANYPIECE));
+                BlackPceList[j]=sq;
             }
         }
     }
