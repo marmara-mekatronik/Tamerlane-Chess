@@ -585,6 +585,33 @@ function ShowUsualSquaresPieceCanMove(sq,clickedPiece) {
                 }
             }
         }
+        if (GameBoard.side==COLOURS.WHITE && clickedPiece==GameBoard.WhiteOnlyKingInGame &&
+            SqAttacked(sq,GameBoard.side^1)==Bool.True && WsoleKingSwitchPlacePiece==0){
+
+            for(index=0;index<WhitePceList.length;index++){
+
+                new_sq=WhitePceList[index];
+
+                if(PieceIsOnSq(new_sq,$(this).position().top,$(this).position().left)==Bool.True ){
+                    $(this).addClass("SqAttacked");
+                }
+            }
+        }
+
+        if (GameBoard.side==COLOURS.BLACK && clickedPiece==GameBoard.BlackOnlyKingInGame &&
+            SqAttacked(sq,GameBoard.side^1)==Bool.True && BsoleKingSwitchPlacePiece==0){
+
+            for(index=0;index<BlackPceList.length;index++){
+
+                new_sq=BlackPceList[index];
+
+                if(PieceIsOnSq(new_sq,$(this).position().top,$(this).position().left)==Bool.True ){
+                    $(this).addClass("SqAttacked");
+                }
+            }
+        }
+
+
     });
 }
 
