@@ -11,7 +11,19 @@ function ParseMove(from,to) {
     var index;
     var found=Bool.False;
 
-    
+    for(index=GameBoard.moveListStart[GameBoard.ply];
+        index<GameBoard.moveListStart[GameBoard.ply+1];index++){
+
+        move=GameBoard.moveList[index];
+
+        if(FROMSQ(move)==from && TOSQ(move)==to){
+
+            console.log("move "+move);
+
+        }
+    }
+
+
     for(index=GameBoard.moveListStart[GameBoard.ply];
         index<GameBoard.moveListStart[GameBoard.ply+1];index++){
 
