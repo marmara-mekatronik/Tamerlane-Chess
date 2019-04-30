@@ -106,7 +106,7 @@ $(document).on("click",".Piece", function (e) {
 
     MakeUserMove();
 
-    ShowAllSqPceCanMove(UserMove.from,GameBoard.pieces[UserMove.from]);
+    ShowSquaresPieceCanMove(UserMove.from,GameBoard.pieces[UserMove.from]);
 
 
 });

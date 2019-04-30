@@ -25,7 +25,7 @@ function ParseMove(from,to) {
 
 
     for(index=GameBoard.moveListStart[GameBoard.ply];
-        index<GameBoard.moveListStart[GameBoard.ply+1];index++){
+          index<GameBoard.moveListStart[GameBoard.ply+1];index++){
 
         move=GameBoard.moveList[index];
 
