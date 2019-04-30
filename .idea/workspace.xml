@@ -4,9 +4,6 @@
     <list default="true" id="47e0f92d-c775-4f22-9270-1b342b106f82" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/js/ShowSqPceCanMove.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/ShowSqPceCanMove.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/gui.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/gui.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/io.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/io.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/örnek pozisyonlar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/örnek pozisyonlar.js" afterDir="false" />
     </list>
     <ignored path="C:\Users\Muzaffercky\Desktop\Tamerlane Chess\.idea\shelf/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -111,16 +108,16 @@
         <counts>
           <entry key="css" value="116" />
           <entry key="html" value="3696" />
-          <entry key="js" value="53255" />
-          <entry key="txt" value="284" />
+          <entry key="js" value="53256" />
+          <entry key="txt" value="331" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="116" />
           <entry key="HTML" value="3696" />
-          <entry key="JavaScript" value="53255" />
-          <entry key="PLAIN_TEXT" value="284" />
+          <entry key="JavaScript" value="53256" />
+          <entry key="PLAIN_TEXT" value="331" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -142,7 +139,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/js/gui.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="494">
@@ -196,11 +193,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/js/ShowSqPceCanMove.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="96" column="19" lean-forward="true" selection-start-line="96" selection-start-column="19" selection-end-line="96" selection-end-column="19" />
+            <state relative-caret-position="259">
+              <caret line="122" lean-forward="true" selection-start-line="122" selection-end-line="122" />
             </state>
           </provider>
         </entry>
@@ -208,7 +205,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/js/örnek pozisyonlar.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="11356">
+            <state relative-caret-position="426">
               <caret line="668" column="7" selection-start-line="668" selection-start-column="7" selection-end-line="668" selection-end-column="7" />
             </state>
           </provider>
@@ -258,8 +255,8 @@
         <option value="$PROJECT_DIR$/src/js/moveGeneration.js" />
         <option value="$PROJECT_DIR$/src/js/io.js" />
         <option value="$PROJECT_DIR$/src/js/örnek pozisyonlar.js" />
-        <option value="$PROJECT_DIR$/src/js/ShowSqPceCanMove.js" />
         <option value="$PROJECT_DIR$/src/js/gui.js" />
+        <option value="$PROJECT_DIR$/src/js/ShowSqPceCanMove.js" />
       </list>
     </option>
   </component>
@@ -338,7 +335,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556610037990" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556614871212" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Bitirme Tezi/Tamerlane Chess/Tamerlane Chess86" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -592,7 +589,7 @@
       <workItem from="1556450845319" duration="4539000" />
       <workItem from="1556463376273" duration="1376000" />
       <workItem from="1556528114565" duration="8507000" />
-      <workItem from="1556609406865" duration="411000" />
+      <workItem from="1556609406865" duration="819000" />
     </task>
     <task id="LOCAL-00001" summary="Sah herhangi bir taş ile değişmesi ve mahkum taşı tehdit etme eksik">
       <created>1556394868900</created>
@@ -699,11 +696,18 @@
       <option name="project" value="LOCAL" />
       <updated>1556563171339</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="ShowSquarespiececanmove düzeltildi">
+      <created>1556610103803</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1556610103803</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1045348000" />
+    <option name="totallyTimeSpent" value="1045756000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -718,7 +722,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15128593" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15128593" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -734,8 +738,8 @@
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49848714" weight="0.3295082" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49848714" weight="0.3295082" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50075644" side_tool="true" weight="0.34918034" />
-      <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49924356" visible="true" weight="0.0" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="9" sideWeight="0.5015129" side_tool="true" visible="true" weight="0.3295082" />
+      <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49848714" visible="true" weight="0.3295082" />
       <window_info anchor="bottom" id="Messages" order="11" visible="true" weight="0.06393442" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" weight="0.25" />
@@ -819,7 +823,8 @@
     <MESSAGE value="deneme" />
     <MESSAGE value="tez ekle" />
     <MESSAGE value="düzeltme tamamlandı" />
-    <option name="LAST_COMMIT_MESSAGE" value="düzeltme tamamlandı" />
+    <MESSAGE value="ShowSquarespiececanmove düzeltildi" />
+    <option name="LAST_COMMIT_MESSAGE" value="ShowSquarespiececanmove düzeltildi" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -915,24 +920,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/gui.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="110" lean-forward="true" selection-start-line="110" selection-end-line="110" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/js/örnek pozisyonlar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11356">
+        <state relative-caret-position="426">
           <caret line="668" column="7" selection-start-line="668" selection-start-column="7" selection-end-line="668" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/js/ShowSqPceCanMove.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="96" column="19" lean-forward="true" selection-start-line="96" selection-start-column="19" selection-end-line="96" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/gui.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="110" lean-forward="true" selection-start-line="110" selection-end-line="110" />
+        <state relative-caret-position="259">
+          <caret line="122" lean-forward="true" selection-start-line="122" selection-end-line="122" />
         </state>
       </provider>
     </entry>
