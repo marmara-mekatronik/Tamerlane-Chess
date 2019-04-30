@@ -17,6 +17,7 @@ function T_MovePiece(from,to) {
 
 }
 
+
 function NotCapturedPawnOfPawn(piece,sq) {
 
     var sqOfPofP;
