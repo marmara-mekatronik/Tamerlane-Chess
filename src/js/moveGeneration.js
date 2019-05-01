@@ -39,12 +39,8 @@ function AddPawnCaptureMove(from,to,cap){
 
             AddCaptureMove(MOVE(from, to, cap, 0, MFLAGTOBEADKING));
         }
-        else if( (wPromNumPofP==1 && RanksBrd[Previous_from]==WfromRank && WpiyonP_rank==WpromotionRank  ) ||
-            (bPromNumPofP==1 && RanksBrd[Previous_from]==BfromRank && BpiyonP_rank==BpromotionRank)  ) {
 
-            AddCaptureMove(MOVE(from,to,cap,0,MFLAGFORK));
-
-        } else if( (RanksBrd[from]==WfromRank && GameBoard.side==COLOURS.WHITE) ||
+        else if( (RanksBrd[from]==WfromRank && GameBoard.side==COLOURS.WHITE) ||
             (RanksBrd[from]==BfromRank && GameBoard.side==COLOURS.BLACK)) {
 
             AddCaptureMove(MOVE(from,to,cap,1,0));
@@ -65,19 +61,14 @@ function AddPawnQuietMove(from,to){
         var BpiyonP_rank=RanksBrd[GameBoard.pList[PCEINDEX(PIECES.BpiyonP,0)]];
         var Previous_move=GameBoard.history[GameBoard.hisPly-2].move;
         var Previous_from=FROMSQ(Previous_move);
-        console.log("wPromNumPofP "+wPromNumPofP);
+
 
         if((wPromNumPofP==2 && RanksBrd[Previous_from]==WfromRank && WpiyonP_rank==WpromotionRank) ||
             (bPromNumPofP==2 && RanksBrd[Previous_from]==BfromRank && BpiyonP_rank==BpromotionRank)){
 
             AddQuietMove(MOVE(from,to,PIECES.EMPTY,0,MFLAGTOBEADKING));
         }
-        else if( (wPromNumPofP==1 && RanksBrd[Previous_from]==WfromRank && WpiyonP_rank==WpromotionRank && GameBoard.WforkList.length>0) ||
-            (bPromNumPofP==1 && RanksBrd[Previous_from]==BfromRank && BpiyonP_rank==BpromotionRank && GameBoard.BforkList.length>0) ){
-
-            AddQuietMove(MOVE(from,to,PIECES.EMPTY,0,MFLAGFORK));
-
-        }else if( (RanksBrd[from]==WfromRank && GameBoard.side==COLOURS.WHITE) ||
+        else if( (RanksBrd[from]==WfromRank && GameBoard.side==COLOURS.WHITE) ||
             (RanksBrd[from]==BfromRank && GameBoard.side==COLOURS.BLACK)){
 
             AddQuietMove(MOVE(from,to,PIECES.EMPTY,1,0));
@@ -139,7 +130,6 @@ function SoleKingSwitchPlaceWithAnyPiece() {
             sq=SQ342(index);
 
             piece=GameBoard.pieces[sq];
-            console.log("sq"+sq);
 
             if(PieceColor[piece]==COLOURS.WHITE && SqAttacked(sq,GameBoard.side^1)==Bool.False){
 
@@ -170,165 +160,243 @@ function SoleKingSwitchPlaceWithAnyPiece() {
 
 }
 
-function ForkingList() {
-
-    var rank,file,Windex=0,Bindex=0,sq,sq1,sq2,Wdiagonal,Bdiagonal,fork_sq;
-
-    for(rank=Ranks.Rank_1;rank<=Ranks.Rank_10;rank++){
-
-        for(file=Files.Files_1;file<=Files.Files_11;file++){
-
-            sq=FR2SQ(file,rank);
-
-            if (PieceColor[GameBoard.pieces[sq]] == COLOURS.WHITE){
-                GameBoard.WpceList[Windex] = sq;
-                Windex++;
-            } else if(PieceColor[GameBoard.pieces[sq]] == COLOURS.BLACK){
-                GameBoard.BpceList[Bindex]= sq;
-                Bindex++;
-            }
-        }
-    }
-
-    if(Colors[IndexColorOfPlayer]==COLOURS.WHITE){
-
-        Wdiagonal=16;
-        Bdiagonal=-14;
-    }else{
-        Wdiagonal=-14;
-        Bdiagonal=16;
-    }
-
-    Windex=0;
-    Bindex=0;
-    var index;
-
-    for(index=0;index<GameBoard.BpceList.length;index++){
-
-        sq=GameBoard.BpceList[index];
-        sq1=GameBoard.BpceList[index+1]-2;
-        sq2=GameBoard.BpceList[index+2]-2;
-
-        if(sq==sq1 && RanksBrd[sq] == RanksBrd[sq1]) fork_sq=GameBoard.BpceList[index+1]-Wdiagonal;
-        else if(sq==sq2 && RanksBrd[sq]==RanksBrd[sq2]) fork_sq=GameBoard.BpceList[index+2]-Wdiagonal;
-        else continue;
 
 
-        if(RanksBrd[fork_sq]!=SQUARES.OFF_BOARD){
-
-            if(GameBoard.BlackOnlyKingInGame!=0 && GameBoard.pieces[fork_sq]==GameBoard.BlackOnlyKingInGame) continue;
-
-            GameBoard.WforkList[Windex]=fork_sq;
-            Windex++;
-        }
-    }
-
-    for(index=0;index<GameBoard.WpceList.length;index++) {
-
-        sq=GameBoard.WpceList[index];
-        sq1=GameBoard.WpceList[index + 1] - 2;
-        sq2=GameBoard.WpceList[index + 2] - 2;
-
-        if(sq==sq1 && RanksBrd[sq] == RanksBrd[sq1]) fork_sq=GameBoard.WpceList[index+1]-Bdiagonal;
-        else if(sq==sq2 && RanksBrd[sq]==RanksBrd[sq2]) fork_sq=GameBoard.WpceList[index+2]-Bdiagonal;
-        else continue;
+function ForkingAndImmobile() {
 
 
-        if (RanksBrd[fork_sq] != SQUARES.OFF_BOARD) {
-            if (GameBoard.WhiteOnlyKingInGame != 0 && GameBoard.pieces[fork_sq] == GameBoard.WhiteOnlyKingInGame) continue;
-
-            GameBoard.BforkList[Bindex]=fork_sq;
-            Bindex++;
-        }
-
-    }
-}
-
-
-function MovetoFork() {
-
-    var sq;
     var WsqOfOnlyKing=GameBoard.pList[PCEINDEX(GameBoard.WhiteOnlyKingInGame,0)];
     var BsqOfOnlyKing=GameBoard.pList[PCEINDEX(GameBoard.BlackOnlyKingInGame,0)];
+    var rank,file,Windex=0,Bindex=0,sq,sq1,sq2,diagonal,fork_sq;
+    var index;
+    var PceList;
+    var piece;
+    var ImmobilePceList=[];
+    var movingPceList=[];
+    var move;
 
-    sq=GameBoard.pList[PCEINDEX(PIECES.WpiyonP,0)];
-    console.log("piyonun piyonu "+sq+" nolu karede");
 
-    if(wPromNumPofP==1 && RanksBrd[sq]==WpromotionRank && GameBoard.side==COLOURS.WHITE && SqAttacked(WsqOfOnlyKing,GameBoard.side^1)==Bool.False){
+    var WsqOfPofP=GameBoard.pList[PCEINDEX(PIECES.WpiyonP,0)];
+    var BsqOfPofP=GameBoard.pList[PCEINDEX(PIECES.BpiyonP,0)];
+
+    if(wPromNumPofP==1 && RanksBrd[WsqOfPofP]==WpromotionRank && GameBoard.side==COLOURS.WHITE && SqAttacked(WsqOfOnlyKing,COLOURS.BLACK)==Bool.False){
+
+        
+        for(rank=Ranks.Rank_1;rank<=Ranks.Rank_10;rank++){
+
+            for(file=Files.Files_1;file<=Files.Files_11;file++){
+
+                sq=FR2SQ(file,rank);
+
+                if(PieceColor[GameBoard.pieces[sq]] == COLOURS.BLACK){
+
+                    GameBoard.BpceList[Bindex]= sq;
+                    Bindex++;
+                }
+            }
+        }
+
+        if(Colors[IndexColorOfPlayer]==COLOURS.WHITE) diagonal=16;
+
+        else diagonal=-14;
 
 
-        return Bool.True;
+        for(index=0;index<GameBoard.BpceList.length;index++){
+
+            sq=GameBoard.BpceList[index];
+            sq1=GameBoard.BpceList[index+1]-2;
+            sq2=GameBoard.BpceList[index+2]-2;
+
+
+            if(sq==sq1 && RanksBrd[sq] == RanksBrd[sq1]) fork_sq=GameBoard.BpceList[index+1]-diagonal;
+            else if(sq==sq2 && RanksBrd[sq]==RanksBrd[sq2]) fork_sq=GameBoard.BpceList[index+2]-diagonal;
+            else continue;
+
+
+            if(RanksBrd[fork_sq]!=SQUARES.OFF_BOARD && GameBoard.pieces[fork_sq]!=GameBoard.BlackOnlyKingInGame){
+
+                if (GameBoard.pieces[fork_sq] != PIECES.EMPTY ) {
+
+                    console.log("fork_sq: "+fork_sq);
+                    AddCaptureMove(MOVE(WsqOfPofP,fork_sq,GameBoard.pieces[fork_sq],PIECES.EMPTY,0));
+
+                }
+                else {
+
+                    AddQuietMove(MOVE(WsqOfPofP,fork_sq,PIECES.EMPTY,PIECES.EMPTY,0));
+                }
+
+            }
+        }
+
+        for(index=GameBoard.moveListStart[GameBoard.ply-1];
+            index<GameBoard.moveListStart[GameBoard.ply];index++){
+
+            move=GameBoard.moveList[index];
+
+            if(movingPceList.indexOf(FROMSQ(move))==-1) {
+
+                movingPceList.push(FROMSQ(move));
+
+            }
+        }
+
+        console.log("tüm taşlar "+GameBoard.BpceList);
+        console.log("hareket eden taşlar "+movingPceList);
+
+        PceList=GameBoard.BpceList.concat(movingPceList);
+
+        console.log(PceList);
+
+
+        for(index=0;index<GameBoard.BpceList.length;index++){
+
+            piece=PceList[index];
+            if(PceList.indexOf(piece)==PceList.lastIndexOf(piece)){
+
+                ImmobilePceList.push(piece)
+            }
+
+        }
+
+        console.log(ImmobilePceList);
+
+        for(index=0;index<ImmobilePceList.length;index++){
+
+            for(j=0;j<PawnDiagonal.length;j++){
+
+                ImmobileSq=ImmobilePceList[index]-PawnDiagonal[j];
+
+                if(ImmobileSq!=GameBoard.pList[PCEINDEX(GameBoard.BlackOnlyKingInGame,0)] && ImmobileSq!=WsideCitadel && ImmobileSq!=BsideCitadel){
+
+                    if(GameBoard.pieces[ImmobileSq]==PIECES.EMPTY) AddQuietMove(MOVE(WsqOfPofP,ImmobileSq,PIECES.EMPTY,PIECES.EMPTY,0));
+                    else AddCaptureMove(MOVE(WsqOfPofP,ImmobileSq,GameBoard.pieces[ImmobileSq],PIECES.EMPTY,0));
+                }
+
+            }
+        }
 
     }
 
-    sq=GameBoard.pList[PCEINDEX(PIECES.BpiyonP,0)];
+    else if(bPromNumPofP==1 && RanksBrd[BsqOfPofP]==BpromotionRank && GameBoard.side==COLOURS.BLACK && SqAttacked(BsqOfOnlyKing,GameBoard.side^1)==Bool.False){
 
-    if(bPromNumPofP==1 && RanksBrd[sq]==BpromotionRank && GameBoard.side==COLOURS.BLACK && SqAttacked(BsqOfOnlyKing,GameBoard.side^1)==Bool.False){
 
-        return Bool.True;
+
+
+        for(rank=Ranks.Rank_1;rank<=Ranks.Rank_10;rank++){
+
+            for(file=Files.Files_1;file<=Files.Files_11;file++){
+
+                sq=FR2SQ(file,rank);
+
+                if(PieceColor[GameBoard.pieces[sq]] == COLOURS.WHITE){
+
+                    GameBoard.WpceList[Windex]=sq;
+                    Windex++;
+                }
+            }
+        }
+
+        if(Colors[IndexColorOfPlayer]==COLOURS.WHITE) diagonal=14;
+
+        else diagonal=-16;
+
+
+        for(index=0;index<GameBoard.WpceList.length;index++){
+
+            sq=GameBoard.WpceList[index];
+            sq1=GameBoard.WpceList[index+1]-2;
+            sq2=GameBoard.WpceList[index+2]-2;
+
+
+            if(sq==sq1 && RanksBrd[sq] == RanksBrd[sq1]) fork_sq=GameBoard.WpceList[index+1]+diagonal;
+            else if(sq==sq2 && RanksBrd[sq]==RanksBrd[sq2]) fork_sq=GameBoard.WpceList[index+2]+diagonal;
+            else continue;
+
+
+             if(RanksBrd[fork_sq]!=SQUARES.OFF_BOARD && GameBoard.pieces[fork_sq]!=GameBoard.WhiteOnlyKingInGame){
+
+                 if (GameBoard.pieces[fork_sq] != PIECES.EMPTY) {
+
+
+                     AddCaptureMove(MOVE(BsqOfPofP,fork_sq,GameBoard.pieces[fork_sq],PIECES.EMPTY,0));
+                 }
+                 else {
+                     AddQuietMove(MOVE(BsqOfPofP,fork_sq,PIECES.EMPTY,PIECES.EMPTY,0));
+                 }
+
+             }
+        }
+
+
+        for(index=GameBoard.moveListStart[GameBoard.ply-1];
+            index<GameBoard.moveListStart[GameBoard.ply];index++){
+
+            move=GameBoard.moveList[index];
+
+            if(movingPceList.indexOf(FROMSQ(move))==-1) {
+
+                movingPceList.push(FROMSQ(move));
+            }
+        }
+
+        console.log("tüm taşlar "+GameBoard.WpceList);
+        console.log("hareket eden taşlar "+movingPceList);
+
+        PceList=GameBoard.WpceList.concat(movingPceList);
+
+
+        console.log(PceList);
+
+
+        for(index=0;index<GameBoard.WpceList.length;index++){
+
+            piece=PceList[index];
+            if(PceList.indexOf(piece)==PceList.lastIndexOf(piece)){
+
+                ImmobilePceList.push(piece)
+            }
+
+        }
+
+        console.log(ImmobilePceList);
+        var j,ImmobileSq;
+
+        for(index=0;index<ImmobilePceList.length;index++){
+
+            for(j=0;j<PawnDiagonal.length;j++){
+
+                ImmobileSq=ImmobilePceList[index]+PawnDiagonal[j];
+
+                if(ImmobileSq!=GameBoard.pList[PCEINDEX(GameBoard.WhiteOnlyKingInGame,0)] && ImmobileSq!=WsideCitadel && ImmobileSq!=BsideCitadel){
+
+                    if(GameBoard.pieces[ImmobileSq]==PIECES.EMPTY) AddQuietMove(MOVE(BsqOfPofP,ImmobileSq,PIECES.EMPTY,PIECES.EMPTY,0));
+                    else AddCaptureMove(MOVE(BsqOfPofP,ImmobileSq,GameBoard.pieces[ImmobileSq],PIECES.EMPTY,0));
+                }
+
+            }
+        }
+
     }
 
-    return Bool.False;
+
 }
 
 
 function  GenerationMoves() {
 
-    var index;
-    var sq;
 
     var Move2InitPosPofK=MoveToInitPosPawnofKing();
     var escapeKing=SwitchPlaceOfKing();
     var escapeAdKing=AdKingMoveFromCitadel();
-    var move2Fork=MovetoFork();
 
-
-    if(Move2InitPosPofK==Bool.False && escapeKing==Bool.False && escapeAdKing==Bool.False && move2Fork==Bool.False){
+    if(Move2InitPosPofK==Bool.False && escapeKing==Bool.False && escapeAdKing==Bool.False){
 
         highRankingPiecesMove();
         SoleKingSwitchPlaceWithAnyPiece();
+        ForkingAndImmobile();
 
     }
-    else if(move2Fork==Bool.True){
-
-        ForkingList();
-        GameBoard.moveListStart[GameBoard.ply + 1] = GameBoard.moveListStart[GameBoard.ply];
-        sq=GameBoard.pList[PCEINDEX(PIECES.WpiyonP,0)];
-
-        var fork_sq;
-
-        for(index=0;index<GameBoard.WforkList.length;index++) {
-
-            fork_sq = GameBoard.WforkList[index];
-
-            if (GameBoard.pieces[fork_sq] != PIECES.EMPTY) {
-
-                AddPawnCaptureMove(sq,fork_sq,GameBoard.pieces[fork_sq]);
-
-            } else {
-                AddPawnQuietMove(sq,fork_sq);
-            }
-        }
-
-        sq=GameBoard.pList[PCEINDEX(PIECES.BpiyonP,0)];
-
-        for(index=0;index<GameBoard.BforkList.length;index++){
-
-            fork_sq=GameBoard.BforkList[index];
-
-            if(GameBoard.pieces[fork_sq]!=PIECES.EMPTY){
-
-                AddPawnCaptureMove(sq,fork_sq,GameBoard.pieces[fork_sq]);
-
-            }else{
-                AddPawnQuietMove(sq,fork_sq);
-
-            }
-        }
-    }
-
-
-
 
 }
 

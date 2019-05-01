@@ -226,17 +226,7 @@ function MoveGuiPiece(move,piece) {
         AddGuiPiece(to,PromPce);
 
 
-    } else if((move & MFLAGFORK)!=0 || (move & MFLAGTOBEADKING)!=0){
-
-        console.log("piece "+piece+" to "+to);
-        RemoveGuiPiece(from);
-        AddGuiPiece(to,piece);
-        console.log("to "+to);
-
-    } else if( (move & MFLAGSWITCHKING)!=0 || (move & MFLAGSWITCHANYPIECE)!=0){
-
-
-
+    }else if( (move & MFLAGSWITCHKING)!=0 || (move & MFLAGSWITCHANYPIECE)!=0){
 
 
         var pieceInto=GameBoard.pieces[to];
@@ -256,12 +246,7 @@ function MoveGuiPiece(move,piece) {
         }
 
     }
-    else if( (move & MFLAGMOVEADKINGFROMCITADEL)!=0){
 
-        RemoveGuiPiece(to);
-        AddGuiPiece(to,piece);
-
-    }
 
 }
 

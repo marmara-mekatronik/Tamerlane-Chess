@@ -116,7 +116,6 @@ function ShowSquaresPieceCanMove(from,clickedPiece) {
                 }
             }
         }
-
     });
 }
 
