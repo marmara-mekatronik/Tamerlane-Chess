@@ -16,14 +16,14 @@ function MOVE(from,to ,captured,promoted, flag) {
 
 function AddCaptureMove(move){
     GameBoard.moveList[GameBoard.moveListStart[GameBoard.ply+1]]=move;
-    console.log("index capture: "+GameBoard.moveListStart[GameBoard.ply+1]);
+    //console.log("index capture: "+GameBoard.moveListStart[GameBoard.ply+1]);
     GameBoard.moveScores[GameBoard.moveListStart[GameBoard.ply+1]++]=0;
 }
 
 function AddQuietMove(move){
     GameBoard.moveList[GameBoard.moveListStart[GameBoard.ply+1]]=move;
-    //console.log("index Quiet: "+GameBoard.moveListStart[GameBoard.ply+1]);
-    //console.log("GameBoard.ply+1: "+GameBoard.ply+1);
+   // console.log("index Quiet: "+GameBoard.moveListStart[GameBoard.ply+1]);
+   // console.log("GameBoard.ply+1: "+GameBoard.ply+1);
     //console.log("GameBoard.ply "+GameBoard.ply);
     GameBoard.moveScores[GameBoard.moveListStart[GameBoard.ply+1]++]=0;
 }

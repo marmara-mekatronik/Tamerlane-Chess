@@ -12,16 +12,16 @@ GameBoard.pList= new Array(44*15);
 GameBoard.moveList=new Array(MAXDEPTH*MAXPOSITIONMOVES);//112*1000
 GameBoard.moveScores=new Array(MAXDEPTH*MAXPOSITIONMOVES);
 GameBoard.PosKey=0;
-GameBoard.WhiteKingsInGame=[PIECES.Wsah];
-GameBoard.BlackKingsInGame=[PIECES.Bsah];
+GameBoard.WhiteKingsInGame=[PIECES.WadKing];
+GameBoard.BlackKingsInGame=[PIECES.BadKing];
 GameBoard.WhiteNumberOfKingsInGame=1;
 GameBoard.BlackNumberOfKingsInGame=1;
-GameBoard.WhiteHighestRanKING=PIECES.Wsah;
-GameBoard.BlackHighestRanKING=PIECES.Bsah;
+GameBoard.WhiteHighestRanKING=PIECES.WadKing;
+GameBoard.BlackHighestRanKING=PIECES.BadKing;
 GameBoard.WhiteCounter=0;
 GameBoard.BlackCounter=0;
-GameBoard.WhiteOnlyKingInGame=PIECES.Wsah;
-GameBoard.BlackOnlyKingInGame=PIECES.Bsah;
+GameBoard.WhiteOnlyKingInGame=PIECES.WadKing;
+GameBoard.BlackOnlyKingInGame=PIECES.BadKing;
 GameBoard.WforkList=[];
 GameBoard.BforkList=[];
 GameBoard.WpceList=[];
@@ -40,7 +40,7 @@ function CheckBoard(){
 
     var sq112,t_piece,t_pce_num,sq270;
 
-    for(t_piece=PIECES.WpiyonP;t_piece<=PIECES.BmaceraciSah;t_piece++){
+    for(t_piece=PIECES.WpOfPawn;t_piece<=PIECES.BadKing;t_piece++){
         for(t_pce_num=0;t_pce_num<GameBoard.piecesNUMBER[t_piece];t_pce_num++){
             sq270=GameBoard.pList[PCEINDEX(t_piece,t_pce_num)];
             if(GameBoard.pieces[sq270] != t_piece){
@@ -59,7 +59,7 @@ function CheckBoard(){
        t_pceNum[t_piece]++;
     }
 
-    for(t_piece=PIECES.WpiyonP;t_piece<=PIECES.BmaceraciSah;t_piece++){
+    for(t_piece=PIECES.WpOfPawn;t_piece<=PIECES.BadKing;t_piece++){
 
         if(t_pceNum[t_piece] !=GameBoard.piecesNUMBER[t_piece]){
 
@@ -148,7 +148,7 @@ function GeneratePosKey(){
 
 function PrintPieceLists(){
     var piece,pceNum;
-    for(piece=PIECES.WpiyonP;piece<=PIECES.BmaceraciSah;piece++) {
+    for(piece=PIECES.WpOfPawn;piece<=PIECES.BadKing;piece++) {
         for (pceNum = 0; pceNum < GameBoard.piecesNUMBER[piece]; pceNum++) {
             //console.log(" ccc Piece: " + PceChar[piece] + " on " + PrSq(GameBoard.pList[PCEINDEX(piece, pceNum)]));
             //console.log("mmm  "+PCEINDEX(piece, pceNum));
