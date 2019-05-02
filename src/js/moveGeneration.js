@@ -29,8 +29,8 @@ function AddPawnCaptureMove(from,to,cap){
 
     if(GameBoard.hisPly>11){
 
-        var WpiyonP_rank=RanksBrd[GameBoard.pList[PCEINDEX(PIECES.WpiyonP,0)]];
-        var BpiyonP_rank=RanksBrd[GameBoard.pList[PCEINDEX(PIECES.BpiyonP,0)]];
+        var WpiyonP_rank=RanksBrd[GameBoard.pList[PCEINDEX(PIECES.WpOfPawn,0)]];
+        var BpiyonP_rank=RanksBrd[GameBoard.pList[PCEINDEX(PIECES.BpOfPawn,0)]];
         var Previous_move=GameBoard.history[GameBoard.hisPly-2].move;
         var Previous_from=FROMSQ(Previous_move);
 
@@ -57,8 +57,8 @@ function AddPawnQuietMove(from,to){
 
     if(GameBoard.hisPly>11){
 
-        var WpiyonP_rank=RanksBrd[GameBoard.pList[PCEINDEX(PIECES.WpiyonP,0)]];
-        var BpiyonP_rank=RanksBrd[GameBoard.pList[PCEINDEX(PIECES.BpiyonP,0)]];
+        var WpiyonP_rank=RanksBrd[GameBoard.pList[PCEINDEX(PIECES.WpOfPawn,0)]];
+        var BpiyonP_rank=RanksBrd[GameBoard.pList[PCEINDEX(PIECES.BpOfPawn,0)]];
         var Previous_move=GameBoard.history[GameBoard.hisPly-2].move;
         var Previous_from=FROMSQ(Previous_move);
 
@@ -176,12 +176,12 @@ function ForkingAndImmobile() {
     var move;
 
 
-    var WsqOfPofP=GameBoard.pList[PCEINDEX(PIECES.WpiyonP,0)];
-    var BsqOfPofP=GameBoard.pList[PCEINDEX(PIECES.BpiyonP,0)];
+    var WsqOfPofP=GameBoard.pList[PCEINDEX(PIECES.WpOfPawn,0)];
+    var BsqOfPofP=GameBoard.pList[PCEINDEX(PIECES.BpOfPawn,0)];
 
     if(wPromNumPofP==1 && RanksBrd[WsqOfPofP]==WpromotionRank && GameBoard.side==COLOURS.WHITE && SqAttacked(WsqOfOnlyKing,COLOURS.BLACK)==Bool.False){
 
-        
+
         for(rank=Ranks.Rank_1;rank<=Ranks.Rank_10;rank++){
 
             for(file=Files.Files_1;file<=Files.Files_11;file++){
@@ -412,7 +412,7 @@ function AdKingMoveFromCitadel() {
 
     if(Colors[IndexColorOfPlayer]==COLOURS.WHITE) index=1; else index=-1;
 
-    if(GameBoard.side==COLOURS.WHITE && GameBoard.WhiteHighestRanKING==PIECES.WmaceraciSah && WsqOfKing==WsideCitadel){
+    if(GameBoard.side==COLOURS.WHITE && GameBoard.WhiteHighestRanKING==PIECES.WadKing && WsqOfKing==WsideCitadel){
         GameBoard.moveListStart[GameBoard.ply + 1] = GameBoard.moveListStart[GameBoard.ply];
         new_sq=WpOfpInitSq;
 
@@ -427,7 +427,7 @@ function AdKingMoveFromCitadel() {
 
             new_sq+=index;
         }
-    }else if(GameBoard.side==COLOURS.BLACK && GameBoard.BlackHighestRanKING==PIECES.BmaceraciSah && BsqOfKing==BsideCitadel){
+    }else if(GameBoard.side==COLOURS.BLACK && GameBoard.BlackHighestRanKING==PIECES.BadKing && BsqOfKing==BsideCitadel){
         GameBoard.moveListStart[GameBoard.ply + 1] = GameBoard.moveListStart[GameBoard.ply];
 
         new_sq=BpOfpInitSq;
@@ -488,8 +488,8 @@ function SwitchPlaceOfKing() {
 function MoveToInitPosPawnofKing() {
 
 
-    var Wsq=GameBoard.pList[PCEINDEX(PIECES.WpiyonP,0)];
-    var Bsq=GameBoard.pList[PCEINDEX(PIECES.BpiyonP,0)];
+    var Wsq=GameBoard.pList[PCEINDEX(PIECES.WpOfPawn,0)];
+    var Bsq=GameBoard.pList[PCEINDEX(PIECES.BpOfPawn,0)];
     var WsqOfOnlyKing=GameBoard.pList[PCEINDEX(GameBoard.WhiteOnlyKingInGame,0)];
     var BsqOfOnlyKing=GameBoard.pList[PCEINDEX(GameBoard.BlackOnlyKingInGame,0)];
     var Previous_move;
@@ -506,7 +506,7 @@ function MoveToInitPosPawnofKing() {
 
             console.log("Previous_from "+Previous_from);
 
-            sq=GameBoard.pList[PCEINDEX(PIECES.WpiyonP,0)];
+            sq=GameBoard.pList[PCEINDEX(PIECES.WpOfPawn,0)];
 
             if(GameBoard.pieces[WinitSqPofK]==PIECES.EMPTY) AddQuietMove(MOVE(sq,WinitSqPofK,0,PIECES.EMPTY,MFLAGTOBEADKING));
             else AddCaptureMove(MOVE(sq,WinitSqPofK,GameBoard.pieces[WinitSqPofK],PIECES.EMPTY,MFLAGTOBEADKING));
@@ -522,7 +522,7 @@ function MoveToInitPosPawnofKing() {
 
         if(RanksBrd[Previous_from]==BfromRank){
 
-            sq=GameBoard.pList[PCEINDEX(PIECES.BpiyonP,0)];
+            sq=GameBoard.pList[PCEINDEX(PIECES.BpOfPawn,0)];
 
             if(GameBoard.pieces[BinitSqPofK]==PIECES.EMPTY) AddQuietMove(MOVE(sq,BinitSqPofK,0,PIECES.EMPTY,MFLAGTOBEADKING));
             else AddCaptureMove(MOVE(sq,BinitSqPofK,GameBoard.pieces[BinitSqPofK],PIECES.EMPTY,MFLAGTOBEADKING));
@@ -765,7 +765,7 @@ function highRankingPiecesMove() {
 
 
 
-                        if( (new_sq==WsideCitadel && GameBoard.pieces[sq]!=PIECES.WmaceraciSah) ||
+                        if( (new_sq==WsideCitadel && GameBoard.pieces[sq]!=PIECES.WadKing) ||
                             (new_sq==BsideCitadel && GameBoard.pieces[sq]!=GameBoard.WhiteHighestRanKING) ){
 
                             continue;
@@ -775,7 +775,7 @@ function highRankingPiecesMove() {
 
                     }else if(PieceColor[GameBoard.pieces[sq]]== COLOURS.BLACK && PieceColor[GameBoard.pieces[new_sq]] == COLOURS.WHITE){
 
-                        if( (new_sq==BsideCitadel && GameBoard.pieces[sq]!=PIECES.BmaceraciSah) ||
+                        if( (new_sq==BsideCitadel && GameBoard.pieces[sq]!=PIECES.BadKing) ||
                             (new_sq==WsideCitadel && GameBoard.pieces[sq]!=GameBoard.BlackHighestRanKING) ){
 
                             continue;
@@ -788,7 +788,7 @@ function highRankingPiecesMove() {
                 else {
                     if(PieceColor[GameBoard.pieces[sq]]== COLOURS.WHITE){
 
-                        if( (new_sq==WsideCitadel  && GameBoard.pieces[sq]!=PIECES.WmaceraciSah) ||
+                        if( (new_sq==WsideCitadel  && GameBoard.pieces[sq]!=PIECES.WadKing) ||
                             (new_sq==BsideCitadel && GameBoard.pieces[sq]!=GameBoard.WhiteHighestRanKING)){
 
                             continue;
@@ -798,7 +798,7 @@ function highRankingPiecesMove() {
 
                     }else if(PieceColor[GameBoard.pieces[sq]]== COLOURS.BLACK){
 
-                        if( (new_sq==BsideCitadel && GameBoard.pieces[sq]!=PIECES.BmaceraciSah) ||
+                        if( (new_sq==BsideCitadel && GameBoard.pieces[sq]!=PIECES.BadKing) ||
                             (new_sq==WsideCitadel && GameBoard.pieces[sq]!=GameBoard.BlackHighestRanKING) ){
 
                             continue;

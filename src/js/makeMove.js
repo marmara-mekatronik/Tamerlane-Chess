@@ -91,7 +91,7 @@ function ClearKing(piece) {
             }
         }
         if(piece==GameBoard.WhiteHighestRanKING){
-            if(GameBoard.WhiteKingsInGame.length==2) GameBoard.WhiteHighestRanKING=PIECES.Wprens;
+            if(GameBoard.WhiteKingsInGame.length==2) GameBoard.WhiteHighestRanKING=PIECES.Wprince;
             else if(GameBoard.WhiteKingsInGame.length==1){
 
                 GameBoard.WhiteHighestRanKING=GameBoard.WhiteKingsInGame[0];
@@ -108,7 +108,7 @@ function ClearKing(piece) {
             }
         }
         if(piece==GameBoard.BlackHighestRanKING){
-            if(GameBoard.BlackKingsInGame.length==2) GameBoard.BlackHighestRanKING=PIECES.Bprens;
+            if(GameBoard.BlackKingsInGame.length==2) GameBoard.BlackHighestRanKING=PIECES.Bprince;
             else if(GameBoard.BlackKingsInGame.length==1){
 
                 GameBoard.BlackHighestRanKING=GameBoard.BlackKingsInGame[0];
@@ -121,7 +121,7 @@ function ClearKing(piece) {
 
 function AddKing(promPiece) {
 
-    if(promPiece==PIECES.Wprens || promPiece==PIECES.WmaceraciSah){
+    if(promPiece==PIECES.Wprince || promPiece==PIECES.WadKing){
 
         GameBoard.WhiteOnlyKingInGame=PIECES.EMPTY;
         GameBoard.WhiteNumberOfKingsInGame++;
@@ -129,7 +129,7 @@ function AddKing(promPiece) {
         LoopKingsIndex[1]++;
         LoopKings.unshift(promPiece);
 
-    }else if(promPiece==PIECES.Bprens || promPiece==PIECES.BmaceraciSah){
+    }else if(promPiece==PIECES.Bprince || promPiece==PIECES.BadKing){
 
         GameBoard.BlackOnlyKingInGame=PIECES.EMPTY;
         GameBoard.BlackNumberOfKingsInGame++;
@@ -146,7 +146,7 @@ function SoleKingMustGetOutOfOpponnetCitadel(side) {
 
 
 
-    if( GameBoard.WhiteOnlyKingInGame!=PIECES.Wsah && WsqOfKing==BsideCitadel && side==COLOURS.WHITE){
+    if( GameBoard.WhiteOnlyKingInGame!=PIECES.Wking && WsqOfKing==BsideCitadel && side==COLOURS.WHITE){
 
         for(index=0;index<BkomsuOfCitadel.length;index++){
 
@@ -160,7 +160,7 @@ function SoleKingMustGetOutOfOpponnetCitadel(side) {
             }
         }
 
-    } else if(GameBoard.BlackOnlyKingInGame!=PIECES.Bsah && BsqOfKing==WsideCitadel && side==COLOURS.BLACK){
+    } else if(GameBoard.BlackOnlyKingInGame!=PIECES.Bking && BsqOfKing==WsideCitadel && side==COLOURS.BLACK){
 
         for(index=0;index<WkomsuOfCitadel.length;index++){
 
@@ -286,39 +286,31 @@ function TakePromoted(PromPce) {
 
     switch (PromPce) {
 
-        case PIECES.WpiyonP : PawnOf=PIECES.WpiyonP; break;
-        case PIECES.WmaceraciSah:
-            PawnOf=PIECES.WpiyonP;
-            break;
-        case PIECES.Wkale: PawnOf=PIECES.WkaleP; break;
-        case PIECES.Wvezir: PawnOf=PIECES.WvezirP; break;
-        case PIECES.Wgeneral: PawnOf=PIECES.WgeneralP; break;
-        case PIECES.Wat: PawnOf=PIECES.WatP; break;
-        case PIECES.Wzurafa: PawnOf=PIECES.WzurafaP; break;
-        case PIECES.Wdebbabe: PawnOf=PIECES.WdebbabeP; break;
-        case PIECES.Wdeve: PawnOf=PIECES.WdeveP; break;
-        case PIECES.Wprens:
-            PawnOf=PIECES.WsahP;
-            break;
-        case PIECES.Wmancinik: PawnOf=PIECES.WmancinikP; break;
-        case PIECES.Wfil:  PawnOf=PIECES.WfilP; break;
+        case PIECES.WpOfPawn: PawnOf=PIECES.WpOfPawn; break;
+        case PIECES.WadKing: PawnOf=PIECES.WpOfPawn; break;
+        case PIECES.Wrook: PawnOf=PIECES.WpOfRook; break;
+        case PIECES.Wadvisor: PawnOf=PIECES.WpOfAdvisor; break;
+        case PIECES.Wminister: PawnOf=PIECES.WpOfMinister; break;
+        case PIECES.Wknight: PawnOf=PIECES.WpOfKnight; break;
+        case PIECES.Wgiraffe: PawnOf=PIECES.WpOfGiraffe; break;
+        case PIECES.Wwarengine: PawnOf=PIECES.WpOfWarengine; break;
+        case PIECES.Wcamel: PawnOf=PIECES.WpOfCamel; break;
+        case PIECES.Wprince: PawnOf=PIECES.WpOfKing; break;
+        case PIECES.Wcatapult: PawnOf=PIECES.WpOfCatapult; break;
+        case PIECES.Welephant:  PawnOf=PIECES.WpOfElephant; break;
 
-        case PIECES.BpiyonP:  PawnOf=PIECES.BpiyonP; break;
-        case PIECES.BmaceraciSah:
-            PawnOf=PIECES.BpiyonP;
-            break;
-        case PIECES.Bkale: PawnOf=PIECES.BkaleP; break;
-        case PIECES.Bvezir: PawnOf=PIECES.BvezirP; break;
-        case PIECES.Bgeneral: PawnOf=PIECES.BgeneralP; break;
-        case PIECES.Bat: PawnOf=PIECES.BatP; break;
-        case PIECES.Bzurafa: PawnOf=PIECES.BzurafaP; break;
-        case PIECES.Bdebbabe: PawnOf=PIECES.BdebbabeP; break;
-        case PIECES.Bdeve: PawnOf=PIECES.BdeveP; break;
-        case PIECES.Bprens:
-            PawnOf=PIECES.BsahP;
-            break;
-        case PIECES.Bmancinik: PawnOf=PIECES.BmancinikP; break;
-        case PIECES.Bfil: PawnOf=PIECES.BfilP; break;
+        case PIECES.BpOfPawn:  PawnOf=PIECES.BpOfPawn; break;
+        case PIECES.BadKing: PawnOf=PIECES.BpOfPawn; break;
+        case PIECES.Brook: PawnOf=PIECES.BpOfRook; break;
+        case PIECES.Badvisor: PawnOf=PIECES.BpOfAdvisor; break;
+        case PIECES.Bminister: PawnOf=PIECES.BpOfMinister; break;
+        case PIECES.Bknight: PawnOf=PIECES.BpOfKnight; break;
+        case PIECES.Bgiraffe: PawnOf=PIECES.Bgiraffe; break;
+        case PIECES.Bwarengine: PawnOf=PIECES.BpOfWarengine; break;
+        case PIECES.Bcamel: PawnOf=PIECES.BpOfCamel; break;
+        case PIECES.Bprince:PawnOf=PIECES.BpOfKing;break;
+        case PIECES.Bcatapult: PawnOf=PIECES.BpOfCatapult; break;
+        case PIECES.Belephant: PawnOf=PIECES.Belephant; break;
 
     }
 
@@ -330,47 +322,43 @@ function Promoted(piece) {
 
     var PromPiece;
 
-    if(piece==PIECES.WpiyonP && wPromNumPofP==2){
-        PromPiece=PIECES.WmaceraciSah;
-        GameBoard.pList[PCEINDEX(PIECES.WpiyonP,0)]=PIECES.EMPTY;
+    if(piece==PIECES.WpOfPawn && wPromNumPofP==2){
+        PromPiece=PIECES.WadKing;
+        GameBoard.pList[PCEINDEX(PIECES.WpOfPawn,0)]=PIECES.EMPTY;
         return PromPiece;
     }
-    else if(piece==PIECES.BpiyonP && bPromNumPofP==2){
-        PromPiece=PIECES.BmaceraciSah;
-        GameBoard.pList[PCEINDEX(PIECES.BpiyonP,0)]=PIECES.EMPTY;
+    else if(piece==PIECES.BpOfPawn && bPromNumPofP==2){
+        PromPiece=PIECES.BadKing;
+        GameBoard.pList[PCEINDEX(PIECES.BpOfPawn,0)]=PIECES.EMPTY;
         return PromPiece;
     }
 
 
     switch (piece) {
 
-        case PIECES.WpiyonP: PromPiece=PIECES.WpiyonP; break;
-        case PIECES.WkaleP: PromPiece=PIECES.Wkale; break;
-        case PIECES.WvezirP: PromPiece=PIECES.Wvezir; break;
-        case PIECES.WgeneralP: PromPiece=PIECES.Wgeneral; break;
-        case PIECES.WatP: PromPiece=PIECES.Wat; break;
-        case PIECES.WzurafaP: PromPiece=PIECES.Wzurafa; break;
-        case PIECES.WdebbabeP: PromPiece=PIECES.Wdebbabe; break;
-        case PIECES.WdeveP: PromPiece=PIECES.Wdeve; break;
-        case PIECES.WsahP:
-            PromPiece=PIECES.Wprens;
-            break;
-        case PIECES.WmancinikP: PromPiece=PIECES.Wmancinik; break;
-        case PIECES.WfilP:  PromPiece=PIECES.Wfil; break;
+        case PIECES.WpOfPawn: PromPiece=PIECES.WpOfPawn; break;
+        case PIECES.WpOfRook: PromPiece=PIECES.Wrook; break;
+        case PIECES.WpOfAdvisor: PromPiece=PIECES.Wadvisor; break;
+        case PIECES.WpOfMinister: PromPiece=PIECES.Wminister; break;
+        case PIECES.WpOfKnight: PromPiece=PIECES.Wknight; break;
+        case PIECES.Wgiraffe: PromPiece=PIECES.WpOfGiraffe; break;
+        case PIECES.WpOfWarengine: PromPiece=PIECES.Wwarengine; break;
+        case PIECES.WpOfCamel: PromPiece=PIECES.Wcamel; break;
+        case PIECES.WpOfKing:PromPiece=PIECES.Wprince; break;
+        case PIECES.WpOfCatapult: PromPiece=PIECES.Wcatapult; break;
+        case PIECES.WpOfElephant:  PromPiece=PIECES.Welephant; break;
 
-        case PIECES.BpiyonP: PromPiece=PIECES.BpiyonP; break;
-        case PIECES.BkaleP: PromPiece=PIECES.Bkale; break;
-        case PIECES.BvezirP: PromPiece=PIECES.Bvezir; break;
-        case PIECES.BgeneralP: PromPiece=PIECES.Bgeneral; break;
-        case PIECES.BatP: PromPiece=PIECES.Bat; break;
-        case PIECES.BzurafaP: PromPiece=PIECES.Bzurafa; break;
-        case PIECES.BdebbabeP: PromPiece=PIECES.Bdebbabe; break;
-        case PIECES.BdeveP: PromPiece=PIECES.Bdeve; break;
-        case PIECES.BsahP:
-            PromPiece=PIECES.Bprens;
-            break;
-        case PIECES.BmancinikP: PromPiece=PIECES.Bmancinik; break;
-        case PIECES.BfilP: PromPiece=PIECES.Bfil; break;
+        case PIECES.BpOfPawn: PromPiece=PIECES.BpOfPawn; break;
+        case PIECES.BpOfRook: PromPiece=PIECES.Brook; break;
+        case PIECES.BpOfAdvisor: PromPiece=PIECES.Badvisor; break;
+        case PIECES.BpOfMinister: PromPiece=PIECES.Bminister; break;
+        case PIECES.BpOfKnight: PromPiece=PIECES.Bknight; break;
+        case PIECES.BpOfGiraffe: PromPiece=PIECES.Bgiraffe; break;
+        case PIECES.BpOfWarengine: PromPiece=PIECES.Bwarengine; break;
+        case PIECES.BpOfCamel: PromPiece=PIECES.Bcamel; break;
+        case PIECES.BpOfKing:PromPiece=PIECES.Bprince; break;
+        case PIECES.BpOfBishop: PromPiece=PIECES.Bbishop; break;
+        case PIECES.BpOfElephant: PromPiece=PIECES.Belephant; break;
 
     }
 

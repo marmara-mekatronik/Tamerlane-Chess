@@ -40,7 +40,7 @@ function SetInitialBoardPieces() {
         sq270=SQ342(sq);
         piece=GameBoard.pieces[sq270];
 
-        if(piece >=PIECES.WpiyonP && piece<=PIECES.BmaceraciSah){
+        if(piece >=PIECES.WpOfPawn && piece<=PIECES.BadKing){
 
             AddGuiPiece(sq270,piece);
         }
@@ -213,12 +213,12 @@ function MoveGuiPiece(move,piece) {
     if( (PROM(move)) ==1 ){
 
         var PromPce=Promoted(piece);
-        if(PromPce==PIECES.WpiyonP){
+        if(PromPce==PIECES.WpOfPawn){
 
             wPromNumPofP++;
 
         }
-        else if(PromPce==PIECES.BpiyonP){
+        else if(PromPce==PIECES.BpOfPawn){
 
             bPromNumPofP++;
         }

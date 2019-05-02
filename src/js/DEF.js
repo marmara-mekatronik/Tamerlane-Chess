@@ -1,18 +1,20 @@
-var PIECES={EMPTY:0, WpiyonP:1, WdebbabeP:2, WdeveP:3, WfilP:4, WgeneralP:5, WsahP:6, WvezirP:7, WzurafaP:8, WmancinikP:9, WatP:10, WkaleP:11,
-    Wkale:12, Wat:13, Wmancinik:14, Wzurafa:15, Wgeneral:16, Wsah:17, Wvezir:18, Wfil:19, Wdeve:20, Wdebbabe:21,
-    BpiyonP:22, BdebbabeP:23, BdeveP:24, BfilP:25, BgeneralP:26, BsahP:27, BvezirP:28, BzurafaP:29, BmancinikP:30, BatP:31, BkaleP:32,
-    Bkale:33, Bat:34, Bmancinik:35, Bzurafa:36, Bgeneral:37, Bsah:38, Bvezir:39, Bfil:40, Bdeve:41, Bdebbabe:42,Wprens:43,
-    WmaceraciSah:44,Bprens:45,BmaceraciSah:46};
+var PIECES={EMPTY:0, WpOfPawn:1, WpOfWarengine:2, WpOfCamel:3, WpOfElephant:4, WpOfMinister:5, WpOfKing:6, WpOfAdvisor:7, WpOfGiraffe:8, WpOfCatapult:9, WpOfKnight:10, WpOfRook:11,
+    Wrook:12, Wknight:13, Wcatapult:14, Wgiraffe:15, Wminister:16, Wking:17, Wadvisor:18, Welephant:19, Wcamel:20, Wwarengine:21,
+    BpOfPawn:22, BpOfWarengine:23, BpOfCamel:24, BpOfElephant:25, BpOfMinister:26, BpOfKing:27, BpOfAdvisor:28, BpOfGiraffe:29, BpOfCatapult:30, BpOfKnight:31, BpOfRook:32,
+    Brook:33, Bknight:34, Bcatapult:35, Bgiraffe:36, Bminister:37, Bking:38, Badvisor:39, Belephant:40, Bcamel:41, Bwarengine:42,Wprince:43,
+    WadKing:44,Bprince:45,BadKing:46};
 
 
-var piyonlar=[PIECES.WpiyonP,PIECES.WmancinikP,PIECES.WdeveP,PIECES.WfilP,PIECES.WgeneralP,PIECES.WsahP,PIECES.WvezirP,PIECES.WzurafaP
-    ,PIECES.WdebbabeP,PIECES.WatP,PIECES.WkaleP
-    ,PIECES.BpiyonP,PIECES.BmancinikP,PIECES.BdeveP,PIECES.BfilP,PIECES.BgeneralP,PIECES.BsahP,PIECES.BvezirP,PIECES.BzurafaP
-    ,PIECES.BdebbabeP,PIECES.BatP,PIECES.BkaleP];
-var WhitePawns=[PIECES.WpiyonP,PIECES.WmancinikP,PIECES.WdeveP,PIECES.WfilP,PIECES.WgeneralP,PIECES.WsahP,PIECES.WvezirP,PIECES.WzurafaP
-    ,PIECES.WdebbabeP,PIECES.WatP,PIECES.WkaleP];
-var BlackPawns=[PIECES.BpiyonP,PIECES.BmancinikP,PIECES.BdeveP,PIECES.BfilP,PIECES.BgeneralP,PIECES.BsahP,PIECES.BvezirP,PIECES.BzurafaP
-    ,PIECES.BdebbabeP,PIECES.BatP,PIECES.BkaleP];
+var piyonlar=[PIECES.WpOfPawn,PIECES.WpOfWarengine,PIECES.WpOfCamel,PIECES.WpOfElephant,PIECES.WpOfMinister,PIECES.WpOfKing,PIECES.WpOfAdvisor,
+     PIECES.WpOfGiraffe,PIECES.WpOfCatapult,PIECES.WpOfKnight,PIECES.WpOfRook
+    ,PIECES.BpOfPawn,PIECES.BpOfWarengine,PIECES.BpOfCamel,PIECES.BpOfElephant,PIECES.BpOfMinister,PIECES.BpOfKing,PIECES.BpOfAdvisor,PIECES.BpOfGiraffe
+    ,PIECES.BpOfCatapult,PIECES.BpOfKnight,PIECES.BpOfRook];
+
+var WhitePawns=[PIECES.WpOfPawn,PIECES.WpOfWarengine,PIECES.WpOfCamel,PIECES.WpOfElephant,PIECES.WpOfMinister,PIECES.WpOfKing,PIECES.WpOfAdvisor,
+    PIECES.WpOfGiraffe,PIECES.WpOfCatapult,PIECES.WpOfKnight,PIECES.WpOfRook];
+
+var BlackPawns=[PIECES.BpOfPawn,PIECES.BpOfWarengine,PIECES.BpOfCamel,PIECES.BpOfElephant,PIECES.BpOfMinister,PIECES.BpOfKing,PIECES.BpOfAdvisor,
+    PIECES.BpOfGiraffe,PIECES.BpOfCatapult,PIECES.BpOfKnight,PIECES.BpOfRook];
 
 var BRD_SQ_NUM=270;
 
