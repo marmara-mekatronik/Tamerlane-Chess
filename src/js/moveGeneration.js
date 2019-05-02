@@ -182,7 +182,8 @@ function ForkingAndImmobile() {
     var WsqOfPofP=GameBoard.pList[PCEINDEX(PIECES.WpOfPawn,0)];
     var BsqOfPofP=GameBoard.pList[PCEINDEX(PIECES.BpOfPawn,0)];
 
-    if(wPromNumPofP==1 && RanksBrd[WsqOfPofP]==WpromotionRank && GameBoard.side==COLOURS.WHITE && SqAttacked(WsqOfOnlyKing,COLOURS.BLACK)==Bool.False){
+    if(wPromNumPofP==1 && RanksBrd[WsqOfPofP]==WpromotionRank &&
+        GameBoard.side==COLOURS.WHITE && SqAttacked(WsqOfOnlyKing,COLOURS.BLACK)==Bool.False){
 
 
         for(rank=Ranks.Rank_1;rank<=Ranks.Rank_10;rank++){
@@ -281,9 +282,8 @@ function ForkingAndImmobile() {
 
     }
 
-    else if(bPromNumPofP==1 && RanksBrd[BsqOfPofP]==BpromotionRank && GameBoard.side==COLOURS.BLACK && SqAttacked(BsqOfOnlyKing,GameBoard.side^1)==Bool.False){
-
-
+    else if(bPromNumPofP==1 && RanksBrd[BsqOfPofP]==BpromotionRank &&
+        GameBoard.side==COLOURS.BLACK && SqAttacked(BsqOfOnlyKing,GameBoard.side^1)==Bool.False){
 
 
         for(rank=Ranks.Rank_1;rank<=Ranks.Rank_10;rank++){

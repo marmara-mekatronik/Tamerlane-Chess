@@ -119,6 +119,7 @@ $(document).on("click",".Square", function (e) {
         UserMove.to= ClickedSquare(e.pageX,e.pageY);
         MakeUserMove();
     }
+    console.log("deve: "+GameBoard.pList[PCEINDEX(PIECES.Wcamel,0)]);
 
 });
 
@@ -144,8 +145,6 @@ function MakeUserMove() {
         console.log("SAH  "+GameBoard.pList[PCEINDEX(GameBoard.WhiteHighestRanKING,0)]+" NOLU KAREDE");
         console.log("WsoleKingSwitchPlacePiece "+WsoleKingSwitchPlacePiece);
         console.log("BsoleKingSwitchPlacePiece "+BsoleKingSwitchPlacePiece);
-
-
 
         DeSelected(UserMove.from);
         DeSelected(UserMove.to);
@@ -238,7 +237,6 @@ function MoveGuiPiece(move,piece) {
 
 
         if((move & MFLAGSWITCHANYPIECE)!=0){
-
 
             console.log("şah herhangi bir taş ile yer değişti");
             if(PieceColor[pieceInto]==COLOURS.WHITE) WsoleKingSwitchPlacePiece++;
