@@ -261,7 +261,7 @@ function ParseFen(fen){
             case 'v' :piece=PIECES.Badvisor; break;
 
             case 'P' :piece=PIECES.WpOfPawn; break;
-            case 'B' :piece=PIECES.Welephant; break;
+            case 'B' :piece=PIECES.WpOfElephant; break;
             case 'C' :piece=PIECES.WpOfCamel; break;
             case 'X' :piece=PIECES.WpOfWarengine; break;
             case 'R' :piece=PIECES.WpOfRook; break;

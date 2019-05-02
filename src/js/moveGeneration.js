@@ -16,11 +16,15 @@ function MOVE(from,to ,captured,promoted, flag) {
 
 function AddCaptureMove(move){
     GameBoard.moveList[GameBoard.moveListStart[GameBoard.ply+1]]=move;
+    console.log("index capture: "+GameBoard.moveListStart[GameBoard.ply+1]);
     GameBoard.moveScores[GameBoard.moveListStart[GameBoard.ply+1]++]=0;
 }
 
 function AddQuietMove(move){
     GameBoard.moveList[GameBoard.moveListStart[GameBoard.ply+1]]=move;
+    //console.log("index Quiet: "+GameBoard.moveListStart[GameBoard.ply+1]);
+    //console.log("GameBoard.ply+1: "+GameBoard.ply+1);
+    //console.log("GameBoard.ply "+GameBoard.ply);
     GameBoard.moveScores[GameBoard.moveListStart[GameBoard.ply+1]++]=0;
 }
 
@@ -157,7 +161,6 @@ function SoleKingSwitchPlaceWithAnyPiece() {
             }
         }
     }
-
 }
 
 
@@ -469,7 +472,7 @@ function SwitchPlaceOfKing() {
         return Bool.True;
 
     }else if(GameBoard.side==COLOURS.BLACK && BsqOfKing==WsideCitadel && GameBoard.BlackKingsInGame.length>1){
-
+        GameBoard.moveListStart[GameBoard.ply + 1] = GameBoard.moveListStart[GameBoard.ply];
         for(index=0;index<GameBoard.BlackKingsInGame.length;index++){
 
             pce=GameBoard.BlackKingsInGame[index];
@@ -548,6 +551,7 @@ function highRankingPiecesMove() {
     var j;
     GameBoard.moveListStart[GameBoard.ply + 1] = GameBoard.moveListStart[GameBoard.ply];
 
+
     for(index=0;index<WhitePawns.length;index++){
         sq = GameBoard.pList[PCEINDEX(WhitePawns[index], 0)];
 
@@ -595,7 +599,7 @@ function highRankingPiecesMove() {
                 Direction = PieceDirection[Pce][index];
 
                 new_sq = sq + Direction;
-               
+
                 if (SQOFFBOARD(new_sq) == Bool.True || new_sq==WopponetCitadel || new_sq==WsideCitadel) {
 
                     continue;
