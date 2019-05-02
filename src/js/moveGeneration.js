@@ -595,13 +595,8 @@ function highRankingPiecesMove() {
                 Direction = PieceDirection[Pce][index];
 
                 new_sq = sq + Direction;
-
-                if (SQOFFBOARD(new_sq) == Bool.True) {
-
-                    continue;
-                }
-
-                if(new_sq==WopponetCitadel || new_sq==WsideCitadel){
+               
+                if (SQOFFBOARD(new_sq) == Bool.True || new_sq==WopponetCitadel || new_sq==WsideCitadel) {
 
                     continue;
                 }

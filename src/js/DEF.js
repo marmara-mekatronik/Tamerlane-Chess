@@ -232,18 +232,18 @@ var PieceDirection=[0,0,0,0,0,0,0,0,0,0,0,0,VEZIR_direction,AT_direction,MANCINI
 var FilesBrd = new Array(BRD_SQ_NUM);
 var RanksBrd = new Array(BRD_SQ_NUM);
 
-var LoopNonSlidePieces=[PIECES.Wvezir, PIECES.Wgeneral,PIECES.Wat,PIECES.Wfil,PIECES.Wdeve,PIECES.Wdebbabe,0,
-    PIECES.Bvezir, PIECES.Bgeneral,PIECES.Bat,PIECES.Bfil,PIECES.Bdeve,PIECES.Bdebbabe,0];
+var LoopNonSlidePieces=[PIECES.Wadvisor, PIECES.Wminister,PIECES.Wknight,PIECES.Welephant,PIECES.Wcamel,PIECES.Wwarengine,0,
+    PIECES.Badvisor, PIECES.Bminister,PIECES.Bknight,PIECES.Belephant,PIECES.Bcamel,PIECES.Bwarengine,0];
 var LoopNonSlideIndex=[0,7];
 
-var LoopKings=[PIECES.Wsah,0,PIECES.Bsah,0];
+var LoopKings=[PIECES.Wking,0,PIECES.Bking,0];
 var LoopKingsIndex=[0,2];
 
-var LoopSlideKale=[PIECES.Wkale,0,PIECES.Bkale,0];
+var LoopSlideKale=[PIECES.Wrook,0,PIECES.Brook,0];
 var LoopSlideKaleIndex=[0,2];
-var LoopSlideZurafa=[PIECES.Wzurafa,0,PIECES.Bzurafa,0];
+var LoopSlideZurafa=[PIECES.Wgiraffe,0,PIECES.Bgiraffe,0];
 var LoopSlideZurafaIndex=[0,2];
-var LoopSlideMancinik=[PIECES.Wmancinik,0,PIECES.Bmancinik,0];
+var LoopSlideMancinik=[PIECES.Wcatapult,0,PIECES.Bcatapult,0];
 var LoopSlideMancinikIndex=[0,2];
 
 

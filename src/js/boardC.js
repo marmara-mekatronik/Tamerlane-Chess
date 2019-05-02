@@ -239,12 +239,12 @@ function ParseFen(fen){
         switch ((fen[fenCnt])) {
 
             case 'p' :piece=PIECES.BpOfPawn; break;
-            case 'b' :piece=PIECES.BpOfWarengine; break;
+            case 'b' :piece=PIECES.BpOfElephant; break;
             case 'c' :piece=PIECES.BpOfCamel; break;
-            case 'x' :piece=PIECES.BpOfElephant; break;
+            case 'x' :piece=PIECES.BpOfWarengine; break;
             case 'r' :piece=PIECES.BpOfRook; break;
             case 'n' :piece=PIECES.BpOfKnight; break;
-            case 't' :piece=PIECES.BpOfBishop; break;
+            case 't' :piece=PIECES.BpOfCatapult; break;
             case 'h' :piece=PIECES.BpOfGiraffe; break;
             case 'y' :piece=PIECES.BpOfMinister; break;
             case 'q' :piece=PIECES.BpOfKing; break;
@@ -254,19 +254,19 @@ function ParseFen(fen){
             case 'i' :piece=PIECES.Bwarengine; break;
             case 'k' :piece=PIECES.Brook; break;
             case 'a' :piece=PIECES.Bknight; break;
-            case 'm' :piece=PIECES.Bbishop; break;
+            case 'm' :piece=PIECES.Bcatapult; break;
             case 'z' :piece=PIECES.Bgiraffe; break;
             case 'g' :piece=PIECES.Bminister; break;
             case 's' :piece=PIECES.Bking; break;
             case 'v' :piece=PIECES.Badvisor; break;
 
             case 'P' :piece=PIECES.WpOfPawn; break;
-            case 'B' :piece=PIECES.WpOfWarengine; break;
+            case 'B' :piece=PIECES.Welephant; break;
             case 'C' :piece=PIECES.WpOfCamel; break;
-            case 'X' :piece=PIECES.WpOfElephant; break;
+            case 'X' :piece=PIECES.WpOfWarengine; break;
             case 'R' :piece=PIECES.WpOfRook; break;
             case 'N' :piece=PIECES.WpOfKnight; break;
-            case 'T' :piece=PIECES.WpOfBishop; break;
+            case 'T' :piece=PIECES.WpOfCatapult; break;
             case 'H' :piece=PIECES.WpOfGiraffe; break;
             case 'Y' :piece=PIECES.WpOfMinister; break;
             case 'Q' :piece=PIECES.WpOfKing; break;
@@ -276,7 +276,7 @@ function ParseFen(fen){
             case 'I' :piece=PIECES.Wwarengine; break;
             case 'K' :piece=PIECES.Wrook; break;
             case 'A' :piece=PIECES.Wknight; break;
-            case 'M' :piece=PIECES.Wbishop; break;
+            case 'M' :piece=PIECES.Wcatapult; break;
             case 'Z' :piece=PIECES.Wgiraffe; break;
             case 'G' :piece=PIECES.Wminister; break;
             case 'S' :piece=PIECES.Wking; break;

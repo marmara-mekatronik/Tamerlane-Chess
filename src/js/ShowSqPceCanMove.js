@@ -23,7 +23,7 @@ function NotCapturedPawnOfPawn(piece,sq) {
     var sqOfPofP;
 
     if(PieceColor[piece]==COLOURS.BLACK){
-        sqOfPofP=GameBoard.pList[PCEINDEX(PIECES.WpiyonP,0)];
+        sqOfPofP=GameBoard.pList[PCEINDEX(PIECES.WpOfPawn,0)];
         if(sq==sqOfPofP && wPromNumPofP==1 && RanksBrd[sqOfPofP]==WpromotionRank){
 
             return  Bool.False;
@@ -31,7 +31,7 @@ function NotCapturedPawnOfPawn(piece,sq) {
 
     }else {
 
-        sqOfPofP=GameBoard.pList[PCEINDEX(PIECES.BpiyonP,0)];
+        sqOfPofP=GameBoard.pList[PCEINDEX(PIECES.BpOfPawn,0)];
         if(sq==sqOfPofP && bPromNumPofP==1 && RanksBrd[sqOfPofP]==BpromotionRank){
 
             return  Bool.False;
@@ -60,6 +60,7 @@ function ProtectedKing(from,to) {
     if(GameBoard.side==COLOURS.WHITE) soleKing=GameBoard.WhiteOnlyKingInGame;
 
     else soleKing=GameBoard.BlackOnlyKingInGame;
+
 
     if(soleKing!=0){
 
