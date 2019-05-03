@@ -107,10 +107,7 @@ $(document).on("click",".Piece", function (e) {
     MakeUserMove();
 
 
-
-
     ShowSquaresPieceCanMove(UserMove.from,GameBoard.pieces[UserMove.from]);
-
 
 
 });
@@ -125,6 +122,9 @@ $(document).on("click",".Square", function (e) {
         console.log(UserMove.to+" numaralı karede "+GameBoard.pieces[UserMove.to]+" numaralı taş bulunmakta");
     }
     console.log("deve: "+GameBoard.pList[PCEINDEX(PIECES.Wcamel,0)]);
+
+
+
 
 });
 
@@ -146,10 +146,7 @@ function MakeUserMove() {
             CheckandSet();
 
         }
-        console.log("en yüksek mertebeli şah: "+GameBoard.WhiteHighestRanKING);
-        console.log("SAH  "+GameBoard.pList[PCEINDEX(GameBoard.WhiteHighestRanKING,0)]+" NOLU KAREDE");
-        console.log("WsoleKingSwitchPlacePiece "+WsoleKingSwitchPlacePiece);
-        console.log("BsoleKingSwitchPlacePiece "+BsoleKingSwitchPlacePiece);
+
 
         DeSelected(UserMove.from);
         DeSelected(UserMove.to);
@@ -169,6 +166,8 @@ function RemoveGuiPiece(sq) {
         if(PieceIsOnSq(sq,$(this).position().top,$(this).position().left)==Bool.True){
 
             $(this).remove();
+
+
         }
     });
 }
@@ -191,8 +190,10 @@ function MoveGuiPiece(move,piece) {
     var from=FROMSQ(move);
     var to=TOSQ(move);
 
+
     if(CAPTURED(move)){
         RemoveGuiPiece(to);
+
     }
 
 
@@ -207,6 +208,7 @@ function MoveGuiPiece(move,piece) {
 
             $(this).removeClass();
             $(this).addClass("Piece "+rankName+" "+fileName);
+
         }
     });
 

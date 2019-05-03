@@ -9,9 +9,7 @@ function  ClearPiece(sq) {
 
     HASH_PCE(pce,sq);
 
-
     GameBoard.pieces[sq]=PIECES.EMPTY;
-
 
     for(index=0;index<GameBoard.piecesNUMBER[pce];index++){
 
@@ -195,7 +193,9 @@ function MakeMove(move) {
 
         ClearPiece(to);
         ClearKing(captured);
+
     }
+
 
     GameBoard.hisPly++;
     GameBoard.ply++;
@@ -310,7 +310,7 @@ function TakePromoted(PromPce) {
         case PIECES.Bcamel: PawnOf=PIECES.BpOfCamel; break;
         case PIECES.Bprince:PawnOf=PIECES.BpOfKing;break;
         case PIECES.Bcatapult: PawnOf=PIECES.BpOfCatapult; break;
-        case PIECES.Belephant: PawnOf=PIECES.Belephant; break;
+        case PIECES.Belephant: PawnOf=PIECES.BpOfElephant; break;
 
     }
 
@@ -357,7 +357,7 @@ function Promoted(piece) {
         case PIECES.BpOfWarengine: PromPiece=PIECES.Bwarengine; break;
         case PIECES.BpOfCamel: PromPiece=PIECES.Bcamel; break;
         case PIECES.BpOfKing:PromPiece=PIECES.Bprince; break;
-        case PIECES.BpOfBishop: PromPiece=PIECES.Bbishop; break;
+        case PIECES.BpOfCatapult: PromPiece=PIECES.Bcatapult; break;
         case PIECES.BpOfElephant: PromPiece=PIECES.Belephant; break;
 
     }

@@ -421,76 +421,76 @@ function  SqAttacked(sq,side){
             }
 
 
-            for (index = 0; index < AT_direction.length; index++) { //at
-                pce = GameBoard.pieces[sq + AT_direction[index]];
+            for (index = 0; index < Knight_direction.length; index++) { //at
+                pce = GameBoard.pieces[sq + Knight_direction[index]];
 
-                if (pce != SQUARES.OFF_BOARD && PieceColor[pce] == side && PieceAT[pce] == Bool.True) {
+                if (pce != SQUARES.OFF_BOARD && PieceColor[pce] == side && PieceKnight[pce] == Bool.True) {
                     return Bool.True;
                 }
             }
 
-            for (index = 0; index < DEVE_direction.length; index++) { //deve
+            for (index = 0; index < Camel_direction.length; index++) { //deve
 
-                pce = GameBoard.pieces[sq + DEVE_direction[index]];
+                pce = GameBoard.pieces[sq + Camel_direction[index]];
 
-                if (pce != SQUARES.OFF_BOARD && PieceColor[pce] == side && PieceDeve[pce] == Bool.True) {
+                if (pce != SQUARES.OFF_BOARD && PieceColor[pce] == side && PieceCamel[pce] == Bool.True) {
                     return Bool.True;
                 }
             }
-            for (index = 0; index < MANCINIK_direction.length; index++) { //FİL
+            for (index = 0; index < Catapult_direction.length; index++) { //FİL
 
-                pce = GameBoard.pieces[sq + MANCINIK_direction[index]];
+                pce = GameBoard.pieces[sq + Catapult_direction[index]];
 
-                if (pce != SQUARES.OFF_BOARD && PieceColor[pce] == side && PieceFIL[pce] == Bool.True) {
+                if (pce != SQUARES.OFF_BOARD && PieceColor[pce] == side && PieceElephant[pce] == Bool.True) {
                     return Bool.True;
                 }
             }
-            for (index = 0; index < VEZIR_direction.length; index++) { //VEZİR
+            for (index = 0; index < Advisor_direction.length; index++) { //VEZİR
 
-                pce = GameBoard.pieces[sq + VEZIR_direction[index]];
+                pce = GameBoard.pieces[sq + Advisor_direction[index]];
 
-                if (pce != SQUARES.OFF_BOARD && PieceColor[pce] == side && PieceVEZIR[pce] == Bool.True) {
+                if (pce != SQUARES.OFF_BOARD && PieceColor[pce] == side && PieceAdvisor[pce] == Bool.True) {
                     return Bool.True;
                 }
             }
-            for (index = 0; index < GENERAL_direction.length; index++) { //GENERAL
-                pce = GameBoard.pieces[sq + GENERAL_direction[index]];
+            for (index = 0; index < Minister_direction.length; index++) { //GENERAL
+                pce = GameBoard.pieces[sq + Minister_direction[index]];
 
-                if (pce != SQUARES.OFF_BOARD && PieceColor[pce] == side && PieceGENERAL[pce] == Bool.True) {
-                    return Bool.True;
-                }
-            }
-
-
-            for (index = 0; index < DEBBABE_direction.length; index++) { //DEBBABE
-
-                pce = GameBoard.pieces[sq + DEBBABE_direction[index]];
-
-                if (pce != SQUARES.OFF_BOARD && PieceColor[pce] == side && PieceDEBBABE[pce] == Bool.True) {
+                if (pce != SQUARES.OFF_BOARD && PieceColor[pce] == side && PieceMinister[pce] == Bool.True) {
                     return Bool.True;
                 }
             }
 
 
-            for (index = 0; index < ZURAFA_direction.length; index++) { //zürafa
+            for (index = 0; index < Warengine_direction.length; index++) { //DEBBABE
 
-                direction = ZURAFA_direction[index];
+                pce = GameBoard.pieces[sq + Warengine_direction[index]];
+
+                if (pce != SQUARES.OFF_BOARD && PieceColor[pce] == side && PieceWarengine[pce] == Bool.True) {
+                    return Bool.True;
+                }
+            }
+
+
+            for (index = 0; index < Giraffe_direction.length; index++) { //zürafa
+
+                direction = Giraffe_direction[index];
                 t_sq = sq + direction;
                 pce = GameBoard.pieces[t_sq];
 
-                if (GameBoard.pieces[t_sq - AT_direction[index]] == PIECES.EMPTY && GameBoard.pieces[t_sq - DEVE_direction[index]] == PIECES.EMPTY) {
+                if (GameBoard.pieces[t_sq - Knight_direction[index]] == PIECES.EMPTY && GameBoard.pieces[t_sq - Camel_direction[index]] == PIECES.EMPTY) {
 
                     while (pce != SQUARES.OFF_BOARD) {
 
-                        if (GameBoard.pieces[t_sq - ZURAFA3_direction[index]] == PIECES.EMPTY) {
+                        if (GameBoard.pieces[t_sq - Giraffe3_direction[index]] == PIECES.EMPTY) {
 
                             if (pce != PIECES.EMPTY) {
-                                if (PieceZURAFA[pce] == Bool.True && PieceColor[pce] == side) {
+                                if (PieceGiraffe[pce] == Bool.True && PieceColor[pce] == side) {
 
                                     return Bool.True;
                                 }
                             }
-                            t_sq += ZURAFA2_direction[index];
+                            t_sq += Giraffe2_direction[index];
                             pce = GameBoard.pieces[t_sq];
                         } else {
 
@@ -500,15 +500,15 @@ function  SqAttacked(sq,side){
                 }
             }
 
-            for (index = 0; index < VEZIR_direction.length; index++) { //KALE
-                direction = VEZIR_direction[index];
+            for (index = 0; index < Advisor_direction.length; index++) { //KALE
+                direction = Advisor_direction[index];
                 t_sq = sq + direction;
                 pce = GameBoard.pieces[t_sq];
 
                 while (pce != SQUARES.OFF_BOARD) {
 
                     if (pce != PIECES.EMPTY) {
-                        if (PieceKALE[pce] == Bool.True && PieceColor[pce] == side) {
+                        if (PieceRook[pce] == Bool.True && PieceColor[pce] == side) {
 
                             return Bool.True;
                         }
@@ -519,25 +519,25 @@ function  SqAttacked(sq,side){
                 }
             }
 
-            for (index = 0; index < MANCINIK_direction.length; index++) { //mancınık
+            for (index = 0; index < Catapult_direction.length; index++) { //mancınık
 
-                direction = MANCINIK_direction[index];
+                direction = Catapult_direction[index];
                 t_sq = sq + direction;
                 pce = GameBoard.pieces[t_sq];
 
-                if (GameBoard.pieces[t_sq - GENERAL_direction[index]] == PIECES.EMPTY) {
+                if (GameBoard.pieces[t_sq - Minister_direction[index]] == PIECES.EMPTY) {
 
                     while (pce != SQUARES.OFF_BOARD) {
 
                         if (pce != PIECES.EMPTY) {
 
-                            if (PieceMANCINIK[pce] == Bool.True && PieceColor[pce] == side) {
+                            if (PieceCatapult[pce] == Bool.True && PieceColor[pce] == side) {
 
                                 return Bool.True;
                             }
                             break;
                         }
-                        t_sq += GENERAL_direction[index];
+                        t_sq += Minister_direction[index];
                         pce = GameBoard.pieces[t_sq];
                     }
                 }
@@ -548,11 +548,11 @@ function  SqAttacked(sq,side){
 
     }
 
-    for (index = 0; index < SAH_direction.length; index++) { //SAHlar
-        pce = GameBoard.pieces[sq + SAH_direction[index]];
+    for (index = 0; index < King_direction.length; index++) { //SAHlar
+        pce = GameBoard.pieces[sq + King_direction[index]];
 
 
-        if (pce != SQUARES.OFF_BOARD && PieceColor[pce] == side && PieceSAH[pce] == Bool.True) {
+        if (pce != SQUARES.OFF_BOARD && PieceColor[pce] == side && PieceKing[pce] == Bool.True) {
 
             return Bool.True;
         }

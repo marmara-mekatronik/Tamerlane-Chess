@@ -63,8 +63,8 @@ var BdecDraw=0;
 var PawnsFowards;
 var PawnDiagonal=new Array(2);
 
-var WhitePceList=[];
-var BlackPceList=[];
+var MovedPiece;
+var TakePiece;
 
 if(Colors[IndexColorOfPlayer]==COLOURS.WHITE){
 
@@ -130,77 +130,77 @@ var PiecePIYON=[Bool.False,Bool.True,Bool.True,Bool.True,Bool.True,Bool.True,Boo
     Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False];
 
-var PieceDeve=[Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
+var PieceCamel=[Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.True,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False, Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.True,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False,];
 
-var PieceAT=[Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
+var PieceKnight=[Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.True,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False, Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.True,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False,];
 
-var PieceSAH=[Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
+var PieceKing=[Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.True,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False, Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.True,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.True,Bool.True,Bool.True,Bool.True,];
 
-var PieceGENERAL=[Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
+var PieceMinister=[Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.True,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False, Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False,Bool.True,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False,];
 
-var PieceVEZIR=[Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
+var PieceAdvisor=[Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.True,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False, Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.True,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False,];
 
-var PieceDEBBABE=[Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
+var PieceWarengine=[Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.True,
     Bool.False,Bool.False,Bool.False,Bool.False, Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.True,
     Bool.False,Bool.False,Bool.False,Bool.False,];
 
-var PieceFIL=[Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
+var PieceElephant=[Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.True,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False, Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.True,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False,];
 
-var PieceKALE=[Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
+var PieceRook=[Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.True,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False, Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.True,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False,];
 
-var PieceZURAFA=[Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
+var PieceGiraffe=[Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False,Bool.True,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False, Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.True,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False,];
 
-var PieceMANCINIK=[Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
+var PieceCatapult=[Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.True,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False, Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.True,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False,];
 
 
-var AT_direction=[-31,-29,-17,-13,13,17,29,31];
-var MANCINIK_direction=[-32,-28,28,32];
-var ZURAFA_direction=[-61,-59,-19,-11,11,19,59,61];
-var ZURAFA2_direction=[-15,-15,-1,1,-1,1,15,15];
-var ZURAFA3_direction=[-16,-14,-16,-14,14,16,14,16];
-var GENERAL_direction=[-16,-14,14,16];
-var SAH_direction=[-16,-15,-14,-1,1,14,15,16];
-var VEZIR_direction=[-15,-1,1,15];
-var DEVE_direction=[-46,-44,-18,-12,12,18,44,46];
-var DEBBABE_direction=[-30,-2,2,30];
+var Knight_direction=[-31,-29,-17,-13,13,17,29,31];
+var Catapult_direction=[-32,-28,28,32];
+var Giraffe_direction=[-61,-59,-19,-11,11,19,59,61];
+var Giraffe2_direction=[-15,-15,-1,1,-1,1,15,15];
+var Giraffe3_direction=[-16,-14,-16,-14,14,16,14,16];
+var Minister_direction=[-16,-14,14,16];
+var King_direction=[-16,-15,-14,-1,1,14,15,16];
+var Advisor_direction=[-15,-1,1,15];
+var Camel_direction=[-46,-44,-18,-12,12,18,44,46];
+var Warengine_direction=[-30,-2,2,30];
 
 var DirectionNumber=[0/*empty*/,0/* pawn */,0/* pawn */,0/* pawn */,0/* pawn */,0/* pawn */,0/* pawn */,0/* pawn */,0/* pawn */,
     0/* pawn */,0/* pawn */,0/* pawn */
@@ -210,11 +210,11 @@ var DirectionNumber=[0/*empty*/,0/* pawn */,0/* pawn */,0/* pawn */,0/* pawn */,
     ,4/*KALE*/,8/*AT*/,4/*MANCINIK*/, 8/*ZÜRAFA*/,4/*GENERAL*/,8/*ŞAH*/,4/*VEZİR*/,4/*FİL*/,8/*DEVE*/,4/*DEBBABE*/,
     8/*Beyaz prens*/,8/*beyaz ikinci sah*/,8/*siyah prens*/,8/*siyah ikinci sah*/];
 
-var PieceDirection=[0,0,0,0,0,0,0,0,0,0,0,0,VEZIR_direction,AT_direction,MANCINIK_direction,ZURAFA_direction,GENERAL_direction,
-    SAH_direction,VEZIR_direction,MANCINIK_direction,DEVE_direction,DEBBABE_direction,
-    0,0,0,0,0,0,0,0,0,0,0,VEZIR_direction,AT_direction,MANCINIK_direction,ZURAFA_direction,GENERAL_direction,SAH_direction,
-    VEZIR_direction,MANCINIK_direction,DEVE_direction,DEBBABE_direction,SAH_direction/*Beyaz prens*/,SAH_direction/*beyaz ikinci sah*/,
-    SAH_direction/*siyah prens*/,SAH_direction/*siyah ikinci sah*/];
+var PieceDirection=[0,0,0,0,0,0,0,0,0,0,0,0,Advisor_direction,Knight_direction,Catapult_direction,Giraffe_direction,Minister_direction,
+    King_direction,Advisor_direction,Catapult_direction,Camel_direction,Warengine_direction,
+    0,0,0,0,0,0,0,0,0,0,0,Advisor_direction,Knight_direction,Catapult_direction,Giraffe_direction,Minister_direction,King_direction,
+    Advisor_direction,Catapult_direction,Camel_direction,Warengine_direction,King_direction/*Beyaz prens*/,King_direction/*beyaz ikinci sah*/,
+    King_direction/*siyah prens*/,King_direction/*siyah ikinci sah*/];
 
 var FilesBrd = new Array(BRD_SQ_NUM);
 var RanksBrd = new Array(BRD_SQ_NUM);
@@ -226,12 +226,12 @@ var LoopNonSlideIndex=[0,7];
 var LoopKings=[PIECES.Wking,0,PIECES.Bking,0];
 var LoopKingsIndex=[0,2];
 
-var LoopSlideKale=[PIECES.Wrook,0,PIECES.Brook,0];
-var LoopSlideKaleIndex=[0,2];
-var LoopSlideZurafa=[PIECES.Wgiraffe,0,PIECES.Bgiraffe,0];
-var LoopSlideZurafaIndex=[0,2];
-var LoopSlideMancinik=[PIECES.Wcatapult,0,PIECES.Bcatapult,0];
-var LoopSlideMancinikIndex=[0,2];
+var LoopSlideRook=[PIECES.Wrook,0,PIECES.Brook,0];
+var LoopSlideRookIndex=[0,2];
+var LoopSlideGiraffe=[PIECES.Wgiraffe,0,PIECES.Bgiraffe,0];
+var LoopSlideGiraffeIndex=[0,2];
+var LoopSlideCatapult=[PIECES.Wcatapult,0,PIECES.Bcatapult,0];
+var LoopSlideCatapultIndex=[0,2];
 
 
 var MAXGAMEMOVES = 2048;

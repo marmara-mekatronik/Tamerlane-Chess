@@ -16,15 +16,11 @@ function MOVE(from,to ,captured,promoted, flag) {
 
 function AddCaptureMove(move){
     GameBoard.moveList[GameBoard.moveListStart[GameBoard.ply+1]]=move;
-    //console.log("index capture: "+GameBoard.moveListStart[GameBoard.ply+1]);
     GameBoard.moveScores[GameBoard.moveListStart[GameBoard.ply+1]++]=0;
 }
 
 function AddQuietMove(move){
     GameBoard.moveList[GameBoard.moveListStart[GameBoard.ply+1]]=move;
-   // console.log("index Quiet: "+GameBoard.moveListStart[GameBoard.ply+1]);
-   // console.log("GameBoard.ply+1: "+GameBoard.ply+1);
-    //console.log("GameBoard.ply "+GameBoard.ply);
     GameBoard.moveScores[GameBoard.moveListStart[GameBoard.ply+1]++]=0;
 }
 
@@ -122,7 +118,7 @@ function PawnAttackedSqDiagonalBlack(sq){
 }
 
 function SoleKingSwitchPlaceWithAnyPiece() {
-    var piece,sq,index,j=0;
+    var piece,sq,index;
     var WsqOfsoleKing=GameBoard.pList[PCEINDEX(GameBoard.WhiteOnlyKingInGame,0)];
     var BsqOfsoleKing=GameBoard.pList[PCEINDEX(GameBoard.BlackOnlyKingInGame,0)];
 
@@ -138,8 +134,7 @@ function SoleKingSwitchPlaceWithAnyPiece() {
             if(PieceColor[piece]==COLOURS.WHITE && SqAttacked(sq,GameBoard.side^1)==Bool.False){
 
                 AddQuietMove(MOVE(WsqOfsoleKing,sq,PIECES.EMPTY,0,MFLAGSWITCHANYPIECE));
-                WhitePceList[j]=sq;
-                j++;
+
             }
         }
     }
@@ -156,8 +151,7 @@ function SoleKingSwitchPlaceWithAnyPiece() {
             if(PieceColor[piece]==COLOURS.BLACK && SqAttacked(sq,GameBoard.side^1)==Bool.False){
 
                 AddQuietMove(MOVE(BsqOfsoleKing,sq,PIECES.EMPTY,0,MFLAGSWITCHANYPIECE));
-                BlackPceList[j]=sq;
-                j++;
+
             }
         }
     }
@@ -620,8 +614,8 @@ function highRankingPiecesMove() {
         Pce = LoopNonSlidePieces[PieceIndex++];
     }
 
-    PieceIndex = LoopSlideKaleIndex[GameBoard.side];
-    Pce = LoopSlideKale[PieceIndex];
+    PieceIndex = LoopSlideRookIndex[GameBoard.side];
+    Pce = LoopSlideRook[PieceIndex];
 
     while (Pce != 0) {
         for (PieceNumber = 0; PieceNumber < GameBoard.piecesNUMBER[Pce]; ++PieceNumber) {
@@ -654,11 +648,11 @@ function highRankingPiecesMove() {
                 }
             }
         }
-        Pce = LoopSlideKale[PieceIndex++];
+        Pce = LoopSlideRook[PieceIndex++];
     }
 
-    PieceIndex = LoopSlideMancinikIndex[GameBoard.side];
-    Pce = LoopSlideMancinik[PieceIndex];
+    PieceIndex = LoopSlideCatapultIndex[GameBoard.side];
+    Pce = LoopSlideCatapult[PieceIndex];
 
     while (Pce != 0) {
         for (PieceNumber = 0; PieceNumber < GameBoard.piecesNUMBER[Pce]; ++PieceNumber) {
@@ -668,13 +662,13 @@ function highRankingPiecesMove() {
                 Direction = PieceDirection[Pce][index];
                 new_sq = sq + Direction;
 
-                if(GameBoard.pieces[sq+GENERAL_direction[index]]==PIECES.EMPTY){
+                if(GameBoard.pieces[sq+Minister_direction[index]]==PIECES.EMPTY){
 
                     while (SQOFFBOARD(new_sq) == Bool.False) {
 
                         if(new_sq==WopponetCitadel || new_sq==WsideCitadel){
 
-                            new_sq += GENERAL_direction[index];
+                            new_sq += Minister_direction[index];
                             continue;
                         }
 
@@ -690,16 +684,16 @@ function highRankingPiecesMove() {
 
                         AddQuietMove( MOVE(sq, new_sq, PIECES.EMPTY, PIECES.EMPTY, 0 ));
 
-                        new_sq += GENERAL_direction[index];
+                        new_sq += Minister_direction[index];
                     }
                 }
             }
         }
-        Pce = LoopSlideMancinik[PieceIndex++];
+        Pce = LoopSlideCatapult[PieceIndex++];
     }
 
-    PieceIndex = LoopSlideZurafaIndex[GameBoard.side];
-    Pce = LoopSlideZurafa[PieceIndex];
+    PieceIndex = LoopSlideGiraffeIndex[GameBoard.side];
+    Pce = LoopSlideGiraffe[PieceIndex];
 
     while(Pce !=0){
 
@@ -711,14 +705,14 @@ function highRankingPiecesMove() {
                 Direction = PieceDirection[Pce][index];
                 new_sq = sq + Direction;
 
-                if(GameBoard.pieces[sq+ZURAFA3_direction[index]]==PIECES.EMPTY && GameBoard.pieces[sq+AT_direction[index]]==PIECES.EMPTY &&
-                    GameBoard.pieces[sq+DEVE_direction[index]]==PIECES.EMPTY ){
+                if(GameBoard.pieces[sq+Giraffe3_direction[index]]==PIECES.EMPTY && GameBoard.pieces[sq+Knight_direction[index]]==PIECES.EMPTY &&
+                    GameBoard.pieces[sq+Camel_direction[index]]==PIECES.EMPTY ){
 
                     while (SQOFFBOARD(new_sq) == Bool.False) {
 
                         if(new_sq==WsideCitadel || new_sq==WopponetCitadel){
 
-                            new_sq += ZURAFA2_direction[index];
+                            new_sq += Giraffe2_direction[index];
                             continue;
                         }
 
@@ -733,12 +727,12 @@ function highRankingPiecesMove() {
 
                         AddQuietMove( MOVE(sq, new_sq, PIECES.EMPTY, PIECES.EMPTY, 0 ));
 
-                        new_sq += ZURAFA2_direction[index];
+                        new_sq += Giraffe2_direction[index];
                     }
                 }
             }
         }
-        Pce = LoopSlideZurafa[PieceIndex++];
+        Pce = LoopSlideGiraffe[PieceIndex++];
     }
 
     PieceIndex = LoopKingsIndex[GameBoard.side];

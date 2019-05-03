@@ -14,9 +14,15 @@
 #Message{
 
     position: absolute;
-    top: 540px;
+    top: 240px;
     left: 850px;
 
+}
+
+#EngineOutput {
+    position: absolute;
+    left: 850px;
+    top: 500px;
 }
 
 
