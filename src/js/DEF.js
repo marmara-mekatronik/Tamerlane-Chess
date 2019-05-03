@@ -110,7 +110,6 @@ if(Colors[IndexColorOfPlayer]==COLOURS.WHITE){
 
 var PceChar = "-PXCBYQEHTNRKAMZGSVFDIpxcbyqehtnrkamzgsvfdiJLjl w";
 
-var TakePiece,MovedPiece;
 
 var SideChar = "wb-";
 var RankChar = "0123456789";
@@ -191,18 +190,6 @@ var PieceMANCINIK=[Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.F
     Bool.False,Bool.False,Bool.True,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
     Bool.False,Bool.False,Bool.False,Bool.False,];
 
-var PiecePRENS=[Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
-    Bool.False,Bool.False,Bool.True,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
-    Bool.False,Bool.False,Bool.False,Bool.False, Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
-    Bool.False,Bool.True,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
-    Bool.True,Bool.False,Bool.True,Bool.False,];
-
-var PieceMACERACISAH=[Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
-    Bool.False,Bool.False,Bool.True,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
-    Bool.False,Bool.False,Bool.False,Bool.False, Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
-    Bool.False,Bool.True,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,Bool.False,
-    Bool.False,Bool.True,Bool.False,Bool.True,];
-
 
 var AT_direction=[-31,-29,-17,-13,13,17,29,31];
 var MANCINIK_direction=[-32,-28,28,32];
@@ -273,7 +260,7 @@ function PCEINDEX(pce, pceNum) {   //buraya tekrar bakılacak
     return (pce * 15 + pceNum);
 }
 
-var Kings=[PIECES.Wsah, PIECES.Bsah];
+var Kings=[PIECES.Wking, PIECES.Bking];
 
 
 /*

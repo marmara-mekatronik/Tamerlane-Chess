@@ -10,10 +10,8 @@ function PieceIsOnSq(sq,top,left){
 
 function T_MovePiece(from,to) {
 
-    MovedPiece=GameBoard.pieces[from];
-    TakePiece=GameBoard.pieces[to];
+    GameBoard.pieces[to]=GameBoard.pieces[from];
     GameBoard.pieces[from]=PIECES.EMPTY;
-    GameBoard.pieces[to]=MovedPiece;
 
 }
 
@@ -46,12 +44,6 @@ function NotCapturedPawnOfPawn(piece,sq) {
 }
 
 
-function TakeMovePieces(from,to) {
-
-    GameBoard.pieces[from]=MovedPiece;
-    GameBoard.pieces[to]=TakePiece;
-}
-
 
 function ProtectedKing(from,to) {
 
@@ -69,18 +61,18 @@ function ProtectedKing(from,to) {
             T_MovePiece(from,to);
 
             if(SqAttacked(GameBoard.pList[PCEINDEX(soleKing, 0)], GameBoard.side^1) == Bool.False){
-                TakeMovePieces(from, to);
+                T_MovePiece(to,from);
                 return Bool.True;
             }
-            TakeMovePieces(from, to);
+            T_MovePiece(to,from);
         }
         else{
             T_MovePiece(from, to);
             if (SqAttacked(GameBoard.pList[PCEINDEX(soleKing, 0)], GameBoard.side^1) == Bool.False) {
-                TakeMovePieces(from, to);
+                T_MovePiece(to,from);
                 return Bool.True;
             }
-            TakeMovePieces(from, to);
+            T_MovePiece(to,from);
         }
 
     }else if( (GameBoard.side==COLOURS.WHITE && GameBoard.WhiteKingsInGame.length>1) ||
