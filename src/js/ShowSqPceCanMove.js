@@ -76,8 +76,10 @@ function ProtectedKing(from,to) {
             TakeMovePieces(from,to);
         }
         else{
+
             T_MovePiece(from, to);
             if (SqAttacked(GameBoard.pList[PCEINDEX(soleKing, 0)], GameBoard.side^1) == Bool.False) {
+
                 TakeMovePieces(from,to) ;
                 return Bool.True;
             }
@@ -107,15 +109,11 @@ function ShowSquaresPieceCanMove(from,clickedPiece) {
 
             move=GameBoard.moveList[index];
 
-            if(FROMSQ(move)==from){
+            if(FROMSQ(move)==from && ProtectedKing(from,TOSQ(move))==Bool.True &&
+                NotCapturedPawnOfPawn(clickedPiece,TOSQ(move))==Bool.True &&
+                PieceIsOnSq(TOSQ(move),$(this).position().top,$(this).position().left)==Bool.True){
 
-                if(ProtectedKing(from,TOSQ(move))==Bool.True && NotCapturedPawnOfPawn(clickedPiece,TOSQ(move))==Bool.True){
-
-                    if(PieceIsOnSq(TOSQ(move),$(this).position().top,$(this).position().left)==Bool.True){
-
-                        $(this).addClass("SqAttacked");
-                    }
-                }
+                $(this).addClass("SqAttacked");
             }
         }
     });

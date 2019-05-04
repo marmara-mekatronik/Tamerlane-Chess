@@ -22,6 +22,7 @@ function  ClearPiece(sq) {
     GameBoard.piecesNUMBER[pce]--;
     GameBoard.pList[PCEINDEX(pce,t_pceNum)]=GameBoard.pList[PCEINDEX(pce, GameBoard.piecesNUMBER[pce])];
 
+
 }
 
 

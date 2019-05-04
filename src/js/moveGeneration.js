@@ -389,7 +389,7 @@ function  GenerationMoves() {
 
     if(Move2InitPosPofK==Bool.False && escapeKing==Bool.False && escapeAdKing==Bool.False){
 
-        highRankingPiecesMove();
+        PiecesMoveGen();
         SoleKingSwitchPlaceWithAnyPiece();
         ForkingAndImmobile();
 
@@ -533,7 +533,7 @@ function MoveToInitPosPawnofKing() {
 }
 
 
-function highRankingPiecesMove() {
+function PiecesMoveGen() {
 
     var PieceIndex;
     var Pce;
@@ -545,38 +545,52 @@ function highRankingPiecesMove() {
     var j;
     GameBoard.moveListStart[GameBoard.ply + 1] = GameBoard.moveListStart[GameBoard.ply];
 
+    if(GameBoard.side==COLOURS.WHITE){
 
-    for(index=0;index<WhitePawns.length;index++){
-        sq = GameBoard.pList[PCEINDEX(WhitePawns[index], 0)];
+        for(index=0;index<WhitePawns.length;index++){
+            for(PieceNumber=0;PieceNumber<GameBoard.piecesNUMBER[WhitePawns[index]];++PieceNumber){
 
-        if (PawnAttackedSqStraightWhite(sq+PawnsFowards) == Bool.True ) {
+                sq = GameBoard.pList[PCEINDEX(WhitePawns[index], PieceNumber)];
 
-            AddPawnQuietMove(sq,sq+PawnsFowards);
-        }
 
-        for(j=0;j<PawnDiagonal.length;j++){
+                if (PawnAttackedSqStraightWhite(sq+PawnsFowards) == Bool.True ) {
 
-            if (PawnAttackedSqDiagonalWhite(sq+PawnDiagonal[j]) == Bool.True ) {
+                    AddPawnQuietMove(sq,sq+PawnsFowards);
+                }
 
-                AddPawnCaptureMove(sq,sq+PawnDiagonal[j],GameBoard.pieces[sq + PawnDiagonal[j]]);
+                for(j=0;j<PawnDiagonal.length;j++){
+
+                    if (PawnAttackedSqDiagonalWhite(sq+PawnDiagonal[j]) == Bool.True ) {
+
+                        AddPawnCaptureMove(sq,sq+PawnDiagonal[j],GameBoard.pieces[sq + PawnDiagonal[j]]);
+                    }
+                }
+
             }
+
         }
     }
 
-    for(index=0;index<BlackPawns.length;index++){
-        sq = GameBoard.pList[PCEINDEX(BlackPawns[index], 0)];
+    else{
 
+        for(index=0;index<BlackPawns.length;index++){
 
-        if (PawnAttackedSqStraightBlack(sq-PawnsFowards) == Bool.True) {
+            for(PieceNumber=0;PieceNumber<GameBoard.piecesNUMBER[BlackPawns[index]];++PieceNumber){
 
-            AddPawnQuietMove(sq,sq-PawnsFowards);
-        }
+                sq = GameBoard.pList[PCEINDEX(BlackPawns[index], 0)];
 
-        for(j=0;j<PawnDiagonal.length;j++){
+                if (PawnAttackedSqStraightBlack(sq-PawnsFowards) == Bool.True) {
 
-            if (PawnAttackedSqDiagonalBlack(sq-PawnDiagonal[j]) == Bool.True) {
+                    AddPawnQuietMove(sq,sq-PawnsFowards);
+                }
 
-                AddPawnCaptureMove(sq,sq-PawnDiagonal[j],GameBoard.pieces[sq-PawnDiagonal[j]]);
+                for(j=0;j<PawnDiagonal.length;j++){
+
+                    if (PawnAttackedSqDiagonalBlack(sq-PawnDiagonal[j]) == Bool.True) {
+
+                        AddPawnCaptureMove(sq,sq-PawnDiagonal[j],GameBoard.pieces[sq-PawnDiagonal[j]]);
+                    }
+                }
             }
         }
     }

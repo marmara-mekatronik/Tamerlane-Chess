@@ -119,12 +119,7 @@ $(document).on("click",".Square", function (e) {
 
         UserMove.to= ClickedSquare(e.pageX,e.pageY);
         MakeUserMove();
-        console.log(UserMove.to+" numaralı karede "+GameBoard.pieces[UserMove.to]+" numaralı taş bulunmakta");
     }
-    console.log("deve: "+GameBoard.pList[PCEINDEX(PIECES.Wcamel,0)]);
-
-
-
 
 });
 
