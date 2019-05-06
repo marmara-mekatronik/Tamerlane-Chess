@@ -255,39 +255,37 @@ function MoveGuiPiece(move,piece) {
 function DeclareDraw() {
 
 
-
     if( (GameBoard.WhiteCounter==1 && GameBoard.WhiteNumberOfKingsInGame==1) ||
         (GameBoard.BlackCounter==1 && GameBoard.BlackNumberOfKingsInGame==1) ){
 
         return Bool.True;
     }
+    else if(GameBoard.WhiteCounter==1 && (GameBoard.WhiteNumberOfKingsInGame==2 || GameBoard.WhiteNumberOfKingsInGame==3)&& decDraw==0 ){
 
-    else if(GameBoard.WhiteCounter==1 && (GameBoard.WhiteNumberOfKingsInGame==2 || GameBoard.WhiteNumberOfKingsInGame==3)&& WdecDraw==0 ){
+        decDraw=parseInt(prompt("oyunu berabere bitirmek için 1 oyuna devam etmek için 2 giriniz"));
 
-        WdecDraw=parseInt(prompt("oyunu berabere bitirmek için 1 oyuna devam etmek için 2 giriniz"));
-
-        if(WdecDraw==2){
+        if(decDraw==2){
 
             //şah, prens ya da sonradan gelen şah ile yer değiştirecek
 
             return Bool.False;
         }
-        else if(WdecDraw===1){
+        else if(decDraw===1){
 
             return Bool.True;
         }
     }
-    else if(GameBoard.BlackCounter==1 && (GameBoard.BlackNumberOfKingsInGame==2 || GameBoard.BlackNumberOfKingsInGame==3) && BdecDraw==0){
+    else if(GameBoard.BlackCounter==1 && (GameBoard.BlackNumberOfKingsInGame==2 || GameBoard.BlackNumberOfKingsInGame==3) && decDraw==0){
 
-        BdecDraw=parseInt(prompt("oyunu berabere bitirmek için 1 oyuna devam etmek için 2 giriniz"));
+        decDraw=parseInt(prompt("oyunu berabere bitirmek için 1 oyuna devam etmek için 2 giriniz"));
 
-        if(BdecDraw==2){
+        if(decDraw==2){
 
             //şah, prens ya da sonradan gelen şah ile yer değiştirecek
 
             return Bool.False;
         }
-        else if(BdecDraw==1){
+        else if(decDraw==1){
 
             return Bool.True;
         }

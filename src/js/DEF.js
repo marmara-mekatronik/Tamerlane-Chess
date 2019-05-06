@@ -24,10 +24,7 @@ var Ranks={Rank_1:1,Rank_2:2,Rank_3:3,Rank_4:4,Rank_5:5,Rank_6:6,Rank_7:7,Rank_8
 var COLOURS={WHITE:0, BLACK:1, BOTH:2};
 var Bool={False:0, True:1};
 
-var SQUARES={A1:62,B1:63,C1:64,D1:65,E1:66,F1:67,G1:68,H1:69,I1:70,J1:71,K1:72,
-    A10:197,B10:198,C10:199,D10:200,E10:201,F10:202,G10:203,H10:204,I10:205,
-    J10:206,K10:207, NO_SQ:208,OFF_BOARD:209};
-
+var SQUARES={NO_SQ:208,OFF_BOARD:209};
 
 
 var PieceKeys = new Array(20* 120);
@@ -57,8 +54,8 @@ var WpOfpInitSq;
 var BpOfpInitSq;
 var WkomsuOfCitadel;
 var BkomsuOfCitadel;
-var WdecDraw=0;
-var BdecDraw=0;
+var decDraw=0;
+
 
 var PawnsFowards;
 var PawnDiagonal=new Array(2);
